@@ -19,6 +19,7 @@ class RestaurantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageViewAttributies()
+        self.tintColor = .systemYellow
     }
     
     func imageViewAttributies (){
