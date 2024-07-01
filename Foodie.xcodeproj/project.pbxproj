@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153901132C326EF300000F48 /* RestaurantDetailViewController.swift */; };
+		153901192C32975B00000F48 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153901182C32962B00000F48 /* Nunito-Bold.ttf */; };
+		1539011A2C32975B00000F48 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153901172C32960F00000F48 /* Nunito-Regular.ttf */; };
 		15462E102C29413900D998CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E0F2C29413900D998CD /* AppDelegate.swift */; };
 		15462E122C29413900D998CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E112C29413900D998CD /* SceneDelegate.swift */; };
 		15462E172C29413900D998CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 15462E162C29413900D998CD /* Base */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		153901132C326EF300000F48 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		153901172C32960F00000F48 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../../mahmoudalaa/Downloads/Nunito/static/Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		153901182C32962B00000F48 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../../../mahmoudalaa/Downloads/Nunito/static/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		15462E0C2C29413900D998CD /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15462E0F2C29413900D998CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15462E112C29413900D998CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,9 +49,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153901152C3295BC00000F48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				153901162C3295C400000F48 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		153901162C3295C400000F48 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				153901172C32960F00000F48 /* Nunito-Regular.ttf */,
+				153901182C32962B00000F48 /* Nunito-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		15462E032C29413900D998CD = {
 			isa = PBXGroup;
 			children = (
+				153901152C3295BC00000F48 /* Resources */,
 				15462E0E2C29413900D998CD /* Foodie */,
 				15462E0D2C29413900D998CD /* Products */,
 			);
@@ -95,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				15462E232C29453C00D998CD /* RestaurantTableViewController.swift */,
+				153901132C326EF300000F48 /* RestaurantDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +191,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153901192C32975B00000F48 /* Nunito-Bold.ttf in Resources */,
+				1539011A2C32975B00000F48 /* Nunito-Regular.ttf in Resources */,
 				15462E192C29413B00D998CD /* Assets.xcassets in Resources */,
 				15462E1C2C29413B00D998CD /* Base in Resources */,
 				15462E172C29413900D998CD /* Base in Resources */,
@@ -184,6 +211,7 @@
 				15462E102C29413900D998CD /* AppDelegate.swift in Sources */,
 				15462E122C29413900D998CD /* SceneDelegate.swift in Sources */,
 				15D63E242C2C14CA000FD524 /* RestaurantDiffableDataSource.swift in Sources */,
+				153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */,
 				15462E242C29453C00D998CD /* RestaurantTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
