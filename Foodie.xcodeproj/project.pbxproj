@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153901132C326EF300000F48 /* RestaurantDetailViewController.swift */; };
-		153901192C32975B00000F48 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153901182C32962B00000F48 /* Nunito-Bold.ttf */; };
-		1539011A2C32975B00000F48 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153901172C32960F00000F48 /* Nunito-Regular.ttf */; };
 		15462E102C29413900D998CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E0F2C29413900D998CD /* AppDelegate.swift */; };
 		15462E122C29413900D998CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E112C29413900D998CD /* SceneDelegate.swift */; };
 		15462E172C29413900D998CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 15462E162C29413900D998CD /* Base */; };
@@ -17,14 +15,17 @@
 		15462E1C2C29413B00D998CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 15462E1B2C29413B00D998CD /* Base */; };
 		15462E242C29453C00D998CD /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E232C29453C00D998CD /* RestaurantTableViewController.swift */; };
 		15462E262C295C2A00D998CD /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */; };
+		159E9F2D2C357D010070B51F /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 159E9F2C2C357D010070B51F /* Nunito-Regular.ttf */; };
+		159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 159E9F2E2C357D100070B51F /* Nunito-Bold.ttf */; };
+		15BB409F2C36C301009C4E9E /* HeaderRestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */; };
+		15BB40A12C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */; };
+		15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */; };
 		15D63E1E2C2C011B000FD524 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D63E1D2C2C011B000FD524 /* Restaurant.swift */; };
 		15D63E242C2C14CA000FD524 /* RestaurantDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		153901132C326EF300000F48 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
-		153901172C32960F00000F48 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../../mahmoudalaa/Downloads/Nunito/static/Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		153901182C32962B00000F48 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../../../mahmoudalaa/Downloads/Nunito/static/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		15462E0C2C29413900D998CD /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15462E0F2C29413900D998CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15462E112C29413900D998CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +35,11 @@
 		15462E1D2C29413B00D998CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15462E232C29453C00D998CD /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		159E9F2C2C357D010070B51F /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		159E9F2E2C357D100070B51F /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderRestaurantDetailView.swift; sourceTree = "<group>"; };
+		15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTwoTableViewCell.swift; sourceTree = "<group>"; };
 		15D63E1D2C2C011B000FD524 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDiffableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,27 +55,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		153901152C3295BC00000F48 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				153901162C3295C400000F48 /* Fonts */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		153901162C3295C400000F48 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				153901172C32960F00000F48 /* Nunito-Regular.ttf */,
-				153901182C32962B00000F48 /* Nunito-Bold.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		15462E032C29413900D998CD = {
 			isa = PBXGroup;
 			children = (
-				153901152C3295BC00000F48 /* Resources */,
+				159E9F2A2C357CAC0070B51F /* Resources */,
 				15462E0E2C29413900D998CD /* Foodie */,
 				15462E0D2C29413900D998CD /* Products */,
 			);
@@ -98,6 +87,23 @@
 			path = Foodie;
 			sourceTree = "<group>";
 		};
+		159E9F2A2C357CAC0070B51F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				159E9F2B2C357CB60070B51F /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		159E9F2B2C357CB60070B51F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				159E9F2C2C357D010070B51F /* Nunito-Regular.ttf */,
+				159E9F2E2C357D100070B51F /* Nunito-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		15D63E1F2C2C06F2000FD524 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +117,9 @@
 			children = (
 				15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */,
 				15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */,
+				15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */,
+				15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */,
+				15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,10 +200,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153901192C32975B00000F48 /* Nunito-Bold.ttf in Resources */,
-				1539011A2C32975B00000F48 /* Nunito-Regular.ttf in Resources */,
 				15462E192C29413B00D998CD /* Assets.xcassets in Resources */,
+				159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */,
 				15462E1C2C29413B00D998CD /* Base in Resources */,
+				159E9F2D2C357D010070B51F /* Nunito-Regular.ttf in Resources */,
 				15462E172C29413900D998CD /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,8 +219,11 @@
 				15462E262C295C2A00D998CD /* RestaurantTableViewCell.swift in Sources */,
 				15462E102C29413900D998CD /* AppDelegate.swift in Sources */,
 				15462E122C29413900D998CD /* SceneDelegate.swift in Sources */,
+				15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */,
 				15D63E242C2C14CA000FD524 /* RestaurantDiffableDataSource.swift in Sources */,
 				153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */,
+				15BB409F2C36C301009C4E9E /* HeaderRestaurantDetailView.swift in Sources */,
+				15BB40A12C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift in Sources */,
 				15462E242C29453C00D998CD /* RestaurantTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
