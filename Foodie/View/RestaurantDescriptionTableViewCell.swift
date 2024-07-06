@@ -9,7 +9,12 @@ import UIKit
 
 class RestaurantDescriptionTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!{
+        didSet{
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         

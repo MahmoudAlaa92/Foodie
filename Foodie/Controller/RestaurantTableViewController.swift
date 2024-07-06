@@ -38,17 +38,42 @@ class RestaurantTableViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.dataSource = dataSource
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.backButtonTitle = ""
+        
+        if let apperance = navigationController?.navigationBar.standardAppearance {
+            apperance.configureWithTransparentBackground()
+            
+            if let customFont = UIFont(name: "Nunito-Bold", size: 45){
+                apperance.titleTextAttributes = [.foregroundColor : UIColor(named: "NavigationBarTitle")!
+                ]
+                apperance.largeTitleTextAttributes =  [.foregroundColor : UIColor(named: "NavigationBarTitle")!, .font:customFont
+                ]
+            }
+            navigationController?.navigationBar.standardAppearance = apperance
+            navigationController?.navigationBar.compactAppearance = apperance
+            navigationController?.navigationBar.scrollEdgeAppearance = apperance
+        }
+        
+        tableView.dataSource = dataSource
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+
         var snapshot = NSDiffableDataSourceSnapshot<Section, Restaurant>()
         snapshot.appendSections([.all])
         snapshot.appendItems(Restaurants ,toSection: .all)
         
         dataSource.apply(snapshot, animatingDifferences: false)
-        tableView.separatorStyle = .none
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        title = "Foodie"
+        navigationController?.hidesBarsOnSwipe = true
+    }
     // MARK: - UITableView Diffable Data Source
     
     func configureDataSource() -> RestaurantDiffableDataSource {
@@ -83,50 +108,50 @@ class RestaurantTableViewController: UITableViewController  {
             }
         }
     }
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        tableView.deselectRow(at: indexPath, animated: false)
-//        
-//        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
-//        
-//        let reserve = { (action: UIAlertAction!) in
-//            let alert = UIAlertController(title: "sorry", message: "try in anoher time", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .default))
-//            self.present(alert ,animated: true)
-//        }
-//        
-//        let reserveAction = UIAlertAction(title: "resrveAction", style: .default, handler: reserve)
-//        
-//        //Mark as a fovorite
-//        let favoriteAction = UIAlertAction(title: "Mark as a fovorite", style: .default) { (action: UIAlertAction!) in
-//            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
-//            self.Restaurants[indexPath.row].isFavorite = true
-//            cell.favoriteImage.image = UIImage(systemName: "heart.fill")
-//            cell.favoriteImage.isHidden = false
-//        }
-//        //Mark as unfovorite
-//        let unFavoriteAction = UIAlertAction(title: "Remove from favorite", style: .default){ (action: UIAlertAction!) in
-//            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
-//            self.Restaurants[indexPath.row].isFavorite = false
-//            cell.favoriteImage.isHidden = true
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//        
-//        optionMenu.addAction(reserveAction)
-//        optionMenu.addAction(favoriteAction)
-//        optionMenu.addAction(unFavoriteAction)
-//        optionMenu.addAction(cancelAction)
-//        
-//        // popOver
-//        if let popOver = optionMenu.popoverPresentationController {
-//            if let cell = tableView.cellForRow(at: indexPath){
-//                popOver.sourceView = cell
-//                popOver.sourceRect = cell.bounds
-//            }
-//        }
-//        present(optionMenu ,animated: true ,completion: nil)
-//    }
+    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //
+    //        tableView.deselectRow(at: indexPath, animated: false)
+    //
+    //        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+    //
+    //        let reserve = { (action: UIAlertAction!) in
+    //            let alert = UIAlertController(title: "sorry", message: "try in anoher time", preferredStyle: .alert)
+    //            alert.addAction(UIAlertAction(title: "OK", style: .default))
+    //            self.present(alert ,animated: true)
+    //        }
+    //
+    //        let reserveAction = UIAlertAction(title: "resrveAction", style: .default, handler: reserve)
+    //
+    //        //Mark as a fovorite
+    //        let favoriteAction = UIAlertAction(title: "Mark as a fovorite", style: .default) { (action: UIAlertAction!) in
+    //            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+    //            self.Restaurants[indexPath.row].isFavorite = true
+    //            cell.favoriteImage.image = UIImage(systemName: "heart.fill")
+    //            cell.favoriteImage.isHidden = false
+    //        }
+    //        //Mark as unfovorite
+    //        let unFavoriteAction = UIAlertAction(title: "Remove from favorite", style: .default){ (action: UIAlertAction!) in
+    //            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+    //            self.Restaurants[indexPath.row].isFavorite = false
+    //            cell.favoriteImage.isHidden = true
+    //        }
+    //
+    //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    //
+    //        optionMenu.addAction(reserveAction)
+    //        optionMenu.addAction(favoriteAction)
+    //        optionMenu.addAction(unFavoriteAction)
+    //        optionMenu.addAction(cancelAction)
+    //
+    //        // popOver
+    //        if let popOver = optionMenu.popoverPresentationController {
+    //            if let cell = tableView.cellForRow(at: indexPath){
+    //                popOver.sourceView = cell
+    //                popOver.sourceRect = cell.bounds
+    //            }
+    //        }
+    //        present(optionMenu ,animated: true ,completion: nil)
+    //    }
     
     // trailingSwipe
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -134,7 +159,7 @@ class RestaurantTableViewController: UITableViewController  {
             return UISwipeActionsConfiguration()
         }
         
-            //delete
+        //delete
         let deleteAtcion = UIContextualAction(style: .destructive, title: "Delete") { action, sourceview, completionHandler in
             
             

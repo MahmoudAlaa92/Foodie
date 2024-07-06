@@ -20,6 +20,8 @@
 		15BB409F2C36C301009C4E9E /* HeaderRestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */; };
 		15BB40A12C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */; };
 		15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */; };
+		15BB40A62C3703E4009C4E9E /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A52C3703E4009C4E9E /* UIColor+Ext.swift */; };
+		15BB40A82C371DC6009C4E9E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A72C371DC6009C4E9E /* NavigationController.swift */; };
 		15D63E1E2C2C011B000FD524 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D63E1D2C2C011B000FD524 /* Restaurant.swift */; };
 		15D63E242C2C14CA000FD524 /* RestaurantDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderRestaurantDetailView.swift; sourceTree = "<group>"; };
 		15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTwoTableViewCell.swift; sourceTree = "<group>"; };
+		15BB40A52C3703E4009C4E9E /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		15BB40A72C371DC6009C4E9E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		15D63E1D2C2C011B000FD524 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDiffableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +62,7 @@
 		15462E032C29413900D998CD = {
 			isa = PBXGroup;
 			children = (
+				15BB40A42C3703CF009C4E9E /* Extensions */,
 				159E9F2A2C357CAC0070B51F /* Resources */,
 				15462E0E2C29413900D998CD /* Foodie */,
 				15462E0D2C29413900D998CD /* Products */,
@@ -104,6 +109,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		15BB40A42C3703CF009C4E9E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15BB40A52C3703E4009C4E9E /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		15D63E1F2C2C06F2000FD524 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 			children = (
 				15462E232C29453C00D998CD /* RestaurantTableViewController.swift */,
 				153901132C326EF300000F48 /* RestaurantDetailViewController.swift */,
+				15BB40A72C371DC6009C4E9E /* NavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,9 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D63E1E2C2C011B000FD524 /* Restaurant.swift in Sources */,
+				15BB40A82C371DC6009C4E9E /* NavigationController.swift in Sources */,
 				15462E262C295C2A00D998CD /* RestaurantTableViewCell.swift in Sources */,
 				15462E102C29413900D998CD /* AppDelegate.swift in Sources */,
 				15462E122C29413900D998CD /* SceneDelegate.swift in Sources */,
+				15BB40A62C3703E4009C4E9E /* UIColor+Ext.swift in Sources */,
 				15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */,
 				15D63E242C2C14CA000FD524 /* RestaurantDiffableDataSource.swift in Sources */,
 				153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */,
@@ -381,6 +397,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -408,6 +425,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -17,7 +17,9 @@ class RestaurantDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.separatorStyle = .none
+
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -31,10 +33,22 @@ class RestaurantDetailViewController: UIViewController {
         headerView.restaurantFavorite.tintColor = restaurant.isFavorite ? .systemYellow : .white
         
         navigationItem.largeTitleDisplayMode = .never
-        tableView.separatorStyle = .none
+        navigationController?.hidesBarsOnSwipe = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    //StatusBarStyle
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 }
+
 
 //MARK: - UIRestaurantDetailsTableViewDelegate
 
@@ -49,6 +63,7 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDescriptionTableViewCell.self), for: indexPath) as? RestaurantDescriptionTableViewCell else{
                 return UITableViewCell()
             }
+            cell.selectionStyle = .none
             cell.descriptionLabel.text = restaurant.description
             return cell
         case 1:
@@ -60,13 +75,11 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
             cell.addresText.text = restaurant.location
             cell.phoneTitle.text = "Phone"
             cell.phoneText.text = restaurant.phone
-            
+            cell.selectionStyle = .none
             return cell
         default:
             fatalError("Error in RestaurantDetailsTableViewDelegate")
         }
     }
-    
-    
     
 }

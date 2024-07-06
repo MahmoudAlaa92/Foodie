@@ -13,11 +13,13 @@ class RestaurantDetailTwoTableViewCell: UITableViewCell {
         didSet{
             addressTitle.numberOfLines = 0
             addressTitle.text = addressTitle.text?.uppercased()
+            addressTitle.adjustsFontForContentSizeCategory = true
         }
     }
     @IBOutlet weak var addresText: UILabel!{
         didSet{
             addresText.numberOfLines = 0
+            addresText.adjustsFontForContentSizeCategory = true
         }
     }
     
@@ -25,11 +27,13 @@ class RestaurantDetailTwoTableViewCell: UITableViewCell {
         didSet{
             phoneTitle.numberOfLines = 0
             phoneTitle.text = phoneTitle.text?.uppercased()
+            phoneTitle.adjustsFontForContentSizeCategory = true
         }
     }
     @IBOutlet weak var phoneText: UILabel!{
         didSet{
             phoneText.numberOfLines = 0
+            phoneText.adjustsFontForContentSizeCategory = true
         }
     }
     
