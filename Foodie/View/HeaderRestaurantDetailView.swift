@@ -15,6 +15,7 @@ class HeaderRestaurantDetailView: UIView {
             if let customFont = UIFont(name: "Nunito-Bold", size: 40){
                 restaurantName.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
             }
+            restaurantName.adjustsFontForContentSizeCategory = true
         }
     }
     @IBOutlet weak var restaurantType: UILabel!{
@@ -22,6 +23,7 @@ class HeaderRestaurantDetailView: UIView {
             if let customFont = UIFont(name: "Nunito-Bold", size: 20){
                 restaurantType.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
             }
+            restaurantType.adjustsFontForContentSizeCategory = true
         }
     }
     @IBOutlet weak var restaurantFavorite: UIButton!

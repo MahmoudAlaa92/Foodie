@@ -58,7 +58,7 @@ class RestaurantTableViewController: UITableViewController  {
         
         tableView.dataSource = dataSource
         tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.rowHeight = UITableView.automaticDimension
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, Restaurant>()
         snapshot.appendSections([.all])

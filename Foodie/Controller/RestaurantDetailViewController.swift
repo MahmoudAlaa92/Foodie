@@ -9,17 +9,19 @@ import UIKit
 
 class RestaurantDetailViewController: UIViewController {
     
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerView: HeaderRestaurantDetailView!
-    
     var restaurant: Restaurant = Restaurant()
+    
+    @IBOutlet weak var tableView: UITableView!{
+        didSet{
+            tableView.contentInsetAdjustmentBehavior = .never
+            tableView.separatorStyle = .none
+        }
+    }
+    @IBOutlet weak var headerView: HeaderRestaurantDetailView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.separatorStyle = .none
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -32,6 +34,7 @@ class RestaurantDetailViewController: UIViewController {
         headerView.restaurantFavorite.setImage(heartImage, for: .normal)
         headerView.restaurantFavorite.tintColor = restaurant.isFavorite ? .systemYellow : .white
         
+        navigationItem.backButtonTitle = ""
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.hidesBarsOnSwipe = false
     }
@@ -54,7 +57,7 @@ class RestaurantDetailViewController: UIViewController {
 
 extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,9 +80,24 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
             cell.phoneText.text = restaurant.phone
             cell.selectionStyle = .none
             return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as? RestaurantDetailMapCell else{
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            cell.configer(location: restaurant.location)
+            return cell
         default:
             fatalError("Error in RestaurantDetailsTableViewDelegate")
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MapViewController"{
+            
+            if let destinationVC = segue.destination as? MapViewController{
+                destinationVC.restaurant = self.restaurant
+            }
+        }
+    }
 }
