@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153771EE2C3DB367003C2A63 /* ReviewViewController.swift */; };
 		153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153901132C326EF300000F48 /* RestaurantDetailViewController.swift */; };
 		15462E102C29413900D998CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E0F2C29413900D998CD /* AppDelegate.swift */; };
 		15462E122C29413900D998CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E112C29413900D998CD /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		153771EE2C3DB367003C2A63 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		153901132C326EF300000F48 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		15462E0C2C29413900D998CD /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15462E0F2C29413900D998CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				153901132C326EF300000F48 /* RestaurantDetailViewController.swift */,
 				15BB40A72C371DC6009C4E9E /* NavigationController.swift */,
 				15DD41222C39BACA00754947 /* MapViewController.swift */,
+				153771EE2C3DB367003C2A63 /* ReviewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			files = (
 				15D63E1E2C2C011B000FD524 /* Restaurant.swift in Sources */,
 				15BB40A82C371DC6009C4E9E /* NavigationController.swift in Sources */,
+				153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */,
 				15462E262C295C2A00D998CD /* RestaurantTableViewCell.swift in Sources */,
 				15462E102C29413900D998CD /* AppDelegate.swift in Sources */,
 				15462E122C29413900D998CD /* SceneDelegate.swift in Sources */,

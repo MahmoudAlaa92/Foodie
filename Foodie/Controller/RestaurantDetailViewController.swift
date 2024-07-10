@@ -93,11 +93,43 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MapViewController"{
-            
+        switch segue.identifier {
+        case "MapViewController":
             if let destinationVC = segue.destination as? MapViewController{
                 destinationVC.restaurant = self.restaurant
             }
+        case "showReview":
+            if let destinationVC = segue.destination as? ReviewViewController{
+                destinationVC.restaurant = self.restaurant
+            }
+        default:
+            break
         }
+    }
+    
+    //unwindSegue
+    @IBAction func close(segue: UIStoryboardSegue){
+        dismiss(animated: true)
+    }
+    
+    @IBAction func rating(segue: UIStoryboardSegue){
+        
+        guard let identifier = segue.identifier else{
+            return
+        }
+        dismiss(animated: true, completion: {
+            if let rating = Restaurant.Rating(rawValue: identifier) {
+                self.restaurant.rating = rating
+                self.headerView.ratingImageView.image = UIImage(named: rating.image)
+            }
+            let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+            self.headerView.ratingImageView.transform = scaleTransform
+            self.headerView.ratingImageView.alpha = 0
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping
+                           : 0.3, initialSpringVelocity: 0.5) {
+                self.headerView.ratingImageView.transform = .identity
+                self.headerView.ratingImageView.alpha = 1
+            }
+        })
     }
 }

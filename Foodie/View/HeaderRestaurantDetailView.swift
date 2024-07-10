@@ -28,4 +28,5 @@ class HeaderRestaurantDetailView: UIView {
     }
     @IBOutlet weak var restaurantFavorite: UIButton!
     
+        @IBOutlet weak var ratingImageView: UIImageView!
 }
