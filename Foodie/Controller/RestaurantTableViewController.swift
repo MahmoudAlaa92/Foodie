@@ -97,6 +97,9 @@ class RestaurantTableViewController: UITableViewController  {
         return dataSource
     }
     
+    @IBAction func unwindToHome(segue: UIStoryboardSegue){
+        dismiss(animated: true)
+    }
     // MARK: - UITableViewDelegate Protocol
     
     //didSelectRow
@@ -143,7 +146,7 @@ class RestaurantTableViewController: UITableViewController  {
     //        optionMenu.addAction(unFavoriteAction)
     //        optionMenu.addAction(cancelAction)
     //
-    //        // popOver
+    //        // for ipad
     //        if let popOver = optionMenu.popoverPresentationController {
     //            if let cell = tableView.cellForRow(at: indexPath){
     //                popOver.sourceView = cell
