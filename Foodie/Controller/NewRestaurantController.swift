@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import SwiftData
 
 class NewRestaurantController: UITableViewController {
 
+    var container: ModelContainer?
+    var restaurant: Restaurant?
+    
+    var dataStore: RestaurantDataStore?
+    
     @IBOutlet weak var photoImageView: UIImageView!{
         didSet{
             photoImageView.layer.cornerRadius = 10
@@ -23,8 +29,6 @@ class NewRestaurantController: UITableViewController {
             nameTextField.delegate = self
         }
     }
-    
-    
     
     @IBOutlet weak var typeTextField: RoundedTextField!{
         didSet{
@@ -47,17 +51,20 @@ class NewRestaurantController: UITableViewController {
         }
     }
     
-    @IBOutlet weak var desriptionTextField: UITextView! {
+    @IBOutlet weak var descriptionTextView: UITextView! {
         didSet{
-            desriptionTextField.tag = 5
-            desriptionTextField.layer.cornerRadius = 10
-            desriptionTextField.layer.masksToBounds = true
+            descriptionTextView.tag = 5
+            descriptionTextView.layer.cornerRadius = 10
+            descriptionTextView.layer.masksToBounds = true
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        container = try? ModelContainer(for: Restaurant.self)
+        restaurant = Restaurant()
+        
         // Customize navigationController
         if let apperance = navigationController?.navigationBar.standardAppearance{
             if  let customeFont = UIFont(name: "Nunito-Bold", size: 40){
@@ -83,28 +90,47 @@ class NewRestaurantController: UITableViewController {
         view.addGestureRecognizer(tap)
     }
     
+        // Save Button
     @IBAction func saveNewRestaurant(_ sender: UIBarButtonItem) {
-        checkTextFieldValidate()
+        if let restaurant = restaurant {
+            restaurant.name = nameTextField.text ?? ""
+            restaurant.type = typeTextField.text ?? ""
+            restaurant.location = addressTextField.text ?? ""
+            restaurant.phone = phoneTextField.text ?? ""
+            restaurant.summary = descriptionTextView.text
+            restaurant.isFavorite = false
+            if let image = photoImageView.image {
+                restaurant.image = image
+        }
+            container?.mainContext.insert(restaurant)
+            print("Saving data to database...")
+            
+        }
+        
+        dismiss(animated: true){
+            self.dataStore?.fetchRestaurantData()
+        }
     }
     
+    // Check Text Fields Validate
     func checkTextFieldValidate(){
         if nameTextField.text == "" ||
            typeTextField.text == ""  ||
            addressTextField.text == "" ||
            phoneTextField.text == "" ||
-           desriptionTextField.text == "" {
+           descriptionTextView.text == "" {
             let alert = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(alertAction)
 
             present(alert ,animated: true)
         }
+        dismiss(animated: true)
     }
  
     //Selected Row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-        
         if indexPath.row == 0 {
             
             let photoSource = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)

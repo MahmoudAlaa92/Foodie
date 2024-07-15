@@ -9,7 +9,7 @@ import UIKit
 
 class RestaurantDetailViewController: UIViewController {
     
-    var restaurant: Restaurant = Restaurant()
+    var restaurant = Restaurant()
     
     @IBOutlet weak var tableView: UITableView!{
         didSet{
@@ -25,9 +25,10 @@ class RestaurantDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        headerView.headerImageView.image = UIImage(named: restaurant.image)
+        headerView.headerImageView.image = restaurant.image
         headerView.restaurantName.text = restaurant.name
         headerView.restaurantType.text = restaurant.type
+        headerView.ratingImageView.image = UIImage(named: restaurant.rating!.image)
         
         let heartImage = restaurant.isFavorite ? UIImage(systemName: "heart.fill")  : UIImage(systemName: "heart")
         
@@ -45,7 +46,7 @@ class RestaurantDetailViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    //StatusBarStyle
+    // StatusBarStyle
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -67,7 +68,7 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
                 return UITableViewCell()
             }
             cell.selectionStyle = .none
-            cell.descriptionLabel.text = restaurant.description
+            cell.descriptionLabel.text = restaurant.summary
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTwoTableViewCell.self), for: indexPath) as? RestaurantDetailTwoTableViewCell else{
@@ -91,7 +92,7 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
             fatalError("Error in RestaurantDetailsTableViewDelegate")
         }
     }
-    
+    // prepare MapViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "MapViewController":
@@ -112,6 +113,7 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
         dismiss(animated: true)
     }
     
+    // click to any rate as you like
     @IBAction func rating(segue: UIStoryboardSegue){
         
         guard let identifier = segue.identifier else{

@@ -9,14 +9,17 @@ import UIKit
 
 class ReviewViewController: UIViewController {
 
-    @IBOutlet weak var backGroundImageView: UIImageView!{
-        didSet{
-            backGroundImageView.image = UIImage(named: restaurant.image)
-        }
-    }
     var restaurant = Restaurant()
     
-    @IBOutlet var ragteButtons: [UIButton]!
+    @IBOutlet weak var backGroundImageView: UIImageView!{
+        didSet{
+            backGroundImageView.image = restaurant.image
+        }
+    }
+    
+    @IBOutlet var rateButtons: [UIButton]!
+    @IBOutlet weak var closeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,39 +28,29 @@ class ReviewViewController: UIViewController {
         blurEffectView.frame = view.bounds
         backGroundImageView.addSubview(blurEffectView)
         
-        let moveButtonToRight = CGAffineTransform.init(translationX: 600, y: 0)
-        let moveUpTransform = CGAffineTransform.init(scaleX: 5, y: 5)
-        let moveScalreTransform =  moveUpTransform.concatenating(moveButtonToRight)
+        let moveButttonFromTop = CGAffineTransform.init(translationX: 0, y: -500)
         
-        for rateButton in ragteButtons{
+        for rateButton in rateButtons{
+            closeButton.alpha = 0
             rateButton.alpha = 0
-            rateButton.transform = moveScalreTransform
+            closeButton.transform = moveButttonFromTop
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
        
-        UIView.animate(withDuration: 0.4, delay: 0.1){
-            self.ragteButtons[0].alpha = 1.0
-            self.ragteButtons[0].transform = .identity
+        UIView.animate(withDuration: 0.2 ,delay: 0.1) {
+            self.closeButton.alpha = 1
+            self.closeButton.transform = .identity
         }
         
-        UIView.animate(withDuration: 0.4, delay: 0.15) {
-            self.ragteButtons[1].alpha = 1.0
-            self.ragteButtons[1].transform = .identity
+        for index in 0..<rateButtons.count{
+            UIView.animate(withDuration: 0.3, delay: 0.2) {
+                self.rateButtons[index].alpha = 1.0
+                self.rateButtons[index].transform = .identity
+            }
         }
-        UIView.animate(withDuration: 0.4, delay: 0.2) {
-            self.ragteButtons[2].alpha = 1.0
-            self.ragteButtons[2].transform = .identity
-        }
-        UIView.animate(withDuration: 0.4, delay: 0.25) {
-            self.ragteButtons[3].alpha = 1.0
-            self.ragteButtons[3].transform = .identity
-        }
-        UIView.animate(withDuration: 0.4, delay: 0.3) {
-            self.ragteButtons[4].alpha = 1.0
-            self.ragteButtons[4].transform = .identity
-        }
+
         
     }
     
