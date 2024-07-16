@@ -29,6 +29,8 @@ class RestaurantTableViewCell: UITableViewCell {
         didSet{
             imageCell.layer.cornerRadius = 20
             imageCell.clipsToBounds = true
+            imageCell.layer.masksToBounds  = true
+            imageCell.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var favoriteImage: UIImageView!

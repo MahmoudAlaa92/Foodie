@@ -28,7 +28,10 @@ class RestaurantDetailViewController: UIViewController {
         headerView.headerImageView.image = restaurant.image
         headerView.restaurantName.text = restaurant.name
         headerView.restaurantType.text = restaurant.type
-        headerView.ratingImageView.image = UIImage(named: restaurant.rating!.image)
+        
+        if let rateImage = restaurant.rating?.image{
+            headerView.ratingImageView.image = UIImage(named: rateImage)
+        }
         
         let heartImage = restaurant.isFavorite ? UIImage(systemName: "heart.fill")  : UIImage(systemName: "heart")
         

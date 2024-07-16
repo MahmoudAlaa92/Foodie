@@ -12,7 +12,9 @@ protocol RestaurantDataStore{
     func fetchRestaurantData()
 }
 
-class RestaurantTableViewController: UITableViewController ,RestaurantDataStore  {
+class RestaurantTableViewController: UITableViewController ,RestaurantDataStore {
+    
+    var searchController: UISearchController!
     
     lazy var dataSource = configureDataSource()
     
@@ -26,9 +28,17 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // searchController 
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Search Restaurants..."
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.tintColor = UIColor(named: "NavigationBarTitle")
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
         container = try? ModelContainer(for: Restaurant.self)
-        
-        
+       
+        // Customize navigationController
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backButtonTitle = ""
         
@@ -46,11 +56,12 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             navigationController?.navigationBar.scrollEdgeAppearance = apperance
         }
         
+        // tableView
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = restaurants.count > 0 ? true : false
         tableView.dataSource = dataSource
         tableView.separatorStyle = .none
-//        tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableHeaderView = searchController.searchBar
 
         fetchRestaurantData()
     }
@@ -59,6 +70,22 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     // Fetch restaurantData from DB
     func fetchRestaurantData(){
         let descriptor = FetchDescriptor<Restaurant>()
+        
+        restaurants = (try? container?.mainContext.fetch(descriptor)) ?? []
+        updateSnapshot()
+    }
+    
+    // search controller Update
+    func fetchRestaurantData(searchText: String){
+         
+        let descriptor: FetchDescriptor<Restaurant>
+        
+        if searchText.isEmpty{
+            descriptor = FetchDescriptor<Restaurant>()
+        }else{
+            let predicate = #Predicate<Restaurant> { $0.name.localizedStandardContains(searchText) || $0.location.localizedStandardContains(searchText) }
+            descriptor = FetchDescriptor(predicate: predicate)
+        }
         
         restaurants = (try? container?.mainContext.fetch(descriptor)) ?? []
         updateSnapshot()
@@ -106,9 +133,11 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         return dataSource
     }
     
+    // unwind segue
     @IBAction func unwindToHome(segue: UIStoryboardSegue){
         dismiss(animated: true)
     }
+    
     // MARK: - UITableViewDelegate Protocol
     
         // prepare showRestaurantDetails
@@ -175,6 +204,9 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     
     // trailingSwipe
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if searchController.isActive { return UISwipeActionsConfiguration() }
+        
         guard let restaurant = self.dataSource.itemIdentifier(for: indexPath) else {
             return UISwipeActionsConfiguration()
         }
@@ -245,6 +277,19 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         
         let swipConfigration = UISwipeActionsConfiguration(actions: [markAsFavorite])
         return swipConfigration
+    }
+    
+}
+
+//MARK: - SearchResults
+
+extension RestaurantTableViewController: UISearchResultsUpdating{
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else{
+            return
+        }
+        fetchRestaurantData(searchText: searchText)
     }
     
 }
