@@ -90,6 +90,7 @@ class NewRestaurantController: UITableViewController {
         view.addGestureRecognizer(tap)
     }
     
+    
         // Save Button
     @IBAction func saveNewRestaurant(_ sender: UIBarButtonItem) {
         if let restaurant = restaurant {

@@ -28,7 +28,10 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // searchController 
+        // walkThroughPage
+         
+        
+        // searchController
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search Restaurants..."
         searchController.searchBar.backgroundImage = UIImage()
@@ -104,6 +107,17 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     // viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if UserDefaults.standard.bool(forKey: "getStartedBtnPressed"){
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        
+        if let walkthroughPage = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController{
+            present(walkthroughPage ,animated: true)
+        }
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         title = "Foodie"
@@ -153,7 +167,9 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
                 destinationVC.dataStore = self
             }
         }
+        
     }
+    
     
     // didSelectRow
     
