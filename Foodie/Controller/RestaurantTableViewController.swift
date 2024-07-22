@@ -159,8 +159,10 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         if segue.identifier == "showRestaurantDetails" {
             if let indexPath = tableView.indexPathForSelectedRow ,let destinationVC = segue.destination as? RestaurantDetailViewController {
                 destinationVC.restaurant = restaurants[indexPath.row]
+                destinationVC.hidesBottomBarWhenPushed = true
             }
-        }else if segue.identifier == "addNewRestaurant" {
+        }
+        else if segue.identifier == "addNewRestaurant" {
             if let navController = segue.destination as? UINavigationController ,
                let destinationVC = navController.topViewController as? NewRestaurantController{
                 print("Added")

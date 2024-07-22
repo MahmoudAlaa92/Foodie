@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15203FAB2C4E973A0071044F /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15203FA92C4E973A0071044F /* About.storyboard */; };
+		15203FAE2C4E97590071044F /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15203FAC2C4E97590071044F /* Discover.storyboard */; };
 		153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153771EE2C3DB367003C2A63 /* ReviewViewController.swift */; };
 		153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153901132C326EF300000F48 /* RestaurantDetailViewController.swift */; };
 		1542E6592C42B98300E12C95 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E6582C42B98300E12C95 /* RoundedTextField.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15203FAA2C4E973A0071044F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Foodie/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
+		15203FAD2C4E97590071044F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Foodie/Storyboard/Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
 		153771EE2C3DB367003C2A63 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		153901132C326EF300000F48 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		1542E6582C42B98300E12C95 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				15462E1A2C29413B00D998CD /* LaunchScreen.storyboard */,
 				1563392D2C48DCEA007B4319 /* Onboarding.storyboard */,
 				15462E152C29413900D998CD /* Main.storyboard */,
+				15203FA92C4E973A0071044F /* About.storyboard */,
+				15203FAC2C4E97590071044F /* Discover.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -242,6 +248,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				15462E192C29413B00D998CD /* Assets.xcassets in Resources */,
+				15203FAE2C4E97590071044F /* Discover.storyboard in Resources */,
+				15203FAB2C4E973A0071044F /* About.storyboard in Resources */,
 				159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */,
 				15462E1C2C29413B00D998CD /* Base in Resources */,
 				1563392E2C48DCEA007B4319 /* Onboarding.storyboard in Resources */,
@@ -283,6 +291,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		15203FA92C4E973A0071044F /* About.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15203FAA2C4E973A0071044F /* Base */,
+			);
+			name = About.storyboard;
+			sourceTree = "<group>";
+		};
+		15203FAC2C4E97590071044F /* Discover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15203FAD2C4E97590071044F /* Base */,
+			);
+			name = Discover.storyboard;
+			sourceTree = "<group>";
+		};
 		15462E152C29413900D998CD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
