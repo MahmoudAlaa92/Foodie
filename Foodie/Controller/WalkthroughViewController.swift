@@ -62,9 +62,9 @@ class WalkthroughViewController: UIViewController  {
         if let index = walkthroughPageViewController?.currentIndex{
             switch index{
             case 0...1:
-                nextBtn.setTitle("NEXT", for: .normal)
-            case 2: 
-                nextBtn.setTitle("Get Started", for: .normal)
+                nextBtn.setTitle(String(localized: "NEXT"), for: .normal)
+            case 2:
+                nextBtn.setTitle(String(localized: "Get Started"), for: .normal)
             default:
                 break
             }
@@ -73,7 +73,7 @@ class WalkthroughViewController: UIViewController  {
     }
     
     @IBAction func skiptActionBtn (sender: UIButton ){
-        UserDefaults.standard.set(true, forKey: "getStartedBtnPressed")
+        UserDefaults.standard.set(true, forKey: String(localized: "getStartedBtnPressed"))
         dismiss(animated: true)
     }
     

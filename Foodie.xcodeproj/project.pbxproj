@@ -21,8 +21,9 @@
 		15462E1C2C29413B00D998CD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 15462E1B2C29413B00D998CD /* Base */; };
 		15462E242C29453C00D998CD /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E232C29453C00D998CD /* RestaurantTableViewController.swift */; };
 		15462E262C295C2A00D998CD /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */; };
+		1546AD1C2C62AC8100F4EE32 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1546AD1B2C62AC8100F4EE32 /* Localizable.xcstrings */; };
+		1546AD1F2C62B50400F4EE32 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1546AD1E2C62B50400F4EE32 /* Onboarding.storyboard */; };
 		154FC8442C6037E0006FB46C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FC8432C6037DF006FB46C /* WebViewController.swift */; };
-		1563392E2C48DCEA007B4319 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1563392D2C48DCEA007B4319 /* Onboarding.storyboard */; };
 		156339302C4919BD007B4319 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1563392F2C4919BD007B4319 /* WalkthroughContentViewController.swift */; };
 		15749D592C4A229900562524 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15749D582C4A229900562524 /* WalkthroughPageViewController.swift */; };
 		15749D5B2C4A267D00562524 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15749D5A2C4A267D00562524 /* WalkthroughViewController.swift */; };
@@ -56,8 +57,14 @@
 		15462E1D2C29413B00D998CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15462E232C29453C00D998CD /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		1546AD172C62AC1A00F4EE32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		1546AD182C62AC1A00F4EE32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		1546AD192C62AC1B00F4EE32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Foodie/Storyboard/zh-Hant.lproj/About.strings"; sourceTree = "<group>"; };
+		1546AD1A2C62AC1B00F4EE32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Foodie/Storyboard/zh-Hant.lproj/Discover.strings"; sourceTree = "<group>"; };
+		1546AD1B2C62AC8100F4EE32 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		1546AD1D2C62B50400F4EE32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		1546AD202C62B50400F4EE32 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Onboarding.xcstrings; sourceTree = "<group>"; };
 		154FC8432C6037DF006FB46C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		1563392D2C48DCEA007B4319 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		1563392F2C4919BD007B4319 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		15749D582C4A229900562524 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		15749D5A2C4A267D00562524 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 				15D63E212C2C0702000FD524 /* Controller */,
 				15462E182C29413B00D998CD /* Assets.xcassets */,
 				15462E1D2C29413B00D998CD /* Info.plist */,
+				1546AD1B2C62AC8100F4EE32 /* Localizable.xcstrings */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -187,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				15462E1A2C29413B00D998CD /* LaunchScreen.storyboard */,
-				1563392D2C48DCEA007B4319 /* Onboarding.storyboard */,
+				1546AD1E2C62B50400F4EE32 /* Onboarding.storyboard */,
 				15462E152C29413900D998CD /* Main.storyboard */,
 				15203FA92C4E973A0071044F /* About.storyboard */,
 				15203FAC2C4E97590071044F /* Discover.storyboard */,
@@ -237,6 +245,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 15462E032C29413900D998CD;
 			productRefGroup = 15462E0D2C29413900D998CD /* Products */;
@@ -258,9 +267,10 @@
 				15203FAB2C4E973A0071044F /* About.storyboard in Resources */,
 				159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */,
 				15462E1C2C29413B00D998CD /* Base in Resources */,
-				1563392E2C48DCEA007B4319 /* Onboarding.storyboard in Resources */,
+				1546AD1F2C62B50400F4EE32 /* Onboarding.storyboard in Resources */,
 				159E9F2D2C357D010070B51F /* Nunito-Regular.ttf in Resources */,
 				15462E172C29413900D998CD /* Base in Resources */,
+				1546AD1C2C62AC8100F4EE32 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +313,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				15203FAA2C4E973A0071044F /* Base */,
+				1546AD192C62AC1B00F4EE32 /* zh-Hant */,
 			);
 			name = About.storyboard;
 			sourceTree = "<group>";
@@ -311,6 +322,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				15203FAD2C4E97590071044F /* Base */,
+				1546AD1A2C62AC1B00F4EE32 /* zh-Hant */,
 			);
 			name = Discover.storyboard;
 			sourceTree = "<group>";
@@ -319,6 +331,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				15462E162C29413900D998CD /* Base */,
+				1546AD182C62AC1A00F4EE32 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -327,8 +340,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				15462E1B2C29413B00D998CD /* Base */,
+				1546AD172C62AC1A00F4EE32 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1546AD1E2C62B50400F4EE32 /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1546AD1D2C62B50400F4EE32 /* Base */,
+				1546AD202C62B50400F4EE32 /* mul */,
+			);
+			name = Onboarding.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -339,6 +362,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -402,6 +426,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

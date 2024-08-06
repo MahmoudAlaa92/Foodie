@@ -24,8 +24,8 @@ class AboutTableTableViewController: UITableViewController {
     }
     
     var sectionContent = [ 
-        [LinkItem(text: "Twitter", link: "https://twitter.com/appcodamobile", image: "twitter"), LinkItem(text: "Facebook", link: "https://facebook.com/appcodamobile", image: "facebook"), LinkItem(text: "Instagram", link: "https://www.instagram.com/appcodadotcom", image: "instagram")] ,
-        [LinkItem(text: "Rate us on App Store", link: "https://www.apple.com/ios/app-store/", image: "store"), LinkItem(text: "Tell us your feedback", link: "http://www.appcoda.com/contact", image: "chat")]]
+        [LinkItem(text: String(localized: "Twitter"), link: String(localized: "https://twitter.com/appcodamobile"), image: String(localized: "twitter")), LinkItem(text: String(localized: "Facebook"), link: String(localized: "https://facebook.com/appcodamobile"), image: String(localized: "facebook")), LinkItem(text: String(localized: "Instagram"), link: String(localized: "https://www.instagram.com/appcodadotcom"), image: String(localized: "instagram"))] ,
+        [LinkItem(text: String(localized: "Rate us on App Store"), link: String(localized: "https://www.apple.com/ios/app-store/"), image: String(localized: "store")), LinkItem(text: String(localized: "Tell us your feedback"), link: String(localized: "http://www.appcoda.com/contact"), image: String(localized: "chat"))]]
     
     
     override func viewDidLoad() {

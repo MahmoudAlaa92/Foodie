@@ -230,7 +230,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         }
         
         //delete
-        let deleteAtcion = UIContextualAction(style: .destructive, title: "Delete") { action, sourceview, completionHandler in
+        let deleteAtcion = UIContextualAction(style: .destructive, title: String(localized: "Delete")) { action, sourceview, completionHandler in
             
             
             var snapshot = self.dataSource.snapshot()
@@ -242,9 +242,9 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             completionHandler(true)
         }
         //share
-        let shareAction = UIContextualAction(style: .normal, title: "Share") { Action, sourceView, completionHandler in
+        let shareAction = UIContextualAction(style: .normal, title: String(localized: "Share")) { Action, sourceView, completionHandler in
             
-            let defaultText = "Research for the restaurant"
+            let defaultText = String(localized: "Research for the restaurant")
             let activityController: UIActivityViewController
             
             activityController = UIActivityViewController(activityItems: [defaultText,
