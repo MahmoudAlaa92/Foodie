@@ -28,8 +28,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // walkThroughPage
-         
         
         // searchController
         searchController = UISearchController(searchResultsController: nil)
@@ -40,7 +38,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         searchController.obscuresBackgroundDuringPresentation = false
         
         container = try? ModelContainer(for: Restaurant.self)
-       
+        
         // Customize navigationController
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backButtonTitle = ""
@@ -65,10 +63,10 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         tableView.dataSource = dataSource
         tableView.separatorStyle = .none
         tableView.tableHeaderView = searchController.searchBar
-
+        
         fetchRestaurantData()
     }
-// MARK: - Swift Data
+    // MARK: - Swift Data
     
     // Fetch restaurantData from DB
     func fetchRestaurantData(){
@@ -80,7 +78,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     
     // search controller Update
     func fetchRestaurantData(searchText: String){
-         
+        
         let descriptor: FetchDescriptor<Restaurant>
         
         if searchText.isEmpty{
@@ -154,7 +152,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     
     // MARK: - UITableViewDelegate Protocol
     
-        // prepare showRestaurantDetails
+    // prepare showRestaurantDetails
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRestaurantDetails" {
             if let indexPath = tableView.indexPathForSelectedRow ,let destinationVC = segue.destination as? RestaurantDetailViewController {
@@ -172,53 +170,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         
     }
     
-    
-    // didSelectRow
-    
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //        tableView.deselectRow(at: indexPath, animated: false)
-    //
-    //        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
-    //
-    //        let reserve = { (action: UIAlertAction!) in
-    //            let alert = UIAlertController(title: "sorry", message: "try in anoher time", preferredStyle: .alert)
-    //            alert.addAction(UIAlertAction(title: "OK", style: .default))
-    //            self.present(alert ,animated: true)
-    //        }
-    //
-    //        let reserveAction = UIAlertAction(title: "resrveAction", style: .default, handler: reserve)
-    //
-    //        //Mark as a fovorite
-    //        let favoriteAction = UIAlertAction(title: "Mark as a fovorite", style: .default) { (action: UIAlertAction!) in
-    //            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
-    //            self.Restaurants[indexPath.row].isFavorite = true
-    //            cell.favoriteImage.image = UIImage(systemName: "heart.fill")
-    //            cell.favoriteImage.isHidden = false
-    //        }
-    //        //Mark as unfovorite
-    //        let unFavoriteAction = UIAlertAction(title: "Remove from favorite", style: .default){ (action: UIAlertAction!) in
-    //            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
-    //            self.Restaurants[indexPath.row].isFavorite = false
-    //            cell.favoriteImage.isHidden = true
-    //        }
-    //
-    //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-    //
-    //        optionMenu.addAction(reserveAction)
-    //        optionMenu.addAction(favoriteAction)
-    //        optionMenu.addAction(unFavoriteAction)
-    //        optionMenu.addAction(cancelAction)
-    //
-    //        // for ipad
-    //        if let popOver = optionMenu.popoverPresentationController {
-    //            if let cell = tableView.cellForRow(at: indexPath){
-    //                popOver.sourceView = cell
-    //                popOver.sourceRect = cell.bounds
-    //            }
-    //        }
-    //        present(optionMenu ,animated: true ,completion: nil)
-    //    }
     
     // trailingSwipe
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -248,7 +199,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             let activityController: UIActivityViewController
             
             activityController = UIActivityViewController(activityItems: [defaultText,
-             restaurant.image], applicationActivities: nil)
+                                                                          restaurant.image], applicationActivities: nil)
             
             if let popOver = activityController.popoverPresentationController {
                 
@@ -274,6 +225,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let favorite = self.restaurants[indexPath.row].isFavorite
+        let restaurant = self.restaurants[indexPath.row]
         let markAsFavorite = UIContextualAction(style: .normal, title: nil) { action, sourceView, completionHanedler in
             self.restaurants[indexPath.row].isFavorite = favorite ? false : true
             
@@ -283,6 +235,26 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             }else{
                 cell.favoriteImage.image = UIImage(systemName: "heart.fill")
                 cell.favoriteImage.isHidden = false
+                // Convert UIImage to Data
+                guard let imageData = restaurant.image.jpegData(compressionQuality: 1.0) else{
+                    print("Error when conver image to Data" )
+                    return
+                }
+                
+                // save restaurant in DataBase (CoreData)
+                DataPersistentManager.shared.creatDate(with: FavouriteRestaurant(
+                    image: imageData,
+                    name: restaurant.name,
+                    location: restaurant.location,
+                    type: restaurant.type)) { result in
+                        switch result{
+                        case .success():
+                            print("Restaurant Saved")
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                
             }
             completionHanedler(true)
         }

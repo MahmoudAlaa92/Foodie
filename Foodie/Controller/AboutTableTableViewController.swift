@@ -42,7 +42,6 @@ class AboutTableTableViewController: UITableViewController {
                 apperance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")!]
                 apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
-            
             navigationController?.navigationBar.standardAppearance = apperance
             navigationController?.navigationBar.scrollEdgeAppearance = apperance
             navigationController?.navigationBar.compactAppearance = apperance
@@ -70,7 +69,7 @@ class AboutTableTableViewController: UITableViewController {
         
         let cellIdentifier = "aboutcell"
         
-        let dataSource =  UITableViewDiffableDataSource<Section ,LinkItem>(tableView: tableView){ (tableView ,indexPath ,linkItem) -> UITableViewCell? in
+        let dataSource =  UITableViewDiffableDataSource<Section ,LinkItem>(tableView: tableView) { tableView, indexPath, linkItem in
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
             

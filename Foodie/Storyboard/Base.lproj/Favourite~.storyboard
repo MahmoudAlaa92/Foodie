@@ -60,7 +60,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CXi-Vh-HzE">
-                                                    <rect key="frame" x="323" y="1.7763568394002505e-15" width="30" height="90.666666666666671"/>
+                                                    <rect key="frame" x="323" y="2" width="30" height="87.666666666666671"/>
                                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90.666666666666671" id="cOL-aT-O3S"/>
@@ -838,6 +838,52 @@
             </objects>
             <point key="canvasLocation" x="804" y="-751"/>
         </scene>
+        <!--Favourite Restaurants-->
+        <scene sceneID="2NT-hd-P66">
+            <objects>
+                <tableViewController id="gWO-dz-a7r" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="oAd-j5-ut0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LuB-FB-puo">
+                                <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LuB-FB-puo" id="pKZ-cI-7tO">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gWO-dz-a7r" id="8xO-hL-MgE"/>
+                            <outlet property="delegate" destination="gWO-dz-a7r" id="AaX-Vl-YBh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favourite Restaurants" id="3ZF-md-rJ0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhI-Qw-mIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1417" y="671"/>
+        </scene>
+        <!--Favourite-->
+        <scene sceneID="zza-68-RZb">
+            <objects>
+                <navigationController id="srR-9A-2iz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favourite" id="4jr-Kt-1XJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LSb-pk-fyv">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gWO-dz-a7r" kind="relationship" relationship="rootViewController" id="89e-0K-yzV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DoD-eS-n0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2323" y="671"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="S2C-6d-NL1">
             <objects>
@@ -850,7 +896,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="8X6-SM-dxG" kind="relationship" relationship="viewControllers" id="Sba-L8-lqi"/>
-                        <segue destination="G7S-JW-85s" kind="relationship" relationship="viewControllers" id="JHS-of-TRc"/>
+                        <segue destination="srR-9A-2iz" kind="relationship" relationship="viewControllers" id="mPO-Yk-qs0"/>
                         <segue destination="BUy-DV-ZNX" kind="relationship" relationship="viewControllers" id="X1B-Z0-dHd"/>
                     </connections>
                 </tabBarController>
@@ -867,16 +913,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xY7-f1-F25" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-205" y="1418"/>
-        </scene>
-        <!--Favourites-->
-        <scene sceneID="xbY-GB-2BX">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Favourites" id="G7S-JW-85s" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jcF-ll-1C5"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8ny-eI-zZ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2337" y="441"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
