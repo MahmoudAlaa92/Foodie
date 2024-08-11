@@ -12,6 +12,7 @@ enum DataBase: Error{
     case failToSaveDate
     case succesToSaveDate
     case failToFetchData
+    case failToDeleteData
 }
 
 class DataPersistentManager{
@@ -42,7 +43,7 @@ class DataPersistentManager{
         }
     }
     
-    func fetchData (completion: @escaping (Result<[RestaurantItem] ,Error>) -> Void ){
+    func fetchData(completion: @escaping (Result<[RestaurantItem] ,Error>) -> Void ){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{ return }
         
@@ -58,4 +59,19 @@ class DataPersistentManager{
             print("Error When Fetch Data From DB")
         }
     }
+    
+  func deleteData(with model: RestaurantItem ,completion: @escaping (Result<Void ,Error>) -> Void){
+      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+      let managedContext = appDelegate.persistentContainer.viewContext
+      
+      managedContext.delete(model)
+      do{
+          try managedContext.save()
+          completion(.success(()))
+      }catch{
+          completion(.failure(DataBase.failToDeleteData))
+      }
+      
+    }
+    
 }

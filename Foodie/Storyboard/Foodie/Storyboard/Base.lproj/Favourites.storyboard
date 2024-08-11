@@ -36,7 +36,7 @@
                                                     <rect key="frame" x="0.0" y="210" width="353" height="166"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6lA-FX-d9l" userLabel="StackLabel">
-                                                            <rect key="frame" x="0.0" y="37.666666666666693" width="288" height="90.666666666666686"/>
+                                                            <rect key="frame" x="0.0" y="37.666666666666693" width="298" height="90.666666666666686"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPa-a3-cXc">
                                                                     <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="28.333333333333332"/>
@@ -58,11 +58,11 @@
                                                             </subviews>
                                                         </stackView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cup-b1-p0n">
-                                                            <rect key="frame" x="303" y="40" width="50" height="87"/>
+                                                            <rect key="frame" x="313" y="60" width="40" height="47"/>
                                                             <color key="tintColor" systemColor="systemYellowColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="90" id="Ugl-Vx-RbH"/>
-                                                                <constraint firstAttribute="width" constant="50" id="XhW-LJ-hVe"/>
+                                                                <constraint firstAttribute="height" constant="50" id="Ugl-Vx-RbH"/>
+                                                                <constraint firstAttribute="width" constant="40" id="XhW-LJ-hVe"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -108,7 +108,7 @@
         <scene sceneID="MzH-I3-M7x">
             <objects>
                 <navigationController id="atR-7V-WhC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" id="vrt-7M-N2k"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="star.square.fill" catalog="system" id="vrt-7M-N2k"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fn0-JK-8qu">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -124,11 +124,12 @@
     </scenes>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="star.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

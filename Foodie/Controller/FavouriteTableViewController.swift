@@ -21,8 +21,13 @@ class FavouriteTableViewController: UITableViewController {
 
         fetchFavouriteRestaurantData()
         tableView.dataSource = dataSource
+        NotificationCenter.default.addObserver(forName: Notification.Name("FavouriteRestaurant"), object: nil, queue: nil) { _ in
+            self.fetchFavouriteRestaurantData()
+        }
+      
     }
 
+    // fetch Favourite Restaurant
     func fetchFavouriteRestaurantData(){
         DataPersistentManager.shared.fetchData { [weak self] result in
             switch result{
@@ -44,6 +49,24 @@ class FavouriteTableViewController: UITableViewController {
         }
     }
     
+    // delete Favourite Restaurant
+    func deleteFavouriteRestaurant(name restaurant: RestaurantItem ,index indexPath: IndexPath)
+    {
+        DataPersistentManager.shared.deleteData(with: restaurant) { result in
+            switch result{
+            case .success(()):
+                print("Deleted")
+                var snapshot = self.dataSource.snapshot()
+                snapshot.deleteItems([restaurant])
+                self.favouriteRestaurant.remove(at: indexPath.row)
+                self.dataSource.apply(snapshot ,animatingDifferences: true)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     func configerDataSource() -> UITableViewDiffableDataSource<Section ,RestaurantItem>{
@@ -60,10 +83,32 @@ class FavouriteTableViewController: UITableViewController {
             cell.nameLabel.text = self.favouriteRestaurant[indexPath.row].name
             cell.locationLabel.text = self.favouriteRestaurant[indexPath.row].location
             cell.typeLabel.text = self.favouriteRestaurant[indexPath.row].type
+            cell.selectionStyle = .none
             
             return cell
         }
         return dataSource
+    }
+    
+    // trailingSwipe
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        guard let restaurant = self.dataSource.itemIdentifier(for: indexPath) else {
+            return UISwipeActionsConfiguration()
+        }
+        
+        //delete
+        let deleteAtcion = UIContextualAction(style: .destructive, title: String(localized: "Delete")) { action, sourceview, completionHandler in
+            
+            self.deleteFavouriteRestaurant(name: restaurant, index: indexPath)
+            completionHandler(true)
+        }
+        
+        deleteAtcion.backgroundColor = UIColor.systemRed
+        deleteAtcion.image = UIImage(systemName: "trash")
+        
+        let swipConfiguration = UISwipeActionsConfiguration(actions: [deleteAtcion ])
+        return swipConfiguration
     }
 
 }

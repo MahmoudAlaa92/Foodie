@@ -230,6 +230,8 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             self.restaurants[indexPath.row].isFavorite = favorite ? false : true
             
             let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+            
+            
             if favorite {
                 cell.favoriteImage.isHidden = true
             }else{
@@ -250,6 +252,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
                         switch result{
                         case .success():
                             print("Restaurant Saved")
+                            NotificationCenter.default.post(name: Notification.Name("FavouriteRestaurant"), object: nil)
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
