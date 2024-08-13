@@ -30,6 +30,21 @@ class WalkthroughViewController: UIViewController  {
 
     }
     
+    func creatQuickAction(){
+         
+        // Add Quick Action
+        if let bundleIdentifier = Bundle.main.bundleIdentifier{
+            let shortcutItem1 = UIApplicationShortcutItem(type: "\(bundleIdentifier).OpenRestaurants", localizedTitle: "Restaurnts", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(systemImageName: "eyes"))
+            let shortcutItem2 = UIApplicationShortcutItem(type: "\(bundleIdentifier).OpenFavourites", localizedTitle: "Show Favorites", localizedSubtitle
+           : nil, icon: UIApplicationShortcutIcon(systemImageName: "tag"), userInfo:
+           nil)
+            let shortcutItem3 = UIApplicationShortcutItem(type: "\(bundleIdentifier).NewRestaurant", localizedTitle: "New Restaurant", localizedSubtitle
+           : nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
+            UIApplication.shared.shortcutItems = [shortcutItem1 ,shortcutItem2 ,shortcutItem3]
+        }
+        
+    }
+    
     // prepare Segue to walkthroughPageViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -49,6 +64,7 @@ class WalkthroughViewController: UIViewController  {
             case 2: 
                 UserDefaults.standard.set(true, forKey: "getStartedBtnPressed")
                 dismiss(animated: true)
+                creatQuickAction()
                 
             default:
                 break
@@ -75,6 +91,7 @@ class WalkthroughViewController: UIViewController  {
     @IBAction func skiptActionBtn (sender: UIButton ){
         UserDefaults.standard.set(true, forKey: String(localized: "getStartedBtnPressed"))
         dismiss(animated: true)
+        creatQuickAction()
     }
     
 }

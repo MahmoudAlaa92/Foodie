@@ -11,6 +11,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    
+    enum QuickAction: String {
+        case OpenRestaurants = "OpenDiscover"
+        case OpenFavourites = "OpenFavourites"
+        case NewRestaurant = "NewRestaurant"
+        
+        init?(fullIdentifier: String) {
+            
+            guard let shortcutIdentifier = fullIdentifier.components(separatedBy: ".").last else {
+                return nil
+            }
+            self.init(rawValue: shortcutIdentifier)
+        }
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleQuickAction(shortcutItem: shortcutItem))
+    }
+    
+    private func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool{
+         
+        let shortcutType = shortcutItem.type
+        
+        
+        guard let shortcutIdentifier = QuickAction(fullIdentifier: shortcutType)
+        else {
+            print("nil")
+            return false
+        }
+        
+        
+        guard let tabBarController = window?.rootViewController as? UITabBarController
+        else {
+            return false
+        }
+        
+        switch shortcutIdentifier {
+        case .OpenRestaurants:
+            tabBarController.selectedIndex = 0
+        case .OpenFavourites:
+            tabBarController.selectedIndex = 1
+        case .NewRestaurant:
+            if let navController = tabBarController.viewControllers?[0]{
+                let restaurantTableViewController = navController.children[0]
+                restaurantTableViewController.performSegue(withIdentifier: "addNewRestaurant", sender: restaurantTableViewController)
+            } else {
+                return false
+            }
+        }
+        return true
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
