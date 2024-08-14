@@ -189,7 +189,7 @@
         <!--Restaurant Detail View Controller-->
         <scene sceneID="fzo-3G-Gqy">
             <objects>
-                <viewController id="gc7-jv-bDy" customClass="RestaurantDetailViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestaurantDetailViewController" id="gc7-jv-bDy" customClass="RestaurantDetailViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nEw-p5-bV4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -872,7 +872,7 @@
         <scene sceneID="xbY-GB-2BX">
             <objects>
                 <viewControllerPlaceholder storyboardName="Favourites" id="G7S-JW-85s" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jcF-ll-1C5"/>
+                    <tabBarItem key="tabBarItem" title="Favourite" id="jcF-ll-1C5"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ny-eI-zZ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -170,7 +170,81 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         
     }
     
+    // Context Menu Configuration
     
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let restaurant = self.dataSource.itemIdentifier(for: indexPath) else{
+            return nil
+        }
+        
+        let configeration = UIContextMenuConfiguration(
+            identifier: indexPath.row as NSCopying,
+            previewProvider: {
+                
+                guard let restaurantDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "RestaurantDetailViewController") as? RestaurantDetailViewController else {
+                    return nil
+                }
+                restaurantDetailsVC.restaurant = restaurant
+                return restaurantDetailsVC
+                
+            }) { action in
+                
+                let favouriteAction = UIAction(
+                    title: "Save as favourite",
+                    image: UIImage(systemName: "heart")){ action in
+                    
+                        let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+                        self.restaurants[indexPath.row].isFavorite.toggle()
+                        cell.favoriteImage.isHidden = !self.restaurants[indexPath.row].isFavorite
+                }
+                
+                let shareAction = UIAction(
+                    title: "Share",
+                    image: UIImage(systemName: "square.and.arrow.up")) { action in
+                    
+                        let defaualtText = NSLocalizedString("Just checking in at ", comment: "Just checking in at ") + self.restaurants[indexPath.row].name
+                        let activityController = UIActivityViewController(
+                            activityItems: [defaualtText ,restaurant.image],
+                            applicationActivities: nil)
+                        self.present(activityController ,animated: true)
+                }
+                
+                let deleteAction = UIAction(
+                    title: "Delete",
+                    image: UIImage(systemName: "trash")) { action in
+                        var snapshot = self.dataSource.snapshot()
+                        snapshot.deleteItems([restaurant])
+                        self.dataSource.apply(snapshot ,animatingDifferences: true)
+                        
+                        self.container?.mainContext.delete(restaurant)
+                    }
+                return UIMenu(
+                    title: "" ,
+                    children: [favouriteAction ,shareAction ,deleteAction])
+            }
+        
+        return configeration
+        
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: any UIContextMenuInteractionCommitAnimating) {
+        
+        guard let selectedRow = configuration.identifier as? Int else {
+            return
+        }
+        
+        guard let restaurantDeailsVC = self.storyboard?.instantiateViewController(withIdentifier: "RestaurantDetailViewController") as? RestaurantDetailViewController else{
+            return
+        }
+        
+        restaurantDeailsVC.restaurant = self.restaurants[selectedRow]
+        
+        animator.preferredCommitStyle = .pop
+        animator.addCompletion {
+            self.show(restaurantDeailsVC, sender: self)
+        }
+    }
     // trailingSwipe
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         

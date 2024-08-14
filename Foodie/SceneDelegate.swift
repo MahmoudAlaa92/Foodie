@@ -37,7 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let shortcutIdentifier = QuickAction(fullIdentifier: shortcutType)
         else {
-            print("nil")
             return false
         }
         
@@ -55,6 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case .NewRestaurant:
             if let navController = tabBarController.viewControllers?[0]{
                 let restaurantTableViewController = navController.children[0]
+                print(restaurantTableViewController)
                 restaurantTableViewController.performSegue(withIdentifier: "addNewRestaurant", sender: restaurantTableViewController)
             } else {
                 return false

@@ -158,6 +158,9 @@
         }
       }
     },
+    "Just checking in at " : {
+      "comment" : "Just checking in at "
+    },
     "NEXT" : {
       "localizations" : {
         "zh-Hant" : {
