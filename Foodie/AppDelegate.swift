@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Authorization Request
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert ,.sound ,.badge]) { granted, error in
+            if granted {
+                print("Are allowed to use UserNotificaiton")
+            }else{
+                print("Are not allowed to use UserNotificaiton")
+            }
+        }
         
         
         // Customize navBarApperance of Restaurant Details View Controller

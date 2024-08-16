@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftData
+import UserNotifications
 
 protocol RestaurantDataStore{
     func fetchRestaurantData()
@@ -65,7 +66,45 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         tableView.tableHeaderView = searchController.searchBar
         
         fetchRestaurantData()
+        
+        // Call notification
+        prepareNotification()
     }
+    
+    // MARK: - Use Notifications
+    
+    func prepareNotification(){
+        
+        if restaurants.count <= 0 { return }
+        
+        // Pick restaurant randomly
+        let randomNumber = Int.random(in: 0..<restaurants.count)
+        let suggestedRestaurant = restaurants[randomNumber]
+        
+        // Create user notification
+        let content = UNMutableNotificationContent()
+        content.title = "Restaurant Recomendation"
+        content.subtitle = "Try new food today"
+        content.body = "I recommend you to check out \(suggestedRestaurant.name). The restaurant is one of your favorites. It is located at \(suggestedRestaurant.location). Would you like to give it a try?"
+        content.sound = UNNotificationSound.default
+        
+        let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        let tempFileURL = tempDirURL.appendingPathComponent("seggestedRestaurant.jpg")
+        
+        try? suggestedRestaurant.image.jpegData(compressionQuality: 1.0)?.write(to: tempFileURL)
+        
+        if let restaurantImage = try? UNNotificationAttachment(identifier: "restaurantImage", url: tempFileURL){
+            content.attachments = [restaurantImage]
+        }
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let request = UNNotificationRequest(identifier: "foodie.restaurantSuggestion", content: content, trigger: trigger)
+        
+        
+        UNUserNotificationCenter.current().add(request ,withCompletionHandler: nil)
+    }
+    
+    
     // MARK: - Swift Data
     
     // Fetch restaurantData from DB
@@ -311,6 +350,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             }else{
                 cell.favoriteImage.image = UIImage(systemName: "heart.fill")
                 cell.favoriteImage.isHidden = false
+                
                 // Convert UIImage to Data
                 guard let imageData = restaurant.image.jpegData(compressionQuality: 1.0) else{
                     print("Error when conver image to Data" )
