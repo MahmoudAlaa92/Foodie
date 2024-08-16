@@ -87,6 +87,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         content.subtitle = "Try new food today"
         content.body = "I recommend you to check out \(suggestedRestaurant.name). The restaurant is one of your favorites. It is located at \(suggestedRestaurant.location). Would you like to give it a try?"
         content.sound = UNNotificationSound.default
+        content.userInfo = ["phone" :suggestedRestaurant.phone]
         
         let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         let tempFileURL = tempDirURL.appendingPathComponent("seggestedRestaurant.jpg")
@@ -97,7 +98,24 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             content.attachments = [restaurantImage]
         }
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let categoryIdentifer = "foodie.restaurantAction"
+        
+        let makeReservationAction = UNNotificationAction(
+            identifier: "foodie.makeReservation",
+            title: "Reserve a table",
+            options: [.foreground])
+        
+        let cancelAction = UNNotificationAction(
+            identifier: "foodie.cancel",
+            title: "Later",
+            options: [])
+        
+        let category = UNNotificationCategory(identifier: categoryIdentifer, actions: [makeReservationAction, cancelAction], intentIdentifiers: [], options: [])
+        
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        content.categoryIdentifier = categoryIdentifer
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false)
         let request = UNNotificationRequest(identifier: "foodie.restaurantSuggestion", content: content, trigger: trigger)
         
         

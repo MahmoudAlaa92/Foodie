@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        UNUserNotificationCenter.current().delegate = self
         
         // Customize navBarApperance of Restaurant Details View Controller
         let navBarApperance = UINavigationBarAppearance()
@@ -109,6 +110,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - Notification Delegate
 
-
-
+extension AppDelegate:UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.actionIdentifier == "foodie.makeReservation" {
+            print("Make Reservation ...")
+            
+            if let phone = response.notification.request.content.userInfo["phone"]{
+                let telURL = "tel://\(phone)"
+                if let url = URL(string: telURL) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        print("calling \(telURL)")
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+        }
+        completionHandler()
+    }
+}
