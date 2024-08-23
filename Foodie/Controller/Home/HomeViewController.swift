@@ -63,14 +63,14 @@ class HomeViewController: UIViewController {
     
     var productsImages: [Product] = [
         Product(title: "Recomoneded",
-                name: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
+                name: ["Mahmoud Siberia 800 MahmoudAlaa" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
                 price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")!]
+                image: [UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")!]
                ),
         Product(title: "BestSeller",
                 name: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
                 price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")!]
+                image: [UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")!]
                )
     ]
     
@@ -190,7 +190,11 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
         return productsImages.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        tableView.separatorStyle = .none
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as? ElementsTableViewCell else{
             return UITableViewCell()
         }
