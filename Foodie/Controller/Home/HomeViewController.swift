@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
         Product(title: "BestSeller",
                 name: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
                 price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")!]
+                image: [UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")!]
                )
     ]
     
@@ -87,7 +87,7 @@ class HomeViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         startTimer()
     }
     

@@ -45,7 +45,7 @@ class ElementsTableViewCell: UITableViewCell ,UICollectionViewDelegate ,UICollec
             print("Error in collection of product cell")
             return UICollectionViewCell()
         }
-        cell.iamgeView.image = photos[indexPath.row]
+        cell.imageView.image = photos[indexPath.row]
         cell.nameLable.text = names[indexPath.row]
         cell.priceLable.text = price[indexPath.row]
         
@@ -54,7 +54,7 @@ class ElementsTableViewCell: UITableViewCell ,UICollectionViewDelegate ,UICollec
     
     // Size for item at index path
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 200, height: 200)
+        CGSize(width: 160, height: 140)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
