@@ -54,7 +54,14 @@ class ElementsTableViewCell: UITableViewCell ,UICollectionViewDelegate ,UICollec
     
     // Size for item at index path
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 160, height: 140)
+        
+        switch collectionView {
+        case collectionView:
+            CGSize(width: 160, height: 140)
+        default:
+            fatalError("Error in size For item At index path of collection view")
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

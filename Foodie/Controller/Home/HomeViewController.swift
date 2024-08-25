@@ -74,6 +74,31 @@ class HomeViewController: UIViewController {
                )
     ]
     
+    var imagesCell2: [UIImage] = [
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!,
+        UIImage(named: "Frame21")!
+    ]
+    
+    var imagesCell3: [UIImage] = [
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!,
+        UIImage(named: "FrameCell3")!
+    ]
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -87,6 +112,7 @@ class HomeViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
 
         startTimer()
     }
@@ -187,29 +213,60 @@ extension HomeViewController: UICollectionViewDelegate ,UICollectionViewDataSour
 
 extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsImages.count
+        return 4
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         tableView.separatorStyle = .none
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as? ElementsTableViewCell else{
-            return UITableViewCell()
+        
+        switch indexPath.row{
+        case 0...1:
+            print("0")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as? ElementsTableViewCell else{
+                return UITableViewCell()
+            }
+            
+            cell.setUpCell(
+                title: productsImages[indexPath.row].title,
+                price: productsImages[indexPath.row].price,
+                names: productsImages[indexPath.row].name,
+                Photos: productsImages[indexPath.row].image)
+            
+            return cell
+            
+        case 2:
+            print("1")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as? ElementsOfTableViewCellTwo else {
+                return UITableViewCell()
+            }
+            cell.setUpCell(images: imagesCell2)
+            
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as? ElementsOfTableViewCellThree else {
+                return UITableViewCell()
+            }
+            cell.setUpCell(images: imagesCell3)
+            
+            return cell
+        default:
+            fatalError("Error in when specific number of row in HomeViewContoller")
         }
-        
-        cell.setUpCell(
-            title: productsImages[indexPath.row].title,
-            price: productsImages[indexPath.row].price,
-            names: productsImages[indexPath.row].name,
-            Photos: productsImages[indexPath.row].image)
-        
-        return cell
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        
+        switch indexPath.row {
+        case 0...2:
+            return 200
+        case 3:
+            return 100
+        default:
+            fatalError("Error in height for row at in home view controller")
+        }
+        
     }
 }
 
