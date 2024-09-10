@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     var imagesOfSliderCollection = [
         UIImage(named: "homei"),
         UIImage(named: "donostia"),
@@ -38,27 +38,17 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
-    @IBOutlet weak var sliderImageCollection: UICollectionView!
-    var timer: Timer?
-    var currentIndexCell = 0
-    
-    @IBOutlet weak var pageControllerOfSliderImages: UIPageControl!{
-        didSet{
-            pageControllerOfSliderImages.numberOfPages = imagesOfSliderCollection.count
-        }
-    }
-    
-    @IBOutlet weak var categoriesCollectionView: UICollectionView!
     var categoriesImages = [
-        UIImage(named: "cask"),
-        UIImage(named: "cafelore"),
-        UIImage(named: "cask"),
-        UIImage(named: "fiveleaves"),
-        UIImage(named: "cafedeadend"),
-        UIImage(named: "haigh"),
-        UIImage(named: "cafelore"),
-        UIImage(named: "cask"),
+        Categories(title: "Categories", iamges: [
+            UIImage(named: "cask"),
+            UIImage(named: "cafelore"),
+            UIImage(named: "cask"),
+            UIImage(named: "fiveleaves"),
+            UIImage(named: "cafedeadend"),
+            UIImage(named: "haigh"),
+            UIImage(named: "cafelore"),
+            UIImage(named: "cask")
+        ])
     ]
     
     var productsImages: [Product] = [
@@ -98,176 +88,63 @@ class HomeViewController: UIViewController {
         UIImage(named: "FrameCell3")!,
         UIImage(named: "FrameCell3")!
     ]
+
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sliderImageCollection.delegate = self
-        sliderImageCollection.dataSource = self
-        
-        categoriesCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-
-        startTimer()
-    }
-    
-  
-    
-    // slider Images view
-    func startTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveToNextSlider), userInfo: nil, repeats: true)
-    }
-
-   @objc func moveToNextSlider(){
-        currentIndexCell += 1
-        if currentIndexCell == imagesOfSliderCollection.count {
-            currentIndexCell = 0
-        }
-
-       
-       
-       if let layout = sliderImageCollection.collectionViewLayout as? UICollectionViewFlowLayout {
-           layout.scrollDirection = .horizontal
-       }
-
-       sliderImageCollection.scrollToItem(at: IndexPath(item: currentIndexCell, section: 0), at: .centeredHorizontally, animated: true)
-       pageControllerOfSliderImages.currentPage = currentIndexCell
-    }
-   
-}
-
-// MARK: - Collection View Delegate
-
-extension HomeViewController: UICollectionViewDelegate ,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch collectionView {
-        case sliderImageCollection:
-            return imagesOfSliderCollection.count
-            
-        case categoriesCollectionView:
-            return categoriesImages.count
-            
-        default:
-            fatalError("number Of Items InSection in Collection View ")
-        }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch collectionView{
-            
-            // Slider Image Collection
-        case sliderImageCollection:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderImageCell", for: indexPath) as? sliderImageCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            cell.imageCell.image = imagesOfSliderCollection[indexPath.row]
-            
-            return cell
-            
-            // Categories Collection View
-        case categoriesCollectionView:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoriesCell", for: indexPath) as? CategoriesCollectionViewCell else{
-                return UICollectionViewCell()
-            }
-            cell.imageCategories.image = categoriesImages[indexPath.row]
-            
-            return cell
-            
-        default:
-            fatalError("Error in Collection View")
-        }
-    }
-    
-    // Size For Item At
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        switch collectionView{
-        case sliderImageCollection:
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-        
-        case categoriesCollectionView:
-            return CGSize(width: 70, height: 70)
-        
-        default:
-            fatalError("Error in CGSize of collection view")
-        }
-    }
-    
-    // Minimum line spacing
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
 }
 
 // MARK: - Table View Delegate
 
 extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.separatorStyle = .none
         
         switch indexPath.row{
-        case 0...1:
-            print("0")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as? ElementsTableViewCell else{
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "sliderImagesCell", for: indexPath) as? SliderImagesTableViewCell else{
                 return UITableViewCell()
             }
             
-            cell.setUpCell(
-                title: productsImages[indexPath.row].title,
-                price: productsImages[indexPath.row].price,
-                names: productsImages[indexPath.row].name,
-                Photos: productsImages[indexPath.row].image)
-            
+            cell.setUpImages(images: imagesOfSliderCollection)
             return cell
-            
-        case 2:
-            print("1")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as? ElementsOfTableViewCellTwo else {
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell else{
                 return UITableViewCell()
             }
-            cell.setUpCell(images: imagesCell2)
             
-            return cell
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as? ElementsOfTableViewCellThree else {
-                return UITableViewCell()
-            }
-            cell.setUpCell(images: imagesCell3)
-            
+            cell.setUpCell(title: categoriesImages[0].title, photos: categoriesImages[0].iamges)
             return cell
         default:
             fatalError("Error in when specific number of row in HomeViewContoller")
         }
     }
     
-    
-    
+   // Hight table view
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.row {
-        case 0...2:
-            return 200
-        case 3:
-            return 100
+        case 0:
+            return 150
+        case 1:
+            return 120
         default:
             fatalError("Error in height for row at in home view controller")
         }
-        
     }
+    
 }
+
 
 

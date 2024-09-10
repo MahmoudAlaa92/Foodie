@@ -8,5 +8,6 @@
 import UIKit
 
 struct Categories{
-    var iamges: [UIImage]
+    var title: String
+    var iamges: [UIImage?]
 }

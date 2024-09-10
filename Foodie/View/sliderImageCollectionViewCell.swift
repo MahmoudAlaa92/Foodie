@@ -14,6 +14,7 @@ class sliderImageCollectionViewCell: UICollectionViewCell {
             imageCell.layer.cornerRadius = 17
             imageCell.layer.masksToBounds = true
             imageCell.clipsToBounds = true
+            imageCell.contentMode = .scaleAspectFill
         }
     }
     
