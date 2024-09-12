@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithTransparentBackground()
         
-        UITabBar.appearance().tintColor = UIColor(named: "NavigationBarTitle")
-        UITabBar.appearance().standardAppearance = tabBarAppearance
+//        UITabBar.appearance().tintColor = UIColor(named: "NavigationBarTitle")
+        UITabBar.appearance().unselectedItemTintColor = .white
         
         return true
     }

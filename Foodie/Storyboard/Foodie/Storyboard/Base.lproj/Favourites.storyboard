@@ -108,7 +108,7 @@
         <scene sceneID="MzH-I3-M7x">
             <objects>
                 <navigationController id="atR-7V-WhC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" image="star.square.fill" catalog="system" id="vrt-7M-N2k"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="heart" catalog="system" id="vrt-7M-N2k"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fn0-JK-8qu">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -123,8 +123,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
-        <image name="star.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

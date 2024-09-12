@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="Y11-Pb-9MU" customClass="HomeViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MTI-zR-L3c" userLabel="AllView">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="258" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EI1-1T-k08" userLabel="welcomView">
-                                <rect key="frame" x="0.0" y="50" width="380" height="70"/>
+                                <rect key="frame" x="0.0" y="50" width="258" height="70"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeloisl" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-As-2Z0">
                                         <rect key="frame" x="15" y="10" width="50" height="50"/>
@@ -62,13 +63,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxY-hh-Izf" userLabel="searchView">
-                                <rect key="frame" x="0.0" y="120" width="380" height="70"/>
+                                <rect key="frame" x="0.0" y="120" width="258" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="LE0-ak-h21">
-                                        <rect key="frame" x="20" y="10" width="340" height="50"/>
+                                        <rect key="frame" x="20" y="10" width="218" height="50"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Sa4-ag-XWa">
-                                                <rect key="frame" x="0.0" y="0.0" width="271" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="149" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -76,10 +77,10 @@
                                                 </connections>
                                             </searchBar>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSA-EZ-5iZ" userLabel="filterView">
-                                                <rect key="frame" x="274" y="0.0" width="66" height="50"/>
+                                                <rect key="frame" x="152" y="0.0" width="66" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-wY-H2X">
-                                                        <rect key="frame" x="16.666666666666686" y="-39" width="33" height="128"/>
+                                                        <rect key="frame" x="16.666666666666657" y="-39" width="33" height="128"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="33" id="lgM-iM-Cdc"/>
                                                         </constraints>
@@ -107,20 +108,20 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kz7-aj-war">
-                                <rect key="frame" x="0.0" y="200" width="380" height="1000"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="200" width="258" height="1000"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.88235294117647056" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sliderImagesCell" rowHeight="100" id="wF8-Eb-Xa7" customClass="SliderImagesTableViewCell" customModule="Foodie" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="380" height="100"/>
+                                        <rect key="frame" x="0.0" y="50" width="258" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wF8-Eb-Xa7" id="KYl-g9-pSq">
-                                            <rect key="frame" x="0.0" y="0.0" width="380" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="258" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-NB-G4H">
-                                                    <rect key="frame" x="16" y="0.0" width="348" height="100"/>
-                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <rect key="frame" x="16" y="0.0" width="226" height="100"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lxe-iu-DbI">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -153,7 +154,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="hdx-NB-G4H" secondAttribute="trailing" constant="16" id="Cey-gN-3Ca"/>
                                                 <constraint firstItem="hdx-NB-G4H" firstAttribute="leading" secondItem="KYl-g9-pSq" secondAttribute="leading" constant="16" id="h6r-Xt-K6r"/>
@@ -165,18 +166,18 @@
                                             <outlet property="collectionView" destination="hdx-NB-G4H" id="J7C-oZ-gQV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoriesCell" rowHeight="100" id="ltU-2m-fRu" customClass="CategoriesTableViewCell" customModule="Foodie" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="150" width="380" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoriesCell" rowHeight="150" id="ltU-2m-fRu" customClass="CategoriesTableViewCell" customModule="Foodie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150" width="258" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ltU-2m-fRu" id="AZr-Oc-vVV">
-                                            <rect key="frame" x="0.0" y="0.0" width="380" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="258" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="98C-2N-TA9">
-                                                    <rect key="frame" x="20" y="17" width="340" height="20.333333333333329"/>
+                                                    <rect key="frame" x="16" y="17" width="226" height="81.333333333333329"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJb-g8-hKh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="20.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="81.333333333333329"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="70" id="uVc-JU-tVh"/>
                                                             </constraints>
@@ -185,7 +186,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See all" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lD-u4-vg8">
-                                                            <rect key="frame" x="290" y="0.0" width="50" height="20.333333333333332"/>
+                                                            <rect key="frame" x="176" y="0.0" width="50" height="81.333333333333329"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="HwI-cO-Pq2"/>
                                                             </constraints>
@@ -196,8 +197,8 @@
                                                     </subviews>
                                                 </stackView>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-VJ-Xvj">
-                                                    <rect key="frame" x="16" y="42.333333333333343" width="348" height="57.666666666666657"/>
-                                                    <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <rect key="frame" x="16" y="103.33333333333333" width="226" height="46.666666666666671"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lw5-J9-k88">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -206,7 +207,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoriesCollection" id="Bbm-hv-Suf" customClass="CategoriesCollectionViewCell" customModule="Foodie" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-35.333333333333336" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="-40.666666666666664" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zFH-Zf-rLH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -230,7 +231,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="98C-2N-TA9" firstAttribute="leading" secondItem="AZr-Oc-vVV" secondAttribute="leadingMargin" id="FjQ-Y4-BgS"/>
                                                 <constraint firstItem="d9q-VJ-Xvj" firstAttribute="top" secondItem="98C-2N-TA9" secondAttribute="bottom" constant="5" id="Fuo-WZ-0DB"/>
@@ -250,7 +251,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O0W-Nb-FVm"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kz7-aj-war" firstAttribute="top" secondItem="qxY-hh-Izf" secondAttribute="bottom" constant="10" id="1hS-PV-qrG"/>
                             <constraint firstItem="kz7-aj-war" firstAttribute="leading" secondItem="MTI-zR-L3c" secondAttribute="leading" id="8DU-ua-ZWr"/>
@@ -264,8 +265,8 @@
                             <constraint firstItem="qxY-hh-Izf" firstAttribute="top" secondItem="EI1-1T-k08" secondAttribute="bottom" id="ud1-aX-ymZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="j5I-ZT-m6U"/>
-                    <size key="freeformSize" width="380" height="1200"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="j5I-ZT-m6U"/>
+                    <size key="freeformSize" width="258" height="1200"/>
                     <connections>
                         <outlet property="filterView" destination="fSA-EZ-5iZ" id="4CG-UA-S8u"/>
                         <outlet property="pictureOfPerson" destination="Mj6-As-2Z0" id="2fV-x7-p87"/>
@@ -282,6 +283,9 @@
         <image name="cafeloisl" width="426.66665649414062" height="426.66665649414062"/>
         <image name="filter" width="137.33332824707031" height="128"/>
         <image name="hi" width="547" height="513"/>
-        <image name="homekit" catalog="system" width="128" height="104"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

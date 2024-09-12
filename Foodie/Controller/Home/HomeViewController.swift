@@ -55,12 +55,12 @@ class HomeViewController: UIViewController {
         Product(title: "Recomoneded",
                 name: ["Mahmoud Siberia 800 MahmoudAlaa" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
                 price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")!]
+                image: [UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")!]
                ),
         Product(title: "BestSeller",
                 name: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
                 price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame1")! ,UIImage(named: "Frame2")! ,UIImage(named: "Frame2")!]
+                image: [UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")!]
                )
     ]
     
@@ -76,19 +76,6 @@ class HomeViewController: UIViewController {
         UIImage(named: "Frame21")!
     ]
     
-    var imagesCell3: [UIImage] = [
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!,
-        UIImage(named: "FrameCell3")!
-    ]
-
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -98,6 +85,10 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         
+        // Register the nib file
+        let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "productCell")
+        
     }
 }
 
@@ -105,7 +96,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,6 +117,19 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             
             cell.setUpCell(title: categoriesImages[0].title, photos: categoriesImages[0].iamges)
             return cell
+        case 2...3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else{
+                print("Error in product table view cell")
+                return UITableViewCell()
+            }
+            
+            let index = (indexPath.row == 2) ? 0 : 1
+            cell.titleLabel.text = productsImages[index].title
+            cell.photos = productsImages[index].image
+            cell.name = productsImages[index].name
+            cell.price = productsImages[index].price
+            
+            return cell
         default:
             fatalError("Error in when specific number of row in HomeViewContoller")
         }
@@ -139,6 +143,8 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             return 150
         case 1:
             return 120
+        case 2...3:
+            return 200
         default:
             fatalError("Error in height for row at in home view controller")
         }

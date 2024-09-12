@@ -805,7 +805,7 @@
         <scene sceneID="XFz-ah-N4l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8X6-SM-dxG" customClass="NavigationController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Restaurants" image="tag.fill" catalog="system" id="mrB-Od-MAO"/>
+                    <tabBarItem key="tabBarItem" title="Restaurants" image="cart" catalog="system" id="mrB-Od-MAO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jmk-TR-DXR">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -846,7 +846,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QMi-Ge-kOy">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" name="Color"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="mxB-m5-3xl" kind="relationship" relationship="viewControllers" id="Cxc-DF-rf2"/>
@@ -897,6 +899,7 @@
         <image name="angry" width="78" height="103"/>
         <image name="cafedeadend" width="426.66665649414062" height="426.66665649414062"/>
         <image name="cafeloisl" width="426.66665649414062" height="426.66665649414062"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
         <image name="cool" width="78" height="83"/>
         <image name="emptydata" width="1440" height="1024"/>
         <image name="happy" width="78" height="86"/>
@@ -907,8 +910,10 @@
         <image name="o" width="128" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="sad" width="78" height="87"/>
-        <image name="tag.fill" catalog="system" width="128" height="118"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="Color">
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="NavigationBarTitle">
             <color red="0.85490196078431369" green="0.37647058823529411" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
