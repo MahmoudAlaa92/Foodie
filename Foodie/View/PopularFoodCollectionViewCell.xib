@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popularFoodCollection" id="gTV-IL-0wX" customClass="PopularFoodCollectionViewCell" customModule="Foodie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="171"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="171"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hFQ-vc-0a0">
+                        <rect key="frame" x="15" y="14.999999999999996" width="246" height="50.666666666666657"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRy-sy-Wiu">
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5a-cM-8Me">
+                                <rect key="frame" x="0.0" y="30.333333333333336" width="38.333333333333336" height="20.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6HS-mX-AqG">
+                        <rect key="frame" x="265" y="10" width="106" height="151"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6HS-mX-AqG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ACH-xq-Xgt"/>
+                <constraint firstItem="hFQ-vc-0a0" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.646" id="EAX-83-1fF"/>
+                <constraint firstAttribute="bottom" secondItem="6HS-mX-AqG" secondAttribute="bottom" constant="10" id="F3N-4V-bU8"/>
+                <constraint firstItem="hFQ-vc-0a0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="He1-uc-v6z"/>
+                <constraint firstItem="hFQ-vc-0a0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Tqj-7E-yLL"/>
+                <constraint firstAttribute="trailing" secondItem="6HS-mX-AqG" secondAttribute="trailing" constant="10" id="fXc-wW-mg7"/>
+                <constraint firstItem="6HS-mX-AqG" firstAttribute="leading" secondItem="hFQ-vc-0a0" secondAttribute="trailing" constant="4" id="tRK-zK-bsf"/>
+            </constraints>
+            <size key="customSize" width="381" height="171"/>
+            <connections>
+                <outlet property="imageOfLabel" destination="6HS-mX-AqG" id="GKg-Kj-jRi"/>
+                <outlet property="nameLabel" destination="WRy-sy-Wiu" id="NBo-aN-yDy"/>
+                <outlet property="priceLabel" destination="o5a-cM-8Me" id="HCz-wS-K4A"/>
+            </connections>
+            <point key="canvasLocation" x="280.15267175572518" y="62.323943661971832"/>
+        </collectionViewCell>
+    </objects>
+</document>

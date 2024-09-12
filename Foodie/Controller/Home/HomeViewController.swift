@@ -64,18 +64,14 @@ class HomeViewController: UIViewController {
                )
     ]
     
-    var imagesCell2: [UIImage] = [
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!,
-        UIImage(named: "Frame21")!
-    ]
+    var newOffer = [NewOffer(descripion: "Enjoy your favorite food at discounted prices of up to 50%", image: UIImage(named: "NewOffer1"))]
     
+    // Popular Food
+    var pupularFood = Product(
+        title: "Popular Food",
+        name: ["Grilled chicken" ,"Vegetables pizza", "Meat pizzza", "Rice cake"],
+    price: ["75L.E","55L.E" ,"95L.E" ,"45L.E"],
+        image: [UIImage(named: "Popular1")!, UIImage(named: "Popular2")!, UIImage(named: "Popular3")!, UIImage(named: "Popular4")!] )
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -85,10 +81,17 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         
-        // Register the nib file
+        // Register the product nib file
         let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "productCell")
         
+        //Registe the newOfferProduct nib file
+        let nib2 = UINib(nibName: "NewOfferTableViewCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "newOfferCell")
+        
+        // Register the Popular Food nib file
+        let nib3 = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
+        tableView.register(nib3, forCellReuseIdentifier: "PopularFoodCell")
     }
 }
 
@@ -96,7 +99,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,6 +133,27 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             cell.price = productsImages[index].price
             
             return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "newOfferCell", for: indexPath) as? NewOfferTableViewCell else{
+                print("Error in Offer table view cell")
+                return UITableViewCell()
+            }
+            
+            cell.titleOfCell.text = "New Offer"
+            cell.descriptionLabel.text = newOffer[0].descripion
+            cell.backgroundImage.image = newOffer[0].image
+            return cell
+        case 5:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularFoodCell", for: indexPath) as? PopularFoodTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.titleLabel.text = "Popular Food"
+            cell.name = pupularFood.name
+            cell.price = pupularFood.price
+            cell.photos = pupularFood.image
+            
+            return cell
         default:
             fatalError("Error in when specific number of row in HomeViewContoller")
         }
@@ -145,6 +169,8 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             return 120
         case 2...3:
             return 200
+        case 4...5:
+            return 160
         default:
             fatalError("Error in height for row at in home view controller")
         }

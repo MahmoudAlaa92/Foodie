@@ -9,7 +9,12 @@ import UIKit
 
 class productCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var productImage: UIImageView!{
+        didSet{
+            productImage.layer.cornerRadius = 15
+            productImage.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
