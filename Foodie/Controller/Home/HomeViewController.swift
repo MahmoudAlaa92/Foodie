@@ -38,8 +38,9 @@ class HomeViewController: UIViewController {
         }
     }
     
-    var categoriesImages = [
-        Categories(title: "Categories", iamges: [
+    var categoriesItems =
+        Categories(title: "Categories", 
+                   iamges: [
             UIImage(named: "cask"),
             UIImage(named: "cafelore"),
             UIImage(named: "cask"),
@@ -48,30 +49,32 @@ class HomeViewController: UIViewController {
             UIImage(named: "haigh"),
             UIImage(named: "cafelore"),
             UIImage(named: "cask")
-        ])
-    ]
+        ], 
+        names: [ "Macdonalds", "KFC", "Common", "Pizza Hot" ,"Abou El Sid" ,"O's Pasta" ,"KFC","KFC"
+                            ])
     
     var productsImages: [Product] = [
         Product(title: "Recomoneded",
-                name: ["Mahmoud Siberia 800 MahmoudAlaa" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
-                price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")!]
+                names: ["Mahmoud Siberia 800 MahmoudAlaa" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
+                prices: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
+                images: [UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")!]
                ),
         Product(title: "BestSeller",
-                name: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
-                price: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                image: [UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")!]
+                names: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
+                prices: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
+                images: [UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")!]
                )
     ]
     
+    // New Offer
     var newOffer = [NewOffer(descripion: "Enjoy your favorite food at discounted prices of up to 50%", image: UIImage(named: "NewOffer1"))]
     
     // Popular Food
     var pupularFood = Product(
         title: "Popular Food",
-        name: ["Grilled chicken" ,"Vegetables pizza", "Meat pizzza", "Rice cake"],
-    price: ["75L.E","55L.E" ,"95L.E" ,"45L.E"],
-        image: [UIImage(named: "Popular1")!, UIImage(named: "Popular2")!, UIImage(named: "Popular3")!, UIImage(named: "Popular4")!] )
+        names: ["Grilled chicken" ,"Vegetables pizza", "Meat pizzza", "Rice cake"],
+    prices: ["75L.E","55L.E" ,"95L.E" ,"45L.E"],
+        images: [UIImage(named: "Popular1")!, UIImage(named: "Popular2")!, UIImage(named: "Popular3")!, UIImage(named: "Popular4")!] )
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -93,11 +96,26 @@ class HomeViewController: UIViewController {
         let nib3 = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
         tableView.register(nib3, forCellReuseIdentifier: "PopularFoodCell")
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+   
 }
 
 // MARK: - Table View Delegate
 
-extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
+extension HomeViewController: UITableViewDelegate ,UITableViewDataSource, CategoriesTableViewCellDelegate{
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -118,7 +136,10 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
                 return UITableViewCell()
             }
             
-            cell.setUpCell(title: categoriesImages[0].title, photos: categoriesImages[0].iamges)
+            cell.categoriesDelegate = self
+            
+            cell.setUpCell(title: categoriesItems.title, photos: categoriesItems.iamges)
+            cell.names = categoriesItems.names
             return cell
         case 2...3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else{
@@ -128,9 +149,9 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             
             let index = (indexPath.row == 2) ? 0 : 1
             cell.titleLabel.text = productsImages[index].title
-            cell.photos = productsImages[index].image
-            cell.name = productsImages[index].name
-            cell.price = productsImages[index].price
+            cell.photos = productsImages[index].images
+            cell.name = productsImages[index].names
+            cell.price = productsImages[index].prices
             
             return cell
         case 4:
@@ -149,9 +170,9 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             }
             
             cell.titleLabel.text = "Popular Food"
-            cell.name = pupularFood.name
-            cell.price = pupularFood.price
-            cell.photos = pupularFood.image
+            cell.name = pupularFood.names
+            cell.price = pupularFood.prices
+            cell.photos = pupularFood.images
             
             return cell
         default:
@@ -166,14 +187,24 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
         case 0:
             return 150
         case 1:
-            return 120
+            return 130
         case 2...3:
             return 200
-        case 4...5:
+        case 4:
             return 160
+        case 5:
+            return 300
         default:
             fatalError("Error in height for row at in home view controller")
         }
+    }
+    
+    // Did selected item
+    func didSelectedItem(at indexPath: IndexPath) {
+        
+        guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "FoodsOfSpecificRestaurantViewController") as? FoodsOfSpecificRestaurantViewController else{ return }
+        self.show(destinationVC, sender: self)
+        destinationVC.selectedItem = categoriesItems.names[indexPath.row]
     }
     
 }

@@ -432,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGU-g4-Uy9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2657.2519083969464" y="52.816901408450704"/>
+            <point key="canvasLocation" x="2657" y="53"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="mT2-fc-ZkE">
@@ -881,13 +881,13 @@
             </objects>
             <point key="canvasLocation" x="-2337" y="441"/>
         </scene>
-        <!--HomeViewController-->
+        <!--Home-->
         <scene sceneID="hle-qg-q9i">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="HomeViewController" storyboardName="Home" referencedIdentifier="HomeViewController" id="mxB-m5-3xl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="sEb-FI-O5x"/>
-                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77X-eX-yCk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="HomeViewController" storyboardName="Home" id="mxB-m5-3xl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="sEb-FI-O5x"/>
+                </viewControllerPlaceholder>
             </objects>
             <point key="canvasLocation" x="-1703.0534351145038" y="4.9295774647887329"/>
         </scene>
@@ -905,6 +905,7 @@
         <image name="happy" width="78" height="86"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="house" catalog="system" width="128" height="104"/>
         <image name="love" width="78" height="82"/>
         <image name="newphoto" width="1840" height="1380"/>
         <image name="o" width="128" height="128"/>
@@ -924,13 +925,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -11,11 +11,12 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCategories: UIImageView!{
         didSet{
-            imageCategories.layer.cornerRadius = imageCategories.frame.height / 4
+            imageCategories.layer.cornerRadius = imageCategories.frame.height / 4.7
             imageCategories.layer.masksToBounds = true
             imageCategories.clipsToBounds = true
-            
         }
     }
+    
+    @IBOutlet weak var nameOfRestaurant: UILabel!
     
 }

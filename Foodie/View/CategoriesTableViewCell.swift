@@ -7,16 +7,21 @@
 
 import UIKit
 
+protocol CategoriesTableViewCellDelegate{
+    func didSelectedItem(at indexPath: IndexPath)
+}
+
 class CategoriesTableViewCell: UITableViewCell, UICollectionViewDelegate ,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
     @IBOutlet weak var titleLabel: UILabel!
     var photos = [UIImage?]()
+    var names = [String]()
+    
+    var categoriesDelegate: CategoriesTableViewCellDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
-            collectionView.layer.cornerRadius = 20
             collectionView.clipsToBounds = true
-            collectionView.layer.masksToBounds = true
         }
     }
     
@@ -47,17 +52,22 @@ class CategoriesTableViewCell: UITableViewCell, UICollectionViewDelegate ,UIColl
         }
         
         cell.imageCategories.image = photos[indexPath.row]
+        cell.nameOfRestaurant.text = names[indexPath.row]
         return cell
     }
     
     // Size for item at
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 70, height: 70)
+        return CGSize(width: 70, height: 90)
     }
     
     // Minimum line spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         10
     }
-
+    
+    // Selected Items
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        categoriesDelegate?.didSelectedItem(at: indexPath)
+    }
 }

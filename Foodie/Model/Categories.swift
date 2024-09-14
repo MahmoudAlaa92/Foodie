@@ -10,4 +10,5 @@ import UIKit
 struct Categories{
     var title: String
     var iamges: [UIImage?]
+    var names: [String]
 }

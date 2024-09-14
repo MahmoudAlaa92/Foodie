@@ -9,7 +9,7 @@ import UIKit
 
 struct Product{
     var title: String
-    var name: [String]
-    var price: [String]
-    var image: [UIImage]
+    var names: [String]
+    var prices: [String]
+    var images: [UIImage]
 }

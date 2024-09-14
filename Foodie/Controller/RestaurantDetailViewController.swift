@@ -95,6 +95,7 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
             fatalError("Error in RestaurantDetailsTableViewDelegate")
         }
     }
+    
     // prepare MapViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
