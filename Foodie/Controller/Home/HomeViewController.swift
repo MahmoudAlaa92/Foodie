@@ -55,14 +55,14 @@ class HomeViewController: UIViewController {
     
     var productsImages: [Product] = [
         Product(title: "Recomoneded",
-                names: ["Mahmoud Siberia 800 MahmoudAlaa" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
+                names: ["Pepperoni pizza" ,"Pepperoni pizza" ,"Pepperoni pizza" ,"Pepperoni pizza","Pepperoni pizza","Pepperoni pizza","Pepperoni pizza"],
                 prices: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                images: [UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")! ,UIImage(named: "koky")!]
+                images: [UIImage(named: "Pepperoni pizza")! ,UIImage(named: "Pepperoni pizza")! ,UIImage(named: "Pepperoni pizza")! ,UIImage(named: "Pepperoni pizza")! ,UIImage(named: "Pepperoni pizza")! ,UIImage(named: "Pepperoni pizza")! ,UIImage(named: "Pepperoni pizza")!]
                ),
         Product(title: "BestSeller",
-                names: ["Siberia 800" ,"Siberia 800" ,"Siberia 800" ,"Siberia 800","Siberia 800","Siberia 800","Siberia 800"],
+                names: ["Big Tasty" ,"Big Tasty" ,"Big Tasty" ,"Big Tasty","Big Tasty","Big Tasty","Big Tasty"],
                 prices: ["L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000" ,"L.E65,000"],
-                images: [UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")! ,UIImage(named: "burger1")!]
+                images: [UIImage(named: "Big Tasty")! ,UIImage(named: "Big Tasty")! ,UIImage(named: "Big Tasty")! ,UIImage(named: "Big Tasty")! ,UIImage(named: "Big Tasty")! ,UIImage(named: "Big Tasty")! ,UIImage(named: "Big Tasty")!]
                )
     ]
     
@@ -114,7 +114,7 @@ class HomeViewController: UIViewController {
 
 // MARK: - Table View Delegate
 
-extension HomeViewController: UITableViewDelegate ,UITableViewDataSource, CategoriesTableViewCellDelegate{
+extension HomeViewController: UITableViewDelegate ,UITableViewDataSource, CategoriesTableViewCellDelegate, ProductTableViewCellDelegate{
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
@@ -147,11 +147,14 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource, Catego
                 return UITableViewCell()
             }
             
+            cell.selectedDelegate = self
+            
             let index = (indexPath.row == 2) ? 0 : 1
             cell.titleLabel.text = productsImages[index].title
             cell.photos = productsImages[index].images
             cell.name = productsImages[index].names
             cell.price = productsImages[index].prices
+            cell.tableViewRow = indexPath.row
             
             return cell
         case 4:
@@ -200,11 +203,36 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource, Catego
     }
     
     // Did selected item
-    func didSelectedItem(at indexPath: IndexPath) {
+    func didSelectedItem(at indexPath: IndexPath){
         
         guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "FoodsOfSpecificRestaurantViewController") as? FoodsOfSpecificRestaurantViewController else{ return }
+        
         self.show(destinationVC, sender: self)
         destinationVC.selectedItem = categoriesItems.names[indexPath.row]
+    }
+    
+    func didselectedItem(at indexPath: IndexPath, for tableViewRow: Int) {
+        print("\(tableViewRow) \(indexPath.row)")
+        
+        guard let destinationVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else{
+            return
+        }
+        
+        switch tableViewRow{
+        case 2:
+            destinationVC.nameOfFoodImage = productsImages[0].names[tableViewRow]
+            destinationVC.nameOfFoodImage = productsImages[0].prices[tableViewRow]
+            destinationVC.nameOfFoodImage = "Pepperoni pizza"
+        case 3:
+            destinationVC.nameOfFoodImage = productsImages[1].names[tableViewRow]
+            destinationVC.nameOfFoodImage = productsImages[1].prices[tableViewRow]
+            destinationVC.nameOfFoodImage = "Pepperoni pizza"
+            
+        default:
+            fatalError("Error when select item from Recommended or BesSeller Collection View")
+        }
+        
+        self.show(destinationVC, sender: self)
     }
     
 }

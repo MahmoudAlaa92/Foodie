@@ -66,7 +66,7 @@ class CategoriesTableViewCell: UITableViewCell, UICollectionViewDelegate ,UIColl
         10
     }
     
-    // Selected Items
+    // Did selected Items
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         categoriesDelegate?.didSelectedItem(at: indexPath)
     }

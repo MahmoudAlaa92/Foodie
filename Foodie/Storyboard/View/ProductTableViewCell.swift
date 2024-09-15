@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol ProductTableViewCellDelegate{
+    func didselectedItem (at indexPath: IndexPath ,for tableViewRow: Int)
+}
+
 class ProductTableViewCell: UITableViewCell {
 
+    var tableViewRow: Int?
+    
+    var selectedDelegate: ProductTableViewCellDelegate?
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -38,6 +46,8 @@ class ProductTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - UICollection View Delegate
+
 extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,5 +73,11 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
     //(UIScreen.main.bounds.width) * 0.43
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         10
+    }
+    
+    // Did selected item
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedDelegate?.didselectedItem(at: indexPath ,for: tableViewRow ?? 0)
+        
     }
 }
