@@ -12,12 +12,7 @@ class ProductViewController: UIViewController {
     
     var nameOfFoodImage = "Pepperoni pizza"
     var priceOfFood = "L.E65,000"
-    var descriptionOfFoodImage = """
-        Highlights
-        Button detailed trench coat has v-neck cutting
-        Pocket detailed, two front patch pockets at the bottom
-        Made with polyester blended material
-        """
+    var descriptionOfFoodImage = "Highlights Button detailed trench coat has v-neck cuttingPocket detailed, two front patch pockets at the bottom Made with polyester blended material"
   
     @IBOutlet weak var headerView: HeaderOfProductToCartView!
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +25,7 @@ class ProductViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         
-        
+        print(nameOfFoodImage)
         // Header view
         headerView.imageView.image = UIImage(named: nameOfFoodImage)
         
@@ -104,13 +99,13 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row{
         case 0:
-            return UIScreen.main.bounds.width * 0.138  // name and price
+            return  80 // name and price
         case 1:
-            return  UIScreen.main.bounds.width * 0.208 // size
+            return  70 // size
         case 2:
             return 120  // Highlights
         case 3:
-            return UIScreen.main.bounds.width * 0.167 // Button
+            return 70 // Button
        
         default:
             fatalError("Error in height of Product view controller")

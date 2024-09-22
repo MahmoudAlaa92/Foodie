@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1513B25E2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */; };
 		15203FAB2C4E973A0071044F /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15203FA92C4E973A0071044F /* About.storyboard */; };
 		153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153771EE2C3DB367003C2A63 /* ReviewViewController.swift */; };
 		153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153901132C326EF300000F48 /* RestaurantDetailViewController.swift */; };
@@ -49,19 +50,23 @@
 		15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */; };
 		15BB40A62C3703E4009C4E9E /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A52C3703E4009C4E9E /* UIColor+Ext.swift */; };
 		15BB40A82C371DC6009C4E9E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB40A72C371DC6009C4E9E /* NavigationController.swift */; };
+		15BBC2572C9F784A00D3528D /* SpecificRestaurant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BBC2552C9F784A00D3528D /* SpecificRestaurant.storyboard */; };
 		15C022292C922029008DD9E2 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C022272C922029008DD9E2 /* ProductTableViewCell.swift */; };
 		15C0222A2C922029008DD9E2 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C022282C922029008DD9E2 /* ProductTableViewCell.xib */; };
 		15C3BC172C66976E00EEEEF9 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3BC162C66976E00EEEEF9 /* FavouriteTableViewCell.swift */; };
 		15C3BC1A2C6699EF00EEEEF9 /* Foodie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15C3BC182C6699EF00EEEEF9 /* Foodie.xcdatamodeld */; };
 		15C3BC1D2C669AE400EEEEF9 /* DataPersistentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3BC1C2C669AE400EEEEF9 /* DataPersistentManager.swift */; };
 		15C3BC1F2C66A5AC00EEEEF9 /* FavouriteRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3BC1E2C66A5AC00EEEEF9 /* FavouriteRestaurant.swift */; };
-		15C441902C95BB470057C682 /* FoodsOfSpecificRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4418F2C95BB470057C682 /* FoodsOfSpecificRestaurantViewController.swift */; };
 		15C4419D2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4419B2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.swift */; };
 		15C4419E2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C4419C2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.xib */; };
 		15D269972C76A56F006CA6DA /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D269962C76A56F006CA6DA /* CategoriesCollectionViewCell.swift */; };
 		15D269992C76A726006CA6DA /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D269982C76A726006CA6DA /* Categories.swift */; };
 		15D63E1E2C2C011B000FD524 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D63E1D2C2C011B000FD524 /* Restaurant.swift */; };
 		15D63E242C2C14CA000FD524 /* RestaurantDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */; };
+		15DCDAD92C9B68170002C89C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 15DCDAD82C9B68170002C89C /* FirebaseDatabase */; };
+		15DCDADB2C9B68170002C89C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 15DCDADA2C9B68170002C89C /* FirebaseFirestore */; };
+		15DCDADD2C9B68170002C89C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 15DCDADC2C9B68170002C89C /* FirebaseStorage */; };
+		15DCDADF2C9B6DFD0002C89C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */; };
 		15DD41212C397B5000754947 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */; };
 		15DD41232C39BACA00754947 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD41222C39BACA00754947 /* MapViewController.swift */; };
 		15EF28CD2C932CC10003E269 /* NewOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF28CB2C932CC10003E269 /* NewOfferTableViewCell.swift */; };
@@ -75,6 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsOfSpecificRestaurantViewController.swift; sourceTree = "<group>"; };
 		15203FAA2C4E973A0071044F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Foodie/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		153771EE2C3DB367003C2A63 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		153901132C326EF300000F48 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
@@ -123,19 +129,20 @@
 		15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTwoTableViewCell.swift; sourceTree = "<group>"; };
 		15BB40A52C3703E4009C4E9E /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		15BB40A72C371DC6009C4E9E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		15BBC2562C9F784A00D3528D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Foodie/Storyboard/Foodie/Storyboard/Base.lproj/SpecificRestaurant.storyboard; sourceTree = "<group>"; };
 		15C022272C922029008DD9E2 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		15C022282C922029008DD9E2 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		15C3BC162C66976E00EEEEF9 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		15C3BC192C6699EF00EEEEF9 /* Foodie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Foodie.xcdatamodel; sourceTree = "<group>"; };
 		15C3BC1C2C669AE400EEEEF9 /* DataPersistentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistentManager.swift; sourceTree = "<group>"; };
 		15C3BC1E2C66A5AC00EEEEF9 /* FavouriteRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteRestaurant.swift; sourceTree = "<group>"; };
-		15C4418F2C95BB470057C682 /* FoodsOfSpecificRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodsOfSpecificRestaurantViewController.swift; path = ../../../../../mahmoudalaa/Documents/FoodsOfSpecificRestaurantViewController.swift; sourceTree = "<group>"; };
 		15C4419B2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsOfRestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		15C4419C2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodsOfRestaurantTableViewCell.xib; sourceTree = "<group>"; };
 		15D269962C76A56F006CA6DA /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		15D269982C76A726006CA6DA /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		15D63E1D2C2C011B000FD524 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		15D63E232C2C14CA000FD524 /* RestaurantDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDiffableDataSource.swift; sourceTree = "<group>"; };
+		15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
 		15DD41222C39BACA00754947 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		15EF28CB2C932CC10003E269 /* NewOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOfferTableViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DCDAD92C9B68170002C89C /* FirebaseDatabase in Frameworks */,
+				15DCDADB2C9B68170002C89C /* FirebaseFirestore in Frameworks */,
+				15DCDADD2C9B68170002C89C /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +201,7 @@
 		15462E032C29413900D998CD = {
 			isa = PBXGroup;
 			children = (
+				15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */,
 				15462E0E2C29413900D998CD /* Foodie */,
 				15462E0D2C29413900D998CD /* Products */,
 			);
@@ -352,7 +363,7 @@
 		15C4418E2C95BB080057C682 /* Specific Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				15C4418F2C95BB470057C682 /* FoodsOfSpecificRestaurantViewController.swift */,
+				1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */,
 			);
 			path = "Specific Restaurant";
 			sourceTree = "<group>";
@@ -413,6 +424,7 @@
 				1546AD1E2C62B50400F4EE32 /* Onboarding.storyboard */,
 				15462E152C29413900D998CD /* Main.storyboard */,
 				15FA57F12C769E0600815185 /* Home.storyboard */,
+				15BBC2552C9F784A00D3528D /* SpecificRestaurant.storyboard */,
 				15203FA92C4E973A0071044F /* About.storyboard */,
 				156C03E02C6541E50031FE3D /* Favourites.storyboard */,
 				15D63E202C2C06FB000FD524 /* View */,
@@ -472,6 +484,11 @@
 			dependencies = (
 			);
 			name = Foodie;
+			packageProductDependencies = (
+				15DCDAD82C9B68170002C89C /* FirebaseDatabase */,
+				15DCDADA2C9B68170002C89C /* FirebaseFirestore */,
+				15DCDADC2C9B68170002C89C /* FirebaseStorage */,
+			);
 			productName = Foodie;
 			productReference = 15462E0C2C29413900D998CD /* Foodie.app */;
 			productType = "com.apple.product-type.application";
@@ -501,6 +518,9 @@
 				"zh-Hant",
 			);
 			mainGroup = 15462E032C29413900D998CD;
+			packageReferences = (
+				15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 15462E0D2C29413900D998CD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -522,10 +542,12 @@
 				15FA57F32C769E0600815185 /* Home.storyboard in Resources */,
 				15203FAB2C4E973A0071044F /* About.storyboard in Resources */,
 				159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */,
+				15BBC2572C9F784A00D3528D /* SpecificRestaurant.storyboard in Resources */,
 				154452D52C9726CD00C497BC /* Product.storyboard in Resources */,
 				15EF28CE2C932CC10003E269 /* NewOfferTableViewCell.xib in Resources */,
 				15462E1C2C29413B00D998CD /* Base in Resources */,
 				1546AD1F2C62B50400F4EE32 /* Onboarding.storyboard in Resources */,
+				15DCDADF2C9B6DFD0002C89C /* GoogleService-Info.plist in Resources */,
 				156C03E22C6541E50031FE3D /* Favourites.storyboard in Resources */,
 				15EF28D52C936D1C0003E269 /* PopularFoodCollectionViewCell.xib in Resources */,
 				159E9F2D2C357D010070B51F /* Nunito-Regular.ttf in Resources */,
@@ -560,11 +582,11 @@
 				15C3BC172C66976E00EEEEF9 /* FavouriteTableViewCell.swift in Sources */,
 				15462E122C29413900D998CD /* SceneDelegate.swift in Sources */,
 				154452D82C9729C800C497BC /* NameAndPriceOfRestaurantTableViewCell.swift in Sources */,
-				15C441902C95BB470057C682 /* FoodsOfSpecificRestaurantViewController.swift in Sources */,
 				154452DC2C972C4D00C497BC /* HighlightsTableViewCell.swift in Sources */,
 				15BB40A62C3703E4009C4E9E /* UIColor+Ext.swift in Sources */,
 				15C3BC1F2C66A5AC00EEEEF9 /* FavouriteRestaurant.swift in Sources */,
 				15EF28D02C9330260003E269 /* NewOffer.swift in Sources */,
+				1513B25E2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift in Sources */,
 				154452DE2C972DD900C497BC /* HeaderOfProductToCartView.swift in Sources */,
 				15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */,
 				15ACEBBE2C76F0FE000FF23E /* Product.swift in Sources */,
@@ -646,6 +668,14 @@
 				156C03E12C6541E50031FE3D /* Base */,
 			);
 			name = Favourites.storyboard;
+			sourceTree = "<group>";
+		};
+		15BBC2552C9F784A00D3528D /* SpecificRestaurant.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15BBC2562C9F784A00D3528D /* Base */,
+			);
+			name = SpecificRestaurant.storyboard;
 			sourceTree = "<group>";
 		};
 		15FA57F12C769E0600815185 /* Home.storyboard */ = {
@@ -858,6 +888,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		15DCDAD82C9B68170002C89C /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		15DCDADA2C9B68170002C89C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		15DCDADC2C9B68170002C89C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		15C3BC182C6699EF00EEEEF9 /* Foodie.xcdatamodeld */ = {

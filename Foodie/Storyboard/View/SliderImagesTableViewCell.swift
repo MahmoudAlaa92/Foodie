@@ -6,9 +6,13 @@
 //
 
 import UIKit
-
+protocol SliderImagesTableViewCellDelegate{
+    func didSelectedSliderImage(indexPath: IndexPath)
+}
 class SliderImagesTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var delegateSliderImage: SliderImagesTableViewCellDelegate?
+    
     var images = [UIImage?]()
     var currentIndex = 0
     var timer: Timer?
@@ -85,6 +89,11 @@ class SliderImagesTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     // Minimum line spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         10
+    }
+    
+    // Did selected item
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegateSliderImage?.didSelectedSliderImage(indexPath: indexPath)
     }
     
 }

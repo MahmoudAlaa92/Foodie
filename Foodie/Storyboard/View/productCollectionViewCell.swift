@@ -9,6 +9,12 @@ import UIKit
 
 class productCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var insideView: UIView!{
+        didSet{
+            insideView.layer.cornerRadius = 15
+            insideView.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var productImage: UIImageView!{
         didSet{
             productImage.layer.cornerRadius = 15

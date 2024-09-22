@@ -19,6 +19,7 @@ class FoodsOfRestaurantTableViewCell: UITableViewCell {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
         
         // Register nib of product collection
         let nib = UINib(nibName: "productCollectionViewCell", bundle: nil)
@@ -34,7 +35,7 @@ class FoodsOfRestaurantTableViewCell: UITableViewCell {
 extension FoodsOfRestaurantTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

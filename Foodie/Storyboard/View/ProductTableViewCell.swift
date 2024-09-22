@@ -21,7 +21,7 @@ class ProductTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var photos: [UIImage?] = [] {
+    var photos: [UIImage] = [] {
         didSet{
             collectionView.reloadData()
         }

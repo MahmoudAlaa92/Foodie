@@ -37,6 +37,8 @@ class NewOfferTableViewCell: UITableViewCell {
     }
     
     @IBAction func getPressed(_ sender: UIButton) {
+        
     }
+    
     
 }

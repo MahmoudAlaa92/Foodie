@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol PopularFoodTableViewCellDelegate{
+    func didSelectedPopularItem(indexPath: IndexPath)
+}
+
 class PopularFoodTableViewCell: UITableViewCell {
 
+    var delegateOfPopularItem: PopularFoodTableViewCellDelegate?
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!{
@@ -66,5 +72,9 @@ extension PopularFoodTableViewCell: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegateOfPopularItem?.didSelectedPopularItem(indexPath: indexPath)
     }
 }
