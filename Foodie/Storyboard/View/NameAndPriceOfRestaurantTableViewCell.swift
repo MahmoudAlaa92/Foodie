@@ -13,7 +13,7 @@ class NameAndPriceOfRestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var foodePrice: UILabel!
     @IBOutlet weak var orderNumber: UILabel!
  
-    var orderCount = 0{
+    var orderCount = 1{
         didSet{
             orderNumber.text = "\(orderCount)"
         }

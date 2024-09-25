@@ -43,13 +43,37 @@ class ProductViewController: UIViewController {
     }
     @IBAction func minuseBtn(_ sender: UIButton) {
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NameAndPriceOfRestaurantTableViewCell{
-            if cell.orderCount > 0 {
+            if cell.orderCount > 1 {
                 cell.orderCount -= 1
             }
         }
     }
     // Add to cart
     @IBAction func addToCart(_ sender: UIButton) {
+        
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NameAndPriceOfRestaurantTableViewCell{
+            
+            let filterPrice = priceOfFood.filter{ "0123456789".contains($0) }
+            guard let imageData = headerView.imageView.image!.jpegData(compressionQuality: 1.0) else{
+                print("Error when conver image to Data" )
+                return
+            }
+            let model =
+            Cart(image: imageData,
+                 name: nameOfFoodImage,
+                 price:Int64(filterPrice)!,
+                 Quantity: Int16(cell.orderCount))
+            
+            DataPersistentManager.shared.createCartItem(model) { result in
+                switch result{
+                case .success(()):
+                    print("Saved")
+                case .failure(let error):
+                    print("Error when save item: \(error)")
+                }
+            }
+            
+        }
         
     }
 }

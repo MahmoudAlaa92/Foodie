@@ -29,7 +29,7 @@ class FavouriteTableViewController: UITableViewController {
 
     // fetch Favourite Restaurant
     func fetchFavouriteRestaurantData(){
-        DataPersistentManager.shared.fetchData { [weak self] result in
+        DataPersistentManager.shared.fetchFavouriteRestaurants { [weak self] result in
             switch result{
             case .success(let FavouriteRestaurant):
                 DispatchQueue.main.async { [weak self] in
@@ -52,7 +52,7 @@ class FavouriteTableViewController: UITableViewController {
     // delete Favourite Restaurant
     func deleteFavouriteRestaurant(name restaurant: RestaurantItem ,index indexPath: IndexPath)
     {
-        DataPersistentManager.shared.deleteData(with: restaurant) { result in
+        DataPersistentManager.shared.deleteFavouriteRestaurant(with: restaurant) { result in
             switch result{
             case .success(()):
                 print("Deleted")

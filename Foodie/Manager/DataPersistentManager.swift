@@ -21,8 +21,8 @@ class DataPersistentManager{
     
     static let shared = DataPersistentManager()
     
-    // Create Data
-    func creatDate(with model: FavouriteRestaurant ,completion: @escaping (Result<Void ,Error>) -> Void){
+    // Create favourite restaurant
+    func createFavouriteRestaurant(with model: FavouriteRestaurant ,completion: @escaping (Result<Void ,Error>) -> Void){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -46,8 +46,8 @@ class DataPersistentManager{
         }
     }
     
-    // Fetch data
-    func fetchData(completion: @escaping (Result<[RestaurantItem] ,Error>) -> Void ){
+    // Fetch favourite restaurant
+    func fetchFavouriteRestaurants(completion: @escaping (Result<[RestaurantItem] ,Error>) -> Void ){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{ return }
         
@@ -64,8 +64,8 @@ class DataPersistentManager{
         }
     }
     
-    // Delete Data
-  func deleteData(with model: RestaurantItem ,completion: @escaping (Result<Void ,Error>) -> Void){
+    // Delete favourite restaurant
+  func deleteFavouriteRestaurant(with model: RestaurantItem ,completion: @escaping (Result<Void ,Error>) -> Void){
       guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
       let managedContext = appDelegate.persistentContainer.viewContext
       
@@ -77,6 +77,70 @@ class DataPersistentManager{
           completion(.failure(DataBase.failToDeleteData))
       }
       
+    }
+    
+    // MARK: - Cart Methods
+    
+    // Create cart item
+
+    func createCartItem(_ model: Cart ,completion: @escaping (Result<Void ,Error>) -> Void){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        guard let cartItemEntity = NSEntityDescription.entity(forEntityName: "CartItem", in: managedContext) else {
+            print("Error in NsEntityDescription")
+            return
+        }
+        
+        let itemToSave = NSManagedObject(entity: cartItemEntity, insertInto: managedContext)
+        
+        itemToSave.setValue(model.image, forKey: "image")
+        itemToSave.setValue(model.name, forKey: "name")
+        itemToSave.setValue(model.price, forKey: "price")
+        itemToSave.setValue(model.Quantity, forKey: "quantity")
+        
+        do{
+            try managedContext.save()
+            completion(.success(()))
+        }catch{
+            
+            completion(.failure(DataBase.failToSaveDate))
+        }
+    }
+    
+    
+    // Fetch cart item
+    func fetchCartItem(completion: @escaping (Result<[CartItem] ,Error>) -> Void ){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<CartItem>(entityName: "CartItem")
+        
+        do{
+            let cartItems = try managedContext.fetch(fetchRequest)
+            completion(.success(cartItems))
+        }catch{
+            completion(.failure(DataBase.failToFetchData))
+            
+        }
+    }
+    
+    // Delete cart item
+    func deleteCartItem(_ model: CartItem ,completion: @escaping (Result<Void ,Error>) -> Void){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        managedContext.delete(model)
+        
+        do{
+            try managedContext.save()
+            completion(.success(()))
+        }catch{
+            completion(.failure(DataBase.failToDeleteData))
+            
+        }
     }
     
 }

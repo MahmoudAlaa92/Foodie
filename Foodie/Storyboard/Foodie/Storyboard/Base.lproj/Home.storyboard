@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GQj-fV-XTQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GQj-fV-XTQ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -259,7 +259,7 @@
                                         <connections>
                                             <outlet property="collectionView" destination="d9q-VJ-Xvj" id="KYg-rM-V60"/>
                                             <outlet property="titleLabel" destination="fJb-g8-hKh" id="Bxo-un-bge"/>
-                                            <segue destination="acb-jk-eRa" kind="show" id="6wj-hs-eKY"/>
+                                            <segue destination="acb-jk-eRa" kind="show" customClass="CustomSegue" customModule="Foodie" customModuleProvider="target" id="6wj-hs-eKY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

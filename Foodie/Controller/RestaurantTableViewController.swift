@@ -376,7 +376,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
                 }
                 
                 // save restaurant in DataBase (CoreData)
-                DataPersistentManager.shared.creatDate(with: FavouriteRestaurant(
+                DataPersistentManager.shared.createFavouriteRestaurant(with: FavouriteRestaurant(
                     image: imageData,
                     name: restaurant.name,
                     location: restaurant.location,
