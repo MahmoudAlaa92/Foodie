@@ -107,7 +107,7 @@ extension CartViewController: UITableViewDelegate,UITableViewDataSource{
         
         var subtotal = cartItems.reduce(0) { $0 + (Double($1.price) * Double($1.quantity)) }
         
-        if promoCode{
+        if promoCode && textField.text != ""{
             subtotal -= 20
             textField.text = ""
         }

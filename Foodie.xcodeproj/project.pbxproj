@@ -73,6 +73,8 @@
 		15DCDADF2C9B6DFD0002C89C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */; };
 		15DD41212C397B5000754947 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */; };
 		15DD41232C39BACA00754947 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD41222C39BACA00754947 /* MapViewController.swift */; };
+		15E22E602CA4CA91006FBB70 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E22E5E2CA4CA91006FBB70 /* AlertViewController.swift */; };
+		15E22E612CA4CA91006FBB70 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15E22E5F2CA4CA91006FBB70 /* AlertViewController.xib */; };
 		15EF28CD2C932CC10003E269 /* NewOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF28CB2C932CC10003E269 /* NewOfferTableViewCell.swift */; };
 		15EF28CE2C932CC10003E269 /* NewOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15EF28CC2C932CC10003E269 /* NewOfferTableViewCell.xib */; };
 		15EF28D02C9330260003E269 /* NewOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF28CF2C9330260003E269 /* NewOffer.swift */; };
@@ -153,6 +155,8 @@
 		15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
 		15DD41222C39BACA00754947 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		15E22E5E2CA4CA91006FBB70 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		15E22E5F2CA4CA91006FBB70 /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		15EF28CB2C932CC10003E269 /* NewOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOfferTableViewCell.swift; sourceTree = "<group>"; };
 		15EF28CC2C932CC10003E269 /* NewOfferTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewOfferTableViewCell.xib; sourceTree = "<group>"; };
 		15EF28CF2C9330260003E269 /* NewOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOffer.swift; sourceTree = "<group>"; };
@@ -411,6 +415,7 @@
 		15D63E202C2C06FB000FD524 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15E22E5D2CA4CA51006FBB70 /* AlertView */,
 				15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */,
 				15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */,
 				15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */,
@@ -458,6 +463,15 @@
 				15D63E202C2C06FB000FD524 /* View */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		15E22E5D2CA4CA51006FBB70 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				15E22E5E2CA4CA91006FBB70 /* AlertViewController.swift */,
+				15E22E5F2CA4CA91006FBB70 /* AlertViewController.xib */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		15EF28CA2C932C8C0003E269 /* NewOffer */ = {
@@ -583,6 +597,7 @@
 				15EF28D92C936F3D0003E269 /* PopularFoodTableViewCell.xib in Resources */,
 				15462E172C29413900D998CD /* Base in Resources */,
 				1546AD1C2C62AC8100F4EE32 /* Localizable.xcstrings in Resources */,
+				15E22E612CA4CA91006FBB70 /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +619,7 @@
 				1542E65B2C42C8FA00E12C95 /* NewRestaurantController.swift in Sources */,
 				15AB26D02C9098BC0043AAEA /* SliderImagesTableViewCell.swift in Sources */,
 				153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */,
+				15E22E602CA4CA91006FBB70 /* AlertViewController.swift in Sources */,
 				15462E262C295C2A00D998CD /* RestaurantTableViewCell.swift in Sources */,
 				15C3BC1D2C669AE400EEEEF9 /* DataPersistentManager.swift in Sources */,
 				15462E102C29413900D998CD /* AppDelegate.swift in Sources */,

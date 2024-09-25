@@ -67,6 +67,9 @@ class ProductViewController: UIViewController {
             DataPersistentManager.shared.createCartItem(model) { result in
                 switch result{
                 case .success(()):
+                    
+                    let alert = AlertViewController()
+                    alert.appear(sender: self)
                     print("Saved")
                 case .failure(let error):
                     print("Error when save item: \(error)")
