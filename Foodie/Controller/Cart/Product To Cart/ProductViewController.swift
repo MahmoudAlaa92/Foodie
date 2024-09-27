@@ -11,6 +11,9 @@ class ProductViewController: UIViewController {
     
     
     var nameOfFoodImage = "Pepperoni pizza"
+    var imageofHeaderView =  UIImage()
+    var isFavorite =  false
+    var heartImage = UIImage()
     var priceOfFood = "L.E65,000"
     var descriptionOfFoodImage = "Highlights Button detailed trench coat has v-neck cuttingPocket detailed, two front patch pockets at the bottom Made with polyester blended material"
   
@@ -25,9 +28,16 @@ class ProductViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         
-        print(nameOfFoodImage)
         // Header view
-        headerView.imageView.image = UIImage(named: nameOfFoodImage)
+        headerView.imageView.image = UIImage(named: nameOfFoodImage) ?? imageofHeaderView
+        
+        if isFavorite{
+            headerView.favouriteBtn.setImage( UIImage(systemName: "heart.fill"), for: .normal)
+            print("true")
+        }else{
+            print("false")
+            headerView.favouriteBtn.setImage( UIImage(systemName: "heart"), for: .normal)
+        }
         
     }
     

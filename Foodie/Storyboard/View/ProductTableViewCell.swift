@@ -11,11 +11,16 @@ protocol ProductTableViewCellDelegate{
     func didselectedItem (at indexPath: IndexPath ,for tableViewRow: Int)
 }
 
-class ProductTableViewCell: UITableViewCell {
+protocol isFavoriteChangedDelegate{
+    func favoriteChanged (isFavorite: [Bool] ,row: Int ,value: Bool)
+}
+
+class ProductTableViewCell: UITableViewCell, productCollectionViewCellDelegate {
 
     var tableViewRow: Int?
     
     var selectedDelegate: ProductTableViewCellDelegate?
+    var favoriteDelegate: isFavoriteChangedDelegate?
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -29,7 +34,8 @@ class ProductTableViewCell: UITableViewCell {
     
     var name = [String]()
     var price = [String]()
-    
+    var isFavorited: [Bool] = []
+
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self
@@ -60,10 +66,14 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
             print("Error in productCollectionViewCell")
             return UICollectionViewCell()
         }
-        
+        cell.delegate = self
         cell.productImage.image = photos[indexPath.row]
         cell.nameLabel.text = name[indexPath.row]
         cell.priceLabel.text = price[indexPath.row]
+        cell.isFavourited = isFavorited[indexPath.row]
+        cell.cellRow = tableViewRow
+        cell.row = indexPath.row
+        
         return cell
     }
     
@@ -80,4 +90,44 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
         selectedDelegate?.didselectedItem(at: indexPath ,for: tableViewRow ?? 0)
         
     }
+    
+    // Toggle Favorite
+    func didToggleFavorite(at indexPath: IndexPath, isFavorite: Bool) {
+        self.isFavorited[indexPath.row] = isFavorite
+        saveFavoriteData(indexPath: indexPath ,isFavorite: isFavorite)
+    }
+    
+    func saveFavoriteData(indexPath: IndexPath ,isFavorite: Bool){
+        
+        // User defaults
+        let defaults = UserDefaults.standard
+        if tableViewRow == 2 {
+            let recommendedData = try? NSKeyedArchiver.archivedData(withRootObject: isFavorited, requiringSecureCoding: false)
+            defaults.set(recommendedData, forKey: "favoriteBoolForRecommended")
+            favoriteDelegate?.favoriteChanged(isFavorite: isFavorited, row: 2, value: isFavorite)
+        }else if tableViewRow == 3{
+            let bestSellerData = try? NSKeyedArchiver.archivedData(withRootObject: isFavorited, requiringSecureCoding: false)
+            favoriteDelegate?.favoriteChanged(isFavorite: isFavorited, row: 3, value: isFavorite)
+            defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller")
+        }
+        
+        // save restaurant in DataBase (CoreData)
+        if isFavorite {
+            guard let imageData = photos[indexPath.row].jpegData(compressionQuality: 1.0) else { return }
+            DataPersistentManager.shared.createFavouriteRestaurant(with: FavouriteRestaurant(
+                image: imageData,
+                name: name[indexPath.row],
+                location: "Sheyakhah Oula, Aswan First, Aswan Governorate, Egypt",
+                type: "Restaurant")) { result in
+                    switch result{
+                    case .success():
+                        print("Restaurant Saved")
+                        NotificationCenter.default.post(name: Notification.Name("FavouriteRestaurant"), object: nil)
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+        }
+    }
+
 }

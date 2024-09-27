@@ -11,5 +11,5 @@ class HeaderOfProductToCartView: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var favouriteBtn: UIButton!
-    
+
 }

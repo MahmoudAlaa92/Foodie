@@ -30,7 +30,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxd-25-CbC">
                                             <rect key="frame" x="338.66666666666669" y="0.0" width="40.666666666666686" height="40.666666666666664"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system">
+                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25"/>
                                                 <color key="baseForegroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </buttonConfiguration>
@@ -61,46 +61,48 @@
                                             <rect key="frame" x="0.0" y="0.0" width="294" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zzS-tx-O73" userLabel="StackViewOfLabels">
-                                                    <rect key="frame" x="16" y="5" width="120" height="65"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zzS-tx-O73" userLabel="name&amp;price">
+                                                    <rect key="frame" x="16" y="5" width="205.66666666666666" height="65"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pepperoni pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoa-gG-2Ne">
-                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="33.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pepperoni pizza" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoa-gG-2Ne">
+                                                            <rect key="frame" x="0.0" y="0.0" width="131.33333333333334" height="34.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L.E65,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbn-Po-nlM">
-                                                            <rect key="frame" x="0.0" y="33.666666666666664" width="76.333333333333329" height="31.333333333333336"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <rect key="frame" x="0.0" y="34.333333333333336" width="74.333333333333329" height="30.666666666666664"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-it-0UE">
-                                                    <rect key="frame" x="188.33333333333334" y="20.333333333333332" width="105.66666666666666" height="34.333333333333343"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-it-0UE" userLabel="Min&amp;Max">
+                                                    <rect key="frame" x="221.66666666666666" y="20.333333333333332" width="72.333333333333343" height="34.333333333333343"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7V-Dc-889" userLabel="Minus">
-                                                            <rect key="frame" x="0.0" y="0.0" width="49" height="34.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="24.333333333333332" height="34.333333333333336"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="minus.square" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="17"/>
                                                                 <color key="baseForegroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </buttonConfiguration>
                                                             <connections>
                                                                 <action selector="minuseBtn:" destination="nzy-WX-EOA" eventType="touchUpInside" id="3ZM-Yd-nHG"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cks-OD-JIM" userLabel="Number">
-                                                            <rect key="frame" x="49" y="0.0" width="7.6666666666666643" height="34.333333333333336"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cks-OD-JIM" userLabel="Number">
+                                                            <rect key="frame" x="24.333333333333343" y="0.0" width="24" height="34.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <color key="textColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1u-ap-2S6" userLabel="Plus">
-                                                            <rect key="frame" x="56.666666666666657" y="0.0" width="49" height="34.333333333333336"/>
+                                                            <rect key="frame" x="48.333333333333343" y="0.0" width="24" height="34.333333333333336"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="17"/>
                                                                 <color key="baseForegroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </buttonConfiguration>
                                                             <connections>
@@ -111,10 +113,13 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="aRg-it-0UE" secondAttribute="trailing" id="8OI-Kl-Nsh"/>
                                                 <constraint firstItem="zzS-tx-O73" firstAttribute="leading" secondItem="f6G-QC-EHt" secondAttribute="leading" constant="16" id="Fbe-UD-i0d"/>
+                                                <constraint firstAttribute="trailing" secondItem="aRg-it-0UE" secondAttribute="trailing" id="RIk-d5-c4w"/>
                                                 <constraint firstItem="zzS-tx-O73" firstAttribute="top" secondItem="f6G-QC-EHt" secondAttribute="top" constant="5" id="fUd-5a-fXi"/>
-                                                <constraint firstAttribute="trailing" secondItem="aRg-it-0UE" secondAttribute="trailing" id="m8j-53-RoI"/>
-                                                <constraint firstItem="aRg-it-0UE" firstAttribute="centerY" secondItem="zzS-tx-O73" secondAttribute="centerY" id="sS8-80-Dd1"/>
+                                                <constraint firstItem="zzS-tx-O73" firstAttribute="width" secondItem="f6G-QC-EHt" secondAttribute="width" multiplier="0.7" id="log-2N-2Lw"/>
+                                                <constraint firstItem="aRg-it-0UE" firstAttribute="centerY" secondItem="zzS-tx-O73" secondAttribute="centerY" id="mG1-mF-PON"/>
+                                                <constraint firstItem="aRg-it-0UE" firstAttribute="leading" secondItem="zzS-tx-O73" secondAttribute="trailing" id="rJ4-lo-h2W"/>
                                                 <constraint firstAttribute="bottom" secondItem="zzS-tx-O73" secondAttribute="bottom" id="zCq-rC-4oC"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -293,7 +298,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="minus.square" catalog="system" width="128" height="114"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <namedColor name="ButtonColor">

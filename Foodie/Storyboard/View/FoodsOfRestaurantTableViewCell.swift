@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol FoodsOfRestaurantTableViewCellDelegate{
+    func didSelected(indexPath: IndexPath)
+}
+
 class FoodsOfRestaurantTableViewCell: UITableViewCell {
+    
+    var delegateOfSelectedItem: FoodsOfRestaurantTableViewCellDelegate?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var photos = [UIImage]()
@@ -57,5 +64,10 @@ extension FoodsOfRestaurantTableViewCell: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+    
+    // Did selected item
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegateOfSelectedItem?.didSelected(indexPath: indexPath)
     }
 }

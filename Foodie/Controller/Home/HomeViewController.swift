@@ -80,11 +80,16 @@ class HomeViewController: UIViewController {
     prices: ["75L.E","55L.E" ,"95L.E" ,"45L.E"],
         images: [UIImage(named: "Grilled chicken")!, UIImage(named: "Vegetables pizza")!, UIImage(named: "Meat pizzza")!, UIImage(named: "Rice cake")!] )
     
+    var favoriteBoolForRecommended = [Bool]()
+    var favoriteBoolForBestSeller = [Bool]()
+      
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         fetchFavoriteStatusFromUserDefaults()
+
         // uploud new
 //        let group = DispatchGroup()
 //        var imageUrls = [String]()
@@ -139,9 +144,20 @@ class HomeViewController: UIViewController {
 
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-   
-    // Retrieve Items Of recommended and bestSeller
-    
+ 
+    // fetch favorite status
+    func fetchFavoriteStatusFromUserDefaults() {
+        let defualts = UserDefaults.standard
+        if let recommendedData = defualts.data(forKey: "favoriteBoolForRecommended"),
+           let bestSellerData = defualts.data(forKey: "favoriteBoolForBestSeller"),
+           let recommendedBool = (try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: recommendedData) as? [Bool]),
+           let bestSellerBool = (try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: bestSellerData) as? [Bool]) {
+            favoriteBoolForRecommended = recommendedBool
+            favoriteBoolForBestSeller = bestSellerBool
+                print("Successfully fetched from UserDefaults!")
+            }
+
+    }
 }
 
 // MARK: - Table View Delegate
@@ -161,6 +177,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
                 return UITableViewCell()
             }
             cell.delegateSliderImage = self
+            
             cell.setUpImages(images: imagesOfSliderCollection)
             cell.selectionStyle = .none
             return cell
@@ -181,18 +198,22 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
                 return UITableViewCell()
             }
             
+            cell.favoriteDelegate = self
             cell.selectedDelegate = self
             
-            if (indexPath.row == 2){
+            if (indexPath.row == 2){ // Recommended
                 cell.titleLabel.text = recommendedAndBest["Recomoneded"]?.title
                 cell.photos = recommendedAndBest["Recomoneded"]!.images
                 cell.name = recommendedAndBest["Recomoneded"]!.names
                 cell.price = recommendedAndBest["Recomoneded"]!.prices
-            }else{
+                cell.isFavorited = favoriteBoolForRecommended
+                
+            }else{ // Best seller
                 cell.titleLabel.text = recommendedAndBest["BestSeller"]?.title
                 cell.photos = recommendedAndBest["BestSeller"]!.images
                 cell.name = recommendedAndBest["BestSeller"]!.names
                 cell.price = recommendedAndBest["BestSeller"]!.prices
+                cell.isFavorited = favoriteBoolForBestSeller
             }
             cell.tableViewRow = indexPath.row
             cell.selectionStyle = .none
@@ -255,13 +276,26 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
         }
     }
   
-    
 }
 
 // MARK: - Did selected Items
 
-extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewCellDelegate ,PopularFoodTableViewCellDelegate, SliderImagesTableViewCellDelegate{
+extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewCellDelegate ,PopularFoodTableViewCellDelegate, SliderImagesTableViewCellDelegate ,isFavoriteChangedDelegate{
     
+    func favoriteChanged(isFavorite: [Bool], row: Int,value: Bool) {
+        if row == 2{
+            favoriteBoolForRecommended = isFavorite
+        }else if row == 3{
+            favoriteBoolForBestSeller = isFavorite
+        }
+        
+        if value{
+            let alert = AlertViewController()
+            alert.messageOfLabel = "Added To Favorites"
+            alert.imageName = "Favorite"
+            alert.appear(sender: self)
+        }
+    }
     
     func didSelectedItem(at indexPath: IndexPath){
         
@@ -271,22 +305,25 @@ extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewC
         self.show(destinationVC, sender: self)
     }
     
-    // Recommended and bestSeller
     func didselectedItem(at indexPath: IndexPath, for tableViewRow: Int) {
-        print("\(tableViewRow) \(indexPath.row)")
         
         guard let destinationVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else{
             return
         }
 
         switch tableViewRow{
+            
         case 2:
             destinationVC.nameOfFoodImage = recommendedAndBest["Recomoneded"]!.names[indexPath.row]
             destinationVC.priceOfFood = recommendedAndBest["Recomoneded"]!.prices[indexPath.row]
+            
+            destinationVC.isFavorite = favoriteBoolForRecommended[indexPath.row]
+           
         case 3:
             destinationVC.nameOfFoodImage = recommendedAndBest["BestSeller"]!.names[indexPath.row]
             destinationVC.priceOfFood = recommendedAndBest["BestSeller"]!.prices[indexPath.row]
             
+            destinationVC.isFavorite = favoriteBoolForBestSeller[indexPath.row]
             
         default:
             fatalError("Error when select item from Recommended or BesSeller Collection View")
@@ -311,7 +348,10 @@ extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewC
     // Selected item in slider images
     func didSelectedSliderImage(indexPath: IndexPath) {
         guard let destinationVC = storyboard?.instantiateViewController(identifier: "FoodsOfSpecificRestaurantViewController") as? FoodsOfSpecificRestaurantViewController else { return }
+        
         destinationVC.selectedItem = "Discount 10%"
         self.show(destinationVC, sender: self)
     }
 }
+
+

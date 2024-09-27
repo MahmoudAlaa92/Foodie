@@ -62,7 +62,6 @@ class CartViewController: UIViewController {
         
     }
     
-    
     @IBAction func addPromoCode(_ sender: UIButton) {
         updateCartTotals(promoCode: true)
     }
@@ -126,6 +125,7 @@ extension CartViewController: UITableViewDelegate,UITableViewDataSource{
 // MARK: - Increase or decrease item
 
 extension CartViewController: CartTableViewCellDelegate{
+
     func didUpdateQuantity(indexPath: IndexPath, quantity: Int) {
         cartItems[indexPath.row].quantity = Int16(quantity)
         updateCartTotals(promoCode: false)
@@ -133,4 +133,17 @@ extension CartViewController: CartTableViewCellDelegate{
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
+    func deleteCartItem(indexPath: IndexPath) {
+        let model = cartItems[indexPath.row]
+        DataPersistentManager.shared.deleteCartItem(model) { result in
+            switch result {
+            case .success(()):
+                print("Succesfully deleted")
+                self.cartItems.remove(at: indexPath.row)
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("Error when delete cart item from DB: \(error.localizedDescription)")
+            }
+        }
+    }
 }

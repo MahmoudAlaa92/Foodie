@@ -37,7 +37,7 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         //Selected item
         print(selectedItem)
         nameOfRestaurant.text = selectedItem
-        imageOfRestaurant.image = UIImage(named: selectedItem)
+        imageOfRestaurant.image = UIImage(named: selectedItem) 
         
         // Register nib of product tableView
         let nib = UINib(nibName: "FoodsOfRestaurantTableViewCell", bundle: nil)
@@ -113,6 +113,7 @@ extension FoodsOfSpecificRestaurantViewController: UITableViewDelegate ,UITableV
             return UITableViewCell()
         }
         
+        cell.delegateOfSelectedItem = self
         cell.photos = itemsOfRestaurant["\(selectedItem)"]!.images
         cell.namesOfRestaurant = itemsOfRestaurant["\(selectedItem)"]!.names
         cell.pricesOfRestaurant = itemsOfRestaurant["\(selectedItem)"]!.prices
@@ -124,6 +125,17 @@ extension FoodsOfSpecificRestaurantViewController: UITableViewDelegate ,UITableV
         
         return UIScreen.main.bounds.height - ((UIScreen.main.bounds.height * 0.138) * 2) - (navigationController?.navigationBar.frame.height ?? 50)
     }
-    
 }
 
+// MARK: - Selected items in table view
+extension FoodsOfSpecificRestaurantViewController: FoodsOfRestaurantTableViewCellDelegate{
+    func didSelected(indexPath: IndexPath) {
+        guard let destinationVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else { return }
+        
+        destinationVC.nameOfFoodImage = (itemsOfRestaurant[selectedItem]?.names[indexPath.row])!
+        destinationVC.priceOfFood = (itemsOfRestaurant[selectedItem]?.prices[indexPath.row])!
+        destinationVC.imageofHeaderView = (itemsOfRestaurant[selectedItem]?.images[indexPath.row])!
+        
+        self.show(destinationVC, sender: self)
+    }
+}

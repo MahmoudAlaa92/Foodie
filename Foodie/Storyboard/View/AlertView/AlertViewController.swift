@@ -9,9 +9,10 @@ import UIKit
 
 class AlertViewController: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var contentView: UIView!
-    
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var okLabel: UIButton!{
         didSet{
             okLabel.layer.cornerRadius = 20
@@ -19,6 +20,8 @@ class AlertViewController: UIViewController {
         }
     }
     
+    var imageName = ""
+    var messageOfLabel = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,8 @@ class AlertViewController: UIViewController {
         self.contentView.alpha = 0
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.masksToBounds = true
+        self.messageLabel.text = messageOfLabel
+        self.image.image = UIImage(named: imageName)
     }
     
     func appear(sender: UIViewController){
@@ -56,19 +61,14 @@ class AlertViewController: UIViewController {
     }
     
     func show(){
-        UIView.animate(withDuration: 0.1,delay: 0.0) {
             self.backView.alpha = 1
             self.contentView.alpha = 1
-        }
     }
     
     func hide(){
-        UIView.animate(withDuration: 0.1, delay: 0.0 ,options: .curveEaseOut) {
             self.backView.alpha = 0
             self.contentView.alpha = 0
-        } completion: { _ in
             self.dismiss(animated: false)
             self.removeFromParent()
-        }
     }
 }

@@ -9,7 +9,9 @@ import UIKit
 
 protocol CartTableViewCellDelegate{
     func didUpdateQuantity(indexPath: IndexPath ,quantity: Int)
+    func deleteCartItem(indexPath: IndexPath)
 }
+
 class CartTableViewCell: UITableViewCell {
  
     var delegateOfQuantity: CartTableViewCellDelegate?
@@ -64,7 +66,7 @@ class CartTableViewCell: UITableViewCell {
     
     
     @IBAction func deleteButton(_ sender: UIButton) {
-        
+        delegateOfQuantity?.deleteCartItem(indexPath: rowOfTableView)
     }
     
 }
