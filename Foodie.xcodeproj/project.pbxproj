@@ -37,6 +37,7 @@
 		156C03E42C6542670031FE3D /* FavouriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156C03E32C6542670031FE3D /* FavouriteTableViewController.swift */; };
 		15749D592C4A229900562524 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15749D582C4A229900562524 /* WalkthroughPageViewController.swift */; };
 		15749D5B2C4A267D00562524 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15749D5A2C4A267D00562524 /* WalkthroughViewController.swift */; };
+		158AB37E2CA8418A008FAAB1 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 158AB37D2CA8418A008FAAB1 /* JGProgressHUD */; };
 		159E9F2D2C357D010070B51F /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 159E9F2C2C357D010070B51F /* Nunito-Regular.ttf */; };
 		159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 159E9F2E2C357D100070B51F /* Nunito-Bold.ttf */; };
 		15A97B272C745E990069B0A1 /* sliderImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A97B262C745E990069B0A1 /* sliderImageCollectionViewCell.swift */; };
@@ -172,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158AB37E2CA8418A008FAAB1 /* JGProgressHUD in Frameworks */,
 				15DCDAD92C9B68170002C89C /* FirebaseDatabase in Frameworks */,
 				15DCDADB2C9B68170002C89C /* FirebaseFirestore in Frameworks */,
 				15DCDADD2C9B68170002C89C /* FirebaseStorage in Frameworks */,
@@ -530,6 +532,7 @@
 				15DCDAD82C9B68170002C89C /* FirebaseDatabase */,
 				15DCDADA2C9B68170002C89C /* FirebaseFirestore */,
 				15DCDADC2C9B68170002C89C /* FirebaseStorage */,
+				158AB37D2CA8418A008FAAB1 /* JGProgressHUD */,
 			);
 			productName = Foodie;
 			productReference = 15462E0C2C29413900D998CD /* Foodie.app */;
@@ -562,6 +565,7 @@
 			mainGroup = 15462E032C29413900D998CD;
 			packageReferences = (
 				15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 15462E0D2C29413900D998CD /* Products */;
 			projectDirPath = "";
@@ -938,6 +942,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 		15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -949,6 +961,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		158AB37D2CA8418A008FAAB1 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		15DCDAD82C9B68170002C89C /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

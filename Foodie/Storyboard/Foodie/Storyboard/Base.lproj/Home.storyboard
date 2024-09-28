@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EI1-1T-k08" userLabel="welcomView">
                                 <rect key="frame" x="0.0" y="103" width="393" height="70"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeloisl" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-As-2Z0">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Albaloo Polo" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-As-2Z0">
                                         <rect key="frame" x="15" y="10" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7pP-Oc-YDI"/>
@@ -79,8 +79,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSA-EZ-5iZ" userLabel="filterView">
                                                 <rect key="frame" x="287" y="0.0" width="66" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-wY-H2X">
-                                                        <rect key="frame" x="16.666666666666686" y="-39" width="33" height="128"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-wY-H2X">
+                                                        <rect key="frame" x="16.666666666666686" y="16" width="33" height="18.666666666666664"/>
+                                                        <color key="tintColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="33" id="lgM-iM-Cdc"/>
                                                         </constraints>
@@ -323,10 +324,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cafeloisl" width="426.66665649414062" height="426.66665649414062"/>
-        <image name="filter" width="137.33332824707031" height="128"/>
+        <image name="Albaloo Polo" width="342" height="512"/>
         <image name="hi" width="547" height="513"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

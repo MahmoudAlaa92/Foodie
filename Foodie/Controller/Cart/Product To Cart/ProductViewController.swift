@@ -79,6 +79,8 @@ class ProductViewController: UIViewController {
                 case .success(()):
                     
                     let alert = AlertViewController()
+                    alert.messageOfLabel = "Added To Cart"
+                    alert.imageName = "bag"
                     alert.appear(sender: self)
                     print("Saved")
                 case .failure(let error):

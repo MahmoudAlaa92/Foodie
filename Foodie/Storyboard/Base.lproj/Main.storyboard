@@ -281,7 +281,7 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Rate It">
                                                 <backgroundConfiguration key="background" cornerRadius="25"/>
-                                                <color key="baseBackgroundColor" name="NavigationBarTitle"/>
+                                                <color key="baseBackgroundColor" red="0.94901960784313721" green="0.62352941176470589" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </buttonConfiguration>
                                             <connections>
                                                 <segue destination="ZqR-La-h4v" kind="presentation" identifier="showReview" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="odA-1x-0Bb"/>
@@ -846,9 +846,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QMi-Ge-kOy">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="Color"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.94901960784313721" green="0.62352941176470589" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="mxB-m5-3xl" kind="relationship" relationship="viewControllers" id="Cxc-DF-rf2"/>
@@ -926,7 +926,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHD-zF-vbf">
                                         <rect key="frame" x="20" y="179" width="353" height="50"/>
-                                        <color key="backgroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.94901960784313721" green="0.62352941176470589" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Of9-yk-qbf"/>
                                         </constraints>
@@ -948,7 +948,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVk-sz-anr">
                                         <rect key="frame" x="319.66666666666669" y="10" width="68.333333333333314" height="40"/>
-                                        <color key="backgroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.94901960784313721" green="0.62352941176470589" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="iaS-a8-Ypd"/>
                                         </constraints>

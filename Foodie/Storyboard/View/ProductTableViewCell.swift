@@ -54,7 +54,7 @@ class ProductTableViewCell: UITableViewCell, productCollectionViewCellDelegate {
 
 // MARK: - UICollection View Delegate
 
-extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension ProductTableViewCell: UICollectionViewDataSource ,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         photos.count
@@ -85,10 +85,55 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
         10
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let isFavorite = self.isFavorited[indexPath.row] // Check the current favorite status
+        
+        let config = UIContextMenuConfiguration(
+            identifier: indexPath.row as NSCopying,
+            previewProvider: {
+                
+                guard let productToCartVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else { return nil }
+                
+                
+                productToCartVC.nameOfFoodImage = self.name[indexPath.row]
+                productToCartVC.priceOfFood = self.price[indexPath.row]
+                
+                return productToCartVC
+                
+            }) { action in
+                
+            let favouriteAction = UIAction(
+                title: isFavorite ? "Remove from favorites" : "Save as favorite",
+                image: isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")) { action in
+                
+                // Toggle favorite status
+                self.isFavorited[indexPath.row].toggle()
+                
+                // Save the changes
+                self.saveFavoriteData(indexPath: indexPath, isFavorite: self.isFavorited[indexPath.row])
+                    
+                if let cell = collectionView.cellForItem(at: indexPath) as? productCollectionViewCell {
+                    cell.isFavourited = self.isFavorited[indexPath.row]
+                }
+            }
+            
+            let shareAction = UIAction(
+                title: "Share",
+                image: UIImage(systemName: "square.and.arrow.up")) { action in
+                // Implement sharing functionality here
+            }
+            
+            return UIMenu(title: "", children: [favouriteAction, shareAction])
+        }
+        
+        return config
+    }
+
+    
     // Did selected item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDelegate?.didselectedItem(at: indexPath ,for: tableViewRow ?? 0)
-        
     }
     
     // Toggle Favorite
@@ -104,9 +149,13 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
         if tableViewRow == 2 {
             let recommendedData = try? NSKeyedArchiver.archivedData(withRootObject: isFavorited, requiringSecureCoding: false)
             defaults.set(recommendedData, forKey: "favoriteBoolForRecommended")
+            
+            // Notify delegate about the favorite change
             favoriteDelegate?.favoriteChanged(isFavorite: isFavorited, row: 2, value: isFavorite)
         }else if tableViewRow == 3{
             let bestSellerData = try? NSKeyedArchiver.archivedData(withRootObject: isFavorited, requiringSecureCoding: false)
+
+            // Notify delegate about the favorite change
             favoriteDelegate?.favoriteChanged(isFavorite: isFavorited, row: 3, value: isFavorite)
             defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller")
         }
@@ -114,6 +163,7 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
         // save restaurant in DataBase (CoreData)
         if isFavorite {
             guard let imageData = photos[indexPath.row].jpegData(compressionQuality: 1.0) else { return }
+            
             DataPersistentManager.shared.createFavouriteRestaurant(with: FavouriteRestaurant(
                 image: imageData,
                 name: name[indexPath.row],
@@ -128,6 +178,7 @@ extension ProductTableViewCell: UICollectionViewDataSource, UICollectionViewDele
                     }
                 }
         }
+        
     }
 
 }

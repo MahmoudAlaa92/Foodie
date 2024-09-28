@@ -228,7 +228,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     }
     
     // Context Menu Configuration
-    
     override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         guard let restaurant = self.dataSource.itemIdentifier(for: indexPath) else{
             return nil

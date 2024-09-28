@@ -90,29 +90,6 @@ class HomeViewController: UIViewController {
         
          fetchFavoriteStatusFromUserDefaults()
 
-        // uploud new
-//        let group = DispatchGroup()
-//        var imageUrls = [String]()
-//        
-//        for (restaurantName, product) in recommendedAndBest {
-//            for (index, image) in product.images.enumerated() {
-//                group.enter()
-//                let imageName = "\(restaurantName)_\(product.names[index])"
-//                
-//                // Upload image and get the download URL
-//                DataPersistentManager.shared.uploadImage(image: image, imageName: imageName) { url in
-//                    if let imageUrl = url {
-//                        imageUrls.append(imageUrl)  // Store the image URL
-//                    }
-//                    group.leave()
-//                }
-//            }
-//        }
-//        group.notify(queue: .main) { [self] in
-//            // Once all uploads are done, save the image URLs and restaurant data in Firestore
-//            DataPersistentManager.shared.saveToFirestore(restaurantData: recommendedAndBest, imageUrls: imageUrls, to: "recommendedAndBestSeller")
-//        }
-        
         // Table view
         tableView.delegate = self
         tableView.dataSource = self
@@ -130,6 +107,29 @@ class HomeViewController: UIViewController {
         // Register the Popular Food nib file
         let nib3 = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
         tableView.register(nib3, forCellReuseIdentifier: "PopularFoodCell")
+        
+        // uploud new
+//        let group = DispatchGroup()
+//        var imageUrls = [String]()
+//
+//        for (restaurantName, product) in recommendedAndBest {
+//            for (index, image) in product.images.enumerated() {
+//                group.enter()
+//                let imageName = "\(restaurantName)_\(product.names[index])"
+//
+//                // Upload image and get the download URL
+//                DataPersistentManager.shared.uploadImage(image: image, imageName: imageName) { url in
+//                    if let imageUrl = url {
+//                        imageUrls.append(imageUrl)  // Store the image URL
+//                    }
+//                    group.leave()
+//                }
+//            }
+//        }
+//        group.notify(queue: .main) { [self] in
+//            // Once all uploads are done, save the image URLs and restaurant data in Firestore
+//            DataPersistentManager.shared.saveToFirestore(restaurantData: recommendedAndBest, imageUrls: imageUrls, to: "recommendedAndBestSeller")
+//        }
     }
     
     
@@ -282,7 +282,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
 
 extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewCellDelegate ,PopularFoodTableViewCellDelegate, SliderImagesTableViewCellDelegate ,isFavoriteChangedDelegate{
     
-    func favoriteChanged(isFavorite: [Bool], row: Int,value: Bool) {
+    func favoriteChanged(isFavorite: [Bool], row: Int, value: Bool) {
         if row == 2{
             favoriteBoolForRecommended = isFavorite
         }else if row == 3{

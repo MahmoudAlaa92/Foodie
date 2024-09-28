@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseFirestore
+import JGProgressHUD
 
 class FoodsOfSpecificRestaurantViewController: UIViewController {
     
@@ -42,6 +43,9 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         // Register nib of product tableView
         let nib = UINib(nibName: "FoodsOfRestaurantTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "foodsOfRestaurantCell")
+
+        // Retrieve data from firebase
+        retrieveItemsOfRestaurant()
         
         
                 // Uploud new items
@@ -67,7 +71,6 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
 //                    DataPersistentManager.shared.saveToFirestore(restaurantData: itemsOfRestaurant, imageUrls: imageUrls, to: "restaurants")
 //                }
         
-        retrieveItemsOfRestaurant()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -83,6 +86,13 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
     
     // Retrieve Items Of Restaurant
     func retrieveItemsOfRestaurant(){
+        
+        let hud = JGProgressHUD()
+        hud.tintColor = .red
+        hud.textLabel.text = "Loading"
+        hud.detailTextLabel.text = "Please wait"
+        hud.show(in: view)
+        
         //   Retrieve data from firebase
         DataPersistentManager.shared.retrieveFromFirestore(for: selectedItem, from: "restaurants") { [weak self] product in
             guard let self = self, let product = product else { return }
@@ -93,10 +103,12 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
             // Reload the tableView to show the data
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                hud.dismiss()
             }
             
         }
     }
+    
 }
 
 // MARK: - UITable View Delegate

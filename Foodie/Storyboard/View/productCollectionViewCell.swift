@@ -20,6 +20,7 @@ class productCollectionViewCell: UICollectionViewCell {
     var isFavourited = false {
         didSet{
             updateFavoriteButton()
+            print(isFavourited)
         }
     }
     
@@ -57,7 +58,7 @@ class productCollectionViewCell: UICollectionViewCell {
     @IBAction func cartBtn(_ sender: UIButton) {
     }
     
-    private func updateFavoriteButton() {
+     func updateFavoriteButton() {
           let heartImage = isFavourited ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
           favouriteView.setImage(heartImage, for: .normal)
       }

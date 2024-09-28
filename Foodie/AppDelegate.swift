@@ -44,9 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithTransparentBackground()
-        
+        tabBarAppearance.shadowColor = UIColor(red: 127, green: 127, blue: 127)// Set shadow to hex color
+
+        UITabBar.appearance().unselectedItemTintColor = UIColor(red: 153, green: 153, blue: 153) // lightGray
 //        UITabBar.appearance().tintColor = UIColor(named: "NavigationBarTitle")
-        UITabBar.appearance().unselectedItemTintColor = .white
         
         return true
     }
