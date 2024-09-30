@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150DF68F2CAAFA3900A379D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DF68E2CAAFA3900A379D7 /* WelcomeViewController.swift */; };
+		150DF6922CAAFA5400A379D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DF6912CAAFA5400A379D7 /* LoginViewController.swift */; };
+		150DF6962CAAFAA400A379D7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DF6952CAAFAA400A379D7 /* SignUpViewController.swift */; };
+		150DF6982CAAFADC00A379D7 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DF6972CAAFADC00A379D7 /* ResetPasswordViewController.swift */; };
+		150DF6A42CAB14E800A379D7 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF6992CAB14E800A379D7 /* Rubik-Black.ttf */; };
+		150DF6A52CAB14E800A379D7 /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69C2CAB14E800A379D7 /* Rubik-BoldItalic.ttf */; };
+		150DF6A62CAB14E800A379D7 /* Rubik-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69F2CAB14E800A379D7 /* Rubik-LightItalic.ttf */; };
+		150DF6A72CAB14E800A379D7 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF6A02CAB14E800A379D7 /* Rubik-Medium.ttf */; };
+		150DF6A82CAB14E800A379D7 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF6A22CAB14E800A379D7 /* Rubik-Regular.ttf */; };
+		150DF6A92CAB14E800A379D7 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69E2CAB14E800A379D7 /* Rubik-Light.ttf */; };
+		150DF6AA2CAB14E800A379D7 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF6A12CAB14E800A379D7 /* Rubik-MediumItalic.ttf */; };
+		150DF6AB2CAB14E800A379D7 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69B2CAB14E800A379D7 /* Rubik-Bold.ttf */; };
+		150DF6AC2CAB14E800A379D7 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69D2CAB14E800A379D7 /* Rubik-Italic.ttf */; };
+		150DF6AD2CAB14E800A379D7 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69A2CAB14E800A379D7 /* Rubik-BlackItalic.ttf */; };
+		150DF6B22CAB266500A379D7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 150DF6B12CAB266500A379D7 /* FirebaseAuth */; };
 		1513B25E2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */; };
 		15203FAB2C4E973A0071044F /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15203FA92C4E973A0071044F /* About.storyboard */; };
 		153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153771EE2C3DB367003C2A63 /* ReviewViewController.swift */; };
@@ -87,6 +102,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		150DF68E2CAAFA3900A379D7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		150DF6912CAAFA5400A379D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		150DF6952CAAFAA400A379D7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		150DF6972CAAFADC00A379D7 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		150DF6992CAB14E800A379D7 /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
+		150DF69A2CAB14E800A379D7 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
+		150DF69B2CAB14E800A379D7 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		150DF69C2CAB14E800A379D7 /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
+		150DF69D2CAB14E800A379D7 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
+		150DF69E2CAB14E800A379D7 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		150DF69F2CAB14E800A379D7 /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
+		150DF6A02CAB14E800A379D7 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		150DF6A12CAB14E800A379D7 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
+		150DF6A22CAB14E800A379D7 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsOfSpecificRestaurantViewController.swift; sourceTree = "<group>"; };
 		15203FAA2C4E973A0071044F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Foodie/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		153771EE2C3DB367003C2A63 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				158AB37E2CA8418A008FAAB1 /* JGProgressHUD in Frameworks */,
+				150DF6B22CAB266500A379D7 /* FirebaseAuth in Frameworks */,
 				15DCDAD92C9B68170002C89C /* FirebaseDatabase in Frameworks */,
 				15DCDADB2C9B68170002C89C /* FirebaseFirestore in Frameworks */,
 				15DCDADD2C9B68170002C89C /* FirebaseStorage in Frameworks */,
@@ -183,6 +213,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		150DF68B2CAAF95E00A379D7 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				150DF68E2CAAFA3900A379D7 /* WelcomeViewController.swift */,
+				150DF6912CAAFA5400A379D7 /* LoginViewController.swift */,
+				150DF6952CAAFAA400A379D7 /* SignUpViewController.swift */,
+				150DF6972CAAFADC00A379D7 /* ResetPasswordViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		150DF6B02CAB266500A379D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		154452D02C97266400C497BC /* Product To Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +265,7 @@
 			children = (
 				15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */,
 				15462E0E2C29413900D998CD /* Foodie */,
+				150DF6B02CAB266500A379D7 /* Frameworks */,
 				15462E0D2C29413900D998CD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -268,6 +317,16 @@
 		159E9F2B2C357CB60070B51F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				150DF6992CAB14E800A379D7 /* Rubik-Black.ttf */,
+				150DF69A2CAB14E800A379D7 /* Rubik-BlackItalic.ttf */,
+				150DF69B2CAB14E800A379D7 /* Rubik-Bold.ttf */,
+				150DF69C2CAB14E800A379D7 /* Rubik-BoldItalic.ttf */,
+				150DF69D2CAB14E800A379D7 /* Rubik-Italic.ttf */,
+				150DF69E2CAB14E800A379D7 /* Rubik-Light.ttf */,
+				150DF69F2CAB14E800A379D7 /* Rubik-LightItalic.ttf */,
+				150DF6A02CAB14E800A379D7 /* Rubik-Medium.ttf */,
+				150DF6A12CAB14E800A379D7 /* Rubik-MediumItalic.ttf */,
+				150DF6A22CAB14E800A379D7 /* Rubik-Regular.ttf */,
 				159E9F2C2C357D010070B51F /* Nunito-Regular.ttf */,
 				159E9F2E2C357D100070B51F /* Nunito-Bold.ttf */,
 			);
@@ -435,6 +494,7 @@
 		15D63E212C2C0702000FD524 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				150DF68B2CAAF95E00A379D7 /* Welcome */,
 				15A97B222C745C5E0069B0A1 /* Home */,
 				15C4418E2C95BB080057C682 /* Specific Restaurant */,
 				154B6BEF2CA19243001DB7F3 /* Cart */,
@@ -533,6 +593,7 @@
 				15DCDADA2C9B68170002C89C /* FirebaseFirestore */,
 				15DCDADC2C9B68170002C89C /* FirebaseStorage */,
 				158AB37D2CA8418A008FAAB1 /* JGProgressHUD */,
+				150DF6B12CAB266500A379D7 /* FirebaseAuth */,
 			);
 			productName = Foodie;
 			productReference = 15462E0C2C29413900D998CD /* Foodie.app */;
@@ -584,6 +645,16 @@
 				15C0222A2C922029008DD9E2 /* ProductTableViewCell.xib in Resources */,
 				15462E192C29413B00D998CD /* Assets.xcassets in Resources */,
 				15C4419E2C95C0420057C682 /* FoodsOfRestaurantTableViewCell.xib in Resources */,
+				150DF6A42CAB14E800A379D7 /* Rubik-Black.ttf in Resources */,
+				150DF6A52CAB14E800A379D7 /* Rubik-BoldItalic.ttf in Resources */,
+				150DF6A62CAB14E800A379D7 /* Rubik-LightItalic.ttf in Resources */,
+				150DF6A72CAB14E800A379D7 /* Rubik-Medium.ttf in Resources */,
+				150DF6A82CAB14E800A379D7 /* Rubik-Regular.ttf in Resources */,
+				150DF6A92CAB14E800A379D7 /* Rubik-Light.ttf in Resources */,
+				150DF6AA2CAB14E800A379D7 /* Rubik-MediumItalic.ttf in Resources */,
+				150DF6AB2CAB14E800A379D7 /* Rubik-Bold.ttf in Resources */,
+				150DF6AC2CAB14E800A379D7 /* Rubik-Italic.ttf in Resources */,
+				150DF6AD2CAB14E800A379D7 /* Rubik-BlackItalic.ttf in Resources */,
 				15B07D972C92FE740020F905 /* productCollectionViewCell.xib in Resources */,
 				15FA57F32C769E0600815185 /* Home.storyboard in Resources */,
 				15203FAB2C4E973A0071044F /* About.storyboard in Resources */,
@@ -638,6 +709,7 @@
 				15EF28D02C9330260003E269 /* NewOffer.swift in Sources */,
 				1513B25E2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift in Sources */,
 				154452DE2C972DD900C497BC /* HeaderOfProductToCartView.swift in Sources */,
+				150DF68F2CAAFA3900A379D7 /* WelcomeViewController.swift in Sources */,
 				15BB40A32C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift in Sources */,
 				15ACEBBE2C76F0FE000FF23E /* Product.swift in Sources */,
 				15C90B2C2CA43CF5000E386A /* Cart.swift in Sources */,
@@ -653,12 +725,15 @@
 				15D269992C76A726006CA6DA /* Categories.swift in Sources */,
 				153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */,
 				1563A97F2C740F18002609F2 /* HomeViewController.swift in Sources */,
+				150DF6922CAAFA5400A379D7 /* LoginViewController.swift in Sources */,
 				1542E6592C42B98300E12C95 /* RoundedTextField.swift in Sources */,
 				15EF28D82C936F3D0003E269 /* PopularFoodTableViewCell.swift in Sources */,
 				15C90B322CA449D0000E386A /* CartTableViewCell.swift in Sources */,
 				15BB409F2C36C301009C4E9E /* HeaderRestaurantDetailView.swift in Sources */,
 				15BB40A12C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift in Sources */,
 				15D269972C76A56F006CA6DA /* CategoriesCollectionViewCell.swift in Sources */,
+				150DF6962CAAFAA400A379D7 /* SignUpViewController.swift in Sources */,
+				150DF6982CAAFADC00A379D7 /* ResetPasswordViewController.swift in Sources */,
 				156339302C4919BD007B4319 /* WalkthroughContentViewController.swift in Sources */,
 				153A943A2C5E43DB00A29774 /* AboutTableTableViewController.swift in Sources */,
 				15462E242C29453C00D998CD /* RestaurantTableViewController.swift in Sources */,
@@ -961,6 +1036,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		150DF6B12CAB266500A379D7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		158AB37D2CA8418A008FAAB1 /* JGProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
