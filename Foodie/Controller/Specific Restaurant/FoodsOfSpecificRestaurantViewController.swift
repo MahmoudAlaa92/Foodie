@@ -76,7 +76,7 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Customise navBarAppearance
-        navigationController?.navigationBar.tintColor = UIColor(red: 82, green: 2, blue: 56)
+        navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
     }
     
     // StatusBarStyle
@@ -88,7 +88,6 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
     func retrieveItemsOfRestaurant(){
         
         let hud = JGProgressHUD()
-        hud.tintColor = .red
         hud.textLabel.text = "Loading"
         hud.detailTextLabel.text = "Please wait"
         hud.show(in: view)

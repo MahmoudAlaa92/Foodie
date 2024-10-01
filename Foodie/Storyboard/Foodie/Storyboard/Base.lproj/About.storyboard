@@ -15,20 +15,23 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="ilW-c5-fB2" customClass="About">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="0Nj-FR-cAx">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="r1n-Qv-Zrc">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+                                    <rect key="frame" x="131.66666666666666" y="35" width="129.99999999999997" height="130"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="130" id="HxA-AA-jCk"/>
+                                        <constraint firstAttribute="height" constant="130" id="vHh-n3-Mki"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="r1n-Qv-Zrc" secondAttribute="bottom" id="2Xp-4Z-3aI"/>
-                                <constraint firstItem="r1n-Qv-Zrc" firstAttribute="top" secondItem="0Nj-FR-cAx" secondAttribute="top" id="59s-qs-kML"/>
-                                <constraint firstAttribute="trailing" secondItem="r1n-Qv-Zrc" secondAttribute="trailing" id="HxI-p4-2kc"/>
-                                <constraint firstItem="r1n-Qv-Zrc" firstAttribute="leading" secondItem="0Nj-FR-cAx" secondAttribute="leading" id="Lma-cP-2cz"/>
+                                <constraint firstItem="r1n-Qv-Zrc" firstAttribute="centerX" secondItem="0Nj-FR-cAx" secondAttribute="centerX" id="Ri5-9a-SQK"/>
+                                <constraint firstItem="r1n-Qv-Zrc" firstAttribute="centerY" secondItem="0Nj-FR-cAx" secondAttribute="centerY" id="xx3-AZ-wNs"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -57,12 +60,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="GWv-bT-p8K"/>
                     <connections>
+                        <outlet property="profileImage" destination="r1n-Qv-Zrc" id="XTA-vx-rhv"/>
                         <segue destination="YDq-l8-iQH" kind="presentation" identifier="showWebView" id="z7i-Ys-RM1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ym-5v-kA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125.9541984732823" y="1418.3098591549297"/>
+            <point key="canvasLocation" x="1121.3740458015266" y="1418.3098591549297"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="Sfx-hc-SBQ">
@@ -117,7 +121,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="about" width="1700" height="1200"/>
+        <image name="about" width="320" height="320"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

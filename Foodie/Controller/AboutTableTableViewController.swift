@@ -7,9 +7,17 @@
 
 import UIKit
 import SafariServices
+import Firebase
+import FirebaseAuth
 
 class AboutTableTableViewController: UITableViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!{
+        didSet{
+            profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
+            profileImage.layer.masksToBounds = true
+        }
+    }
     lazy var dataSource = configereDataSource()
     
     enum Section{
@@ -25,16 +33,27 @@ class AboutTableTableViewController: UITableViewController {
     
     var sectionContent = [ 
         [LinkItem(text: String(localized: "Twitter"), link: String(localized: "https://twitter.com/appcodamobile"), image: String(localized: "twitter")), LinkItem(text: String(localized: "Facebook"), link: String(localized: "https://facebook.com/appcodamobile"), image: String(localized: "facebook")), LinkItem(text: String(localized: "Instagram"), link: String(localized: "https://www.instagram.com/appcodadotcom"), image: String(localized: "instagram"))] ,
-        [LinkItem(text: String(localized: "Rate us on App Store"), link: String(localized: "https://www.apple.com/ios/app-store/"), image: String(localized: "store")), LinkItem(text: String(localized: "Tell us your feedback"), link: String(localized: "http://www.appcoda.com/contact"), image: String(localized: "chat"))]]
+        [LinkItem(text: String(localized: "Rate us on App Store"), link: String(localized: "https://www.apple.com/ios/app-store/"), image: String(localized: "store")), LinkItem(text: String(localized: "Tell us your feedback"), link: String(localized: "http://www.appcoda.com/contact"), image: String(localized: "chat")),LinkItem(text: "Log Out", link: "", image: "logout")]
+    ]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Customize the navigation bar appearance
+        customizeNavigationBar()
+        
+        // Load table data
+        tableView.dataSource = dataSource
+        updateSnapshot()
+    }
+
+    
+    // Customize navigation bar
+    func customizeNavigationBar(){
+        
         // Use large title for navigation bar appearance
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // Customize the navigation bar appearance
         if let apperance = navigationController?.navigationBar.standardAppearance {
             apperance.configureWithTransparentBackground()
             
@@ -46,12 +65,9 @@ class AboutTableTableViewController: UITableViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = apperance
             navigationController?.navigationBar.compactAppearance = apperance
         }
-        
-        // Load table data
-        tableView.dataSource = dataSource
-        updateSnapshot()
     }
-
+    
+    // Update Snapshot
     func updateSnapshot(){
         
         // Create a snapshot and populate the data
@@ -90,13 +106,43 @@ class AboutTableTableViewController: UITableViewController {
         case 0:
             performSegue(withIdentifier: "showWebView", sender: self)
         case 1:
-            openWithSafariViewController(indexPath: indexPath)
+            if indexPath.row == 2{
+                // Logout
+                self.logout()
+            }
+            else{
+                openWithSafariViewController(indexPath: indexPath) }
         default:
             break
         }
         
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    // Logout
+    func logout(){
+       do{
+           try Auth.auth().signOut()
+       }catch{
+           
+           let alertController = UIAlertController(
+               title: "LogOut Error",
+               message: "\(error.localizedDescription)",
+               preferredStyle: .alert)
+           
+           let okayAcrtin = UIAlertAction(title: "Ok", style: .cancel)
+           alertController.addAction(okayAcrtin)
+           
+           present(alertController ,animated: true)
+           return
+       }
+       
+    // present Welcome View
+        let welcomViewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeView")
+       UIApplication.shared.keyWindow?.rootViewController = welcomViewVC
+       
+       self.dismiss(animated: true)
+   }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

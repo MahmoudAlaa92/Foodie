@@ -11,26 +11,59 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!{
+        didSet{
+            nameTextField.layer.cornerRadius = 10
+            nameTextField.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet var emailTextField: UITextField!{
+        didSet{
+            emailTextField.layer.cornerRadius = 10
+            emailTextField.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet var passwordTextField: UITextField!{
+        didSet{
+            passwordTextField.layer.cornerRadius = 10
+            passwordTextField.layer.masksToBounds = true
+            passwordTextField.isSecureTextEntry = true
+
+        }
+    }
+    @IBOutlet weak var eyePassword: UIButton!{
+        didSet{
+            eyePassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        }
+    }
     
+    @IBOutlet weak var privacyCheck: UIButton!{
+        didSet{
+            privacyCheck.tintColor = .white
+            privacyCheck.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        }
+    }
     @IBOutlet weak var signUp: UIButton!{
         didSet{
             signUp.layer.cornerRadius = 15
             signUp.layer.masksToBounds = true
         }
     }
+    
+    var isPasswordVisible: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-   
         
         cutomizeNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Customise navBarAppearance
+        navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
+        
         self.title = "Sign Up"
         nameTextField.becomeFirstResponder()
     }
@@ -38,29 +71,47 @@ class SignUpViewController: UIViewController {
     // Customize navigation bar
     func cutomizeNavigationBar(){
         
-        if let appearance = navigationController?.navigationBar.standardAppearance {
-            // Make the navigation bar transparent
-            appearance.backgroundColor = UIColor(red: 239, green: 225, blue: 209)
-
+        // Use large title for navigation bar appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
+        if let apperance = navigationController?.navigationBar.standardAppearance {
+            apperance.configureWithTransparentBackground()
             
-            appearance.shadowColor = .clear
-            // Customize title text attributes
-            if let customFont = UIFont(name: "Nunito-Bold", size: 45.0) {
-                appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0, green: 0, blue: 0)]
-                appearance.largeTitleTextAttributes = [
-                    .foregroundColor: UIColor(red: 239, green: 225, blue: 209),
-                    .font: customFont
-                ]
+            if let customFont = UIFont(name: "Nunito-Bold", size: 35.0){
+                apperance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")!]
+                apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.compactAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.standardAppearance = apperance
+            navigationController?.navigationBar.scrollEdgeAppearance = apperance
+            navigationController?.navigationBar.compactAppearance = apperance
         }
         
     }
-
+    
+    
+    // Eye pressed
+    // Eye Password Button
+    @IBAction func eyePasswordPressed(_ sender: UIButton) {
+        isPasswordVisible.toggle()
+        passwordTextField.isSecureTextEntry = isPasswordVisible
+        
+        let buttonImageName = isPasswordVisible ? "eye.slash.fill" : "eye.fill"
+        eyePassword.setImage(UIImage(systemName: buttonImageName), for: .normal)
+        
+    }
+    
+    // Privacy policy
+    @IBAction func privacyPolicy(_ sender: UIButton) {
+        
+        if sender.currentImage == UIImage(systemName: "circle.fill"){
+            sender.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            sender.tintColor = UIColor(named: "NavigationBarTitle")
+        }else{
+            sender.tintColor = .white
+            sender.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        }
+    }
+    
+    // Sign up
     @IBAction func signUpPressed(_ sender: UIButton) {
         guard let name = nameTextField.text ,name != "",
               let email = emailTextField.text ,email != "",

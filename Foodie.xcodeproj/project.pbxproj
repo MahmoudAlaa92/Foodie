@@ -52,6 +52,8 @@
 		156C03E42C6542670031FE3D /* FavouriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156C03E32C6542670031FE3D /* FavouriteTableViewController.swift */; };
 		15749D592C4A229900562524 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15749D582C4A229900562524 /* WalkthroughPageViewController.swift */; };
 		15749D5B2C4A267D00562524 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15749D5A2C4A267D00562524 /* WalkthroughViewController.swift */; };
+		157F244D2CAC8385001F5419 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 157F244C2CAC8385001F5419 /* FacebookCore */; };
+		157F244F2CAC8385001F5419 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 157F244E2CAC8385001F5419 /* FacebookLogin */; };
 		158AB37E2CA8418A008FAAB1 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 158AB37D2CA8418A008FAAB1 /* JGProgressHUD */; };
 		159E9F2D2C357D010070B51F /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 159E9F2C2C357D010070B51F /* Nunito-Regular.ttf */; };
 		159E9F2F2C357D100070B51F /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 159E9F2E2C357D100070B51F /* Nunito-Bold.ttf */; };
@@ -203,9 +205,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				158AB37E2CA8418A008FAAB1 /* JGProgressHUD in Frameworks */,
+				157F244D2CAC8385001F5419 /* FacebookCore in Frameworks */,
 				150DF6B22CAB266500A379D7 /* FirebaseAuth in Frameworks */,
 				15DCDAD92C9B68170002C89C /* FirebaseDatabase in Frameworks */,
 				15DCDADB2C9B68170002C89C /* FirebaseFirestore in Frameworks */,
+				157F244F2CAC8385001F5419 /* FacebookLogin in Frameworks */,
 				15DCDADD2C9B68170002C89C /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +598,8 @@
 				15DCDADC2C9B68170002C89C /* FirebaseStorage */,
 				158AB37D2CA8418A008FAAB1 /* JGProgressHUD */,
 				150DF6B12CAB266500A379D7 /* FirebaseAuth */,
+				157F244C2CAC8385001F5419 /* FacebookCore */,
+				157F244E2CAC8385001F5419 /* FacebookLogin */,
 			);
 			productName = Foodie;
 			productReference = 15462E0C2C29413900D998CD /* Foodie.app */;
@@ -627,6 +633,7 @@
 			packageReferences = (
 				15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				157F244B2CAC8385001F5419 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 15462E0D2C29413900D998CD /* Products */;
 			projectDirPath = "";
@@ -1017,6 +1024,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		157F244B2CAC8385001F5419 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
 		158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
@@ -1040,6 +1055,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		157F244C2CAC8385001F5419 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 157F244B2CAC8385001F5419 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		157F244E2CAC8385001F5419 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 157F244B2CAC8385001F5419 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 		158AB37D2CA8418A008FAAB1 /* JGProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;

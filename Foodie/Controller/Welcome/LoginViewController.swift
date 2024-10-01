@@ -8,50 +8,106 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FacebookLogin
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var emailField: UITextField!
     
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
+      
     
+    @IBOutlet weak var emailField: UITextField!{
+        didSet{
+            emailField.layer.cornerRadius = 10
+            emailField.layer.masksToBounds = true
+        }
+    }
+    
+    @IBOutlet weak var passwordField: UITextField!{
+        didSet{
+            passwordField.layer.cornerRadius = 10
+            passwordField.layer.masksToBounds = true
+            passwordField.isSecureTextEntry = true
+        }
+    }
+    
+    @IBOutlet weak var eyePassword: UIButton!{
+        didSet{
+            eyePassword.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var rememberCheck: UIButton!{
+        didSet{
+            rememberCheck.tintColor = .white
+            rememberCheck.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var loginButton: UIButton!{
+        didSet{
+            loginButton.layer.cornerRadius = 15
+            loginButton.layer.masksToBounds = true
+        }
+    }
+    
+    var isPasswordVisible: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        cutomizeNavigationBar()
+        customizeNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Log In"
         emailField.becomeFirstResponder()
+
+        // Customise navBarAppearance
+        navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
     }
     
     // Customize navigation bar
-    func cutomizeNavigationBar(){
+    func customizeNavigationBar(){
         
-        if let appearance = navigationController?.navigationBar.standardAppearance {
-            // Make the navigation bar transparent
-            appearance.backgroundColor = UIColor(red: 239, green: 225, blue: 209)
-
+        // Use large title for navigation bar appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
+        if let apperance = navigationController?.navigationBar.standardAppearance {
+            apperance.configureWithTransparentBackground()
             
-            appearance.shadowColor = .clear
-            // Customize title text attributes
-            if let customFont = UIFont(name: "Nunito-Bold", size: 45.0) {
-                appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0, green: 0, blue: 0)]
-                appearance.largeTitleTextAttributes = [
-                    .foregroundColor: UIColor(red: 239, green: 225, blue: 209),
-                    .font: customFont
-                ]
+            if let customFont = UIFont(name: "Nunito-Bold", size: 45.0){
+                apperance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")!]
+                apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.compactAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.standardAppearance = apperance
+            navigationController?.navigationBar.scrollEdgeAppearance = apperance
+            navigationController?.navigationBar.compactAppearance = apperance
         }
+    }
+
+    // Eye Password Button
+    @IBAction func eyePasswordPressed(_ sender: UIButton) {
+        isPasswordVisible.toggle()
+        passwordField.isSecureTextEntry = isPasswordVisible
+        
+        let buttonImageName = isPasswordVisible ? "eye.slash.fill" : "eye.fill"
+        eyePassword.setImage(UIImage(systemName: buttonImageName), for: .normal)
         
     }
+    
+    // Remeber Me
+    @IBAction func remeberMe(_ sender: UIButton) {
+        
+        if sender.currentImage == UIImage(systemName: "circle.fill"){
+            sender.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            sender.tintColor = UIColor(named: "NavigationBarTitle")
+        }else{
+            sender.tintColor = .white
+            sender.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        }
+    }
+    
     
     // Login button
     @IBAction func loginPressed(_ sender: Any) {
@@ -61,7 +117,7 @@ class LoginViewController: UIViewController {
               let password = passwordField.text ,password != "" else{
             
             let alertController = UIAlertController(
-                title: "Logine Error",
+                title: "LogIn Error",
                 message: "Bothe fields must not blanck",
                 preferredStyle: .alert)
             
@@ -121,6 +177,49 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func facebookLogin(_ sender: UIButton) {
+        
+        let fbLoginManager = LoginManager()
+        fbLoginManager.logIn(
+            permissions: ["public_profile", "email"],
+            from: self) { result, error in
+                if let error = error {
+                    print("Failed to login: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let accessToken = AccessToken.current else{
+                    print("Failed to get access token")
+                    return
+                }
+                
+                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+                
+                // Perform login to by calling Firebase APIs
+                Auth.auth().signIn(with: credential) { result, error in
+                    if let error = error {
+                        print("Error when login:\(error.localizedDescription)")
+                        
+                        let alert = UIAlertController(
+                            title: "Login Error",
+                            message: error.localizedDescription,
+                            preferredStyle: .alert)
+                        
+                        let okayAction = UIAlertAction(title: "OK", style: .cancel)
+                        
+                        alert.addAction(okayAction)
+                        self.present(alert ,animated: true)
+                        return
+                    }
+                    
+                // Present the main view
+                    if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
+                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                        self.dismiss(animated: true)
+                    }
+                }
+                
+            }
+        
     }
     
     @IBAction func googleLogin(_ sender: UIButton) {
