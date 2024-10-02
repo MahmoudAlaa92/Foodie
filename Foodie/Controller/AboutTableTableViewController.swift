@@ -9,6 +9,7 @@ import UIKit
 import SafariServices
 import Firebase
 import FirebaseAuth
+import FacebookLogin
 
 class AboutTableTableViewController: UITableViewController {
 

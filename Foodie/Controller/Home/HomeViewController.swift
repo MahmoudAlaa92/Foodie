@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         fetchFavoriteStatusFromUserDefaults()
+        initializeFavoriteBooleans()
 
         // Table view
         tableView.delegate = self
@@ -145,6 +145,44 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
  
+    // Initialize favorite booleans
+    func initializeFavoriteBooleans() {
+        let defaults = UserDefaults.standard
+        
+        if !defaults.bool(forKey: "hasLaunchedBefore") {
+            favoriteBoolForRecommended = Array(repeating: false, count: recommendedAndBest["Recomoneded"]?.names.count ?? 0)
+            favoriteBoolForBestSeller = Array(repeating: false, count: recommendedAndBest["BestSeller"]?.names.count ?? 0)
+            
+            saveFavoriteStatusToUserDefaults()
+            
+            defaults.set(true, forKey: "hasLaunchedBefore")
+            defaults.synchronize() // To ensure data is saved immediately
+            
+            print("App launched for the first time, initialized favorites")
+        } else {
+            print("App has launched before, fetching saved favorites")
+            fetchFavoriteStatusFromUserDefaults()
+        }
+    }
+    
+    // Save favorite status to user defaults
+    func saveFavoriteStatusToUserDefaults() {
+        let defaults = UserDefaults.standard
+        
+        // Save recommended favorites
+        if let recommendedData = try? NSKeyedArchiver.archivedData(withRootObject: favoriteBoolForRecommended, requiringSecureCoding: false) {
+            defaults.set(recommendedData, forKey: "favoriteBoolForRecommended")
+        }
+        
+        // Save best seller favorites
+        if let bestSellerData = try? NSKeyedArchiver.archivedData(withRootObject: favoriteBoolForBestSeller, requiringSecureCoding: false) {
+            defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller")
+        }
+        
+        defaults.synchronize() // Ensure data is saved immediately
+        print("Favorite status saved to UserDefaults!")
+    }
+    
     // fetch favorite status
     func fetchFavoriteStatusFromUserDefaults() {
         let defualts = UserDefaults.standard
@@ -155,7 +193,9 @@ class HomeViewController: UIViewController {
             favoriteBoolForRecommended = recommendedBool
             favoriteBoolForBestSeller = bestSellerBool
                 print("Successfully fetched from UserDefaults!")
-            }
+        }else{
+            print("Error when fetch favorites")
+        }
 
     }
 }

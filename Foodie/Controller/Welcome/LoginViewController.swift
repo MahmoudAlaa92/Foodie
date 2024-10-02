@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FacebookLogin
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
@@ -118,7 +119,7 @@ class LoginViewController: UIViewController {
             
             let alertController = UIAlertController(
                 title: "LogIn Error",
-                message: "Bothe fields must not blanck",
+                message: "Both fields must not blanck",
                 preferredStyle: .alert)
             
             let okayAction = UIAlertAction(title: "OK", style: .cancel)
@@ -176,6 +177,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // Facebook login
     @IBAction func facebookLogin(_ sender: UIButton) {
         
         let fbLoginManager = LoginManager()
@@ -222,6 +224,45 @@ class LoginViewController: UIViewController {
         
     }
     
+    // Google login
     @IBAction func googleLogin(_ sender: UIButton) {
+     
+        guard let clientID = FirebaseApp.app()?.options.clientID else{
+            return
+        }
+        
+        let configuration = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.configuration = configuration
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
+            return
+        }
+        
+        guard let rootVC = windowScene.windows.first?.rootViewController else {
+            return
+        }
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { [unowned self] result, error in
+            if let error = error {
+                print("Login Error: \(error.localizedDescription)")
+                
+                let alert = UIAlertController(title: "Login Error",
+                                              message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                
+                let okayAction = UIAlertAction(title: "OK", style: .cancel)
+                alert.addAction(okayAction)
+                self.present(alert, animated: true)
+                
+                return
+            }else{
+                if let vc = storyboard?.instantiateViewController(withIdentifier: "MainView"){
+                    UIApplication.shared.keyWindow?.rootViewController = vc
+                    self.dismiss(animated: true)
+                }
+            }
+        }
+        
     }
 }

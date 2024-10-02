@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.458303185454-co4lt995tb6tmhujng3f9qc124peqg7t</string>
+	<key>CLIENT_ID</key>
+	<string>458303185454-co4lt995tb6tmhujng3f9qc124peqg7t.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDx39riVTO0tuxfPmNeIYsF39FdoCygkjA</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,15 +19,15 @@
 	<key>STORAGE_BUCKET</key>
 	<string>foodie-8b1c3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:458303185454:ios:3b1e25474d85cae86d75bf</string>
 </dict>

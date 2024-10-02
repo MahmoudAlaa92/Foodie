@@ -91,6 +91,8 @@
 		15DCDADF2C9B6DFD0002C89C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15DCDADE2C9B6DFD0002C89C /* GoogleService-Info.plist */; };
 		15DD41212C397B5000754947 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */; };
 		15DD41232C39BACA00754947 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD41222C39BACA00754947 /* MapViewController.swift */; };
+		15DFB5712CAD165500BACC7F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 15DFB5702CAD165500BACC7F /* GoogleSignIn */; };
+		15DFB5732CAD165500BACC7F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15DFB5722CAD165500BACC7F /* GoogleSignInSwift */; };
 		15E22E602CA4CA91006FBB70 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E22E5E2CA4CA91006FBB70 /* AlertViewController.swift */; };
 		15E22E612CA4CA91006FBB70 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15E22E5F2CA4CA91006FBB70 /* AlertViewController.xib */; };
 		15EF28CD2C932CC10003E269 /* NewOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF28CB2C932CC10003E269 /* NewOfferTableViewCell.swift */; };
@@ -204,7 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DFB5732CAD165500BACC7F /* GoogleSignInSwift in Frameworks */,
 				158AB37E2CA8418A008FAAB1 /* JGProgressHUD in Frameworks */,
+				15DFB5712CAD165500BACC7F /* GoogleSignIn in Frameworks */,
 				157F244D2CAC8385001F5419 /* FacebookCore in Frameworks */,
 				150DF6B22CAB266500A379D7 /* FirebaseAuth in Frameworks */,
 				15DCDAD92C9B68170002C89C /* FirebaseDatabase in Frameworks */,
@@ -600,6 +604,8 @@
 				150DF6B12CAB266500A379D7 /* FirebaseAuth */,
 				157F244C2CAC8385001F5419 /* FacebookCore */,
 				157F244E2CAC8385001F5419 /* FacebookLogin */,
+				15DFB5702CAD165500BACC7F /* GoogleSignIn */,
+				15DFB5722CAD165500BACC7F /* GoogleSignInSwift */,
 			);
 			productName = Foodie;
 			productReference = 15462E0C2C29413900D998CD /* Foodie.app */;
@@ -634,6 +640,7 @@
 				15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				158AB37C2CA84189008FAAB1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				157F244B2CAC8385001F5419 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				15DFB56F2CAD165500BACC7F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 15462E0D2C29413900D998CD /* Products */;
 			projectDirPath = "";
@@ -953,6 +960,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Foodie/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need to grant the app access to your camera in order to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "You need to grant the app access to your photo library so you can pick your favorite restaurant photo.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -981,6 +990,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Foodie/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need to grant the app access to your camera in order to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "You need to grant the app access to your photo library so you can pick your favorite restaurant photo.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1048,6 +1059,14 @@
 				minimumVersion = 11.2.0;
 			};
 		};
+		15DFB56F2CAD165500BACC7F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1085,6 +1104,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 15DCDAD72C9B68170002C89C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		15DFB5702CAD165500BACC7F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DFB56F2CAD165500BACC7F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		15DFB5722CAD165500BACC7F /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DFB56F2CAD165500BACC7F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

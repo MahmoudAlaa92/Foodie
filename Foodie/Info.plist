@@ -2,17 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1561977914405895</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.458303185454-co4lt995tb6tmhujng3f9qc124peqg7t</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1561977914405895</string>
+	<key>FacebookClientToken</key>
+	<string>ef7721680a14932bfa51e3661a5f6366</string>
+	<key>FacebookDisplayName</key>
+	<string>Foodie</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>You need to grant the app access to your camera in order to take photos.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>You need to grant the app access to your photo library so you can pick your favorite restaurant photo.</string>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Nunito-Regular.ttf</string>
@@ -37,23 +61,5 @@
 			</array>
 		</dict>
 	</dict>
-
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb1561977914405895</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key> <string>1561977914405895</string> <key>FacebookClientToken</key> <string>ef7721680a14932bfa51e3661a5f6366</string> <key>FacebookDisplayName</key>
-    <string>Foodie</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-share-api</string>
-    </array>
-    
 </dict>
 </plist>

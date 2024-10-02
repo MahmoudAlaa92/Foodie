@@ -126,7 +126,6 @@ extension ProductTableViewCell: UICollectionViewDataSource ,UICollectionViewDele
             
             return UIMenu(title: "", children: [favouriteAction, shareAction])
         }
-        
         return config
     }
 
