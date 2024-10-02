@@ -1229,7 +1229,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="V9s-rq-Fdc">
                                 <rect key="frame" x="125.66666666666667" y="102.99999999999999" width="141.66666666666663" height="255.66666666666663"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL \ PHONE NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CA8-GV-T0v">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="mahmoudalaa@gmail.com" borderStyle="roundedRect" placeholder="EMAIL \ PHONE NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CA8-GV-T0v">
                                 <rect key="frame" x="15" y="398.66666666666669" width="363" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xbo-Wg-P2n"/>
@@ -1237,7 +1237,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZJ-3B-Kiu">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZJ-3B-Kiu">
                                 <rect key="frame" x="15" y="458.66666666666669" width="363" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7ak-fh-Cnp"/>

@@ -12,10 +12,10 @@ import FacebookLogin
 import GoogleSignIn
 
 class LoginViewController: UIViewController {
-
+    
     
     @IBOutlet weak var imageView: UIImageView!
-      
+    
     
     @IBOutlet weak var emailField: UITextField!{
         didSet{
@@ -53,10 +53,10 @@ class LoginViewController: UIViewController {
     }
     
     var isPasswordVisible: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         customizeNavigationBar()
     }
     
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.title = "Log In"
         emailField.becomeFirstResponder()
-
+        
         // Customise navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
     }
@@ -86,7 +86,7 @@ class LoginViewController: UIViewController {
             navigationController?.navigationBar.compactAppearance = apperance
         }
     }
-
+    
     // Eye Password Button
     @IBAction func eyePasswordPressed(_ sender: UIButton) {
         isPasswordVisible.toggle()
@@ -129,7 +129,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-            // perform login
+        // Perform login with email
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 let alertController = UIAlertController(
@@ -144,34 +144,35 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            guard let user = result?.user else{ return }
             
             // Email Verification
-//            guard let result = result ,result.user.isEmailVerified else{
-//                let alertController = UIAlertController(
-//                    title: "Login Error",
-//                    message: "You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.",
-//                    preferredStyle: .alert)
-//                
-//                let okayAction = UIAlertAction(title: "Resend Email", style: .default) { action in
-//                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-//                }
-//                
-//                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//                
-//                alertController.addAction(okayAction)
-//                alertController.addAction(cancelAction)
-//                self.present(alertController ,animated: true)
-//                
-//                return
-//            }
+            //            guard let result = result ,result.user.isEmailVerified else{
+            //                let alertController = UIAlertController(
+            //                    title: "Login Error",
+            //                    message: "You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.",
+            //                    preferredStyle: .alert)
+            //
+            //                let okayAction = UIAlertAction(title: "Resend Email", style: .default) { action in
+            //                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+            //                }
+            //
+            //                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            //
+            //                alertController.addAction(okayAction)
+            //                alertController.addAction(cancelAction)
+            //                self.present(alertController ,animated: true)
+            //
+            //                return
+            //            }
             
             // Dismiss the keyboard
             self.view.endEditing(true)
             
-            
             // present the main view
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
-                UIApplication.shared.keyWindow?.rootViewController = vc
+            if let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
+                DataPersistentManager.shared.userId = user.uid
+                UIApplication.shared.keyWindow?.rootViewController = tabBarController
                 self.dismiss(animated: true)
             }
         }
@@ -213,7 +214,11 @@ class LoginViewController: UIViewController {
                         return
                     }
                     
-                // Present the main view
+                    guard let userId = result?.user.uid else { return }
+                    
+                    DataPersistentManager.shared.userId = userId
+                    
+                    // Present the main view
                     if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
                         UIApplication.shared.keyWindow?.rootViewController = viewController
                         self.dismiss(animated: true)
@@ -226,7 +231,7 @@ class LoginViewController: UIViewController {
     
     // Google login
     @IBAction func googleLogin(_ sender: UIButton) {
-     
+        
         guard let clientID = FirebaseApp.app()?.options.clientID else{
             return
         }
@@ -256,12 +261,49 @@ class LoginViewController: UIViewController {
                 self.present(alert, animated: true)
                 
                 return
-            }else{
-                if let vc = storyboard?.instantiateViewController(withIdentifier: "MainView"){
-                    UIApplication.shared.keyWindow?.rootViewController = vc
-                    self.dismiss(animated: true)
+            }
+            
+            // Get the Google ID token and Google access token
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString else {
+                
+                print("Error: Missing Google ID token")
+                return
+            }
+            
+            let accessToken = user.accessToken.tokenString
+            
+            // Get the Firebase credential using the Google tokens
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+            
+            // Sign in with Firebase using the Google credential
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    print("Firebase login error: \(error.localizedDescription)")
+                    
+                    let alert = UIAlertController(title: "Login Error",
+                                                  message: error.localizedDescription,
+                                                  preferredStyle: .alert)
+                    
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel)
+                    alert.addAction(okayAction)
+                    self.present(alert, animated: true)
+                    return
+                }
+                
+                // Successfully signed in
+                if let authResult = authResult {
+                    let userId = authResult.user.uid
+                    DataPersistentManager.shared.userId = userId
+                    
+                    if let vc = storyboard?.instantiateViewController(withIdentifier: "MainView"){
+                        UIApplication.shared.keyWindow?.rootViewController = vc
+                        self.dismiss(animated: true)
+                    }
+                    
                 }
             }
+            
         }
         
     }

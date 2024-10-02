@@ -35,6 +35,7 @@ class ProductTableViewCell: UITableViewCell, productCollectionViewCellDelegate {
     var name = [String]()
     var price = [String]()
     var isFavorited: [Bool] = []
+    var userId = ""
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -147,7 +148,7 @@ extension ProductTableViewCell: UICollectionViewDataSource ,UICollectionViewDele
         let defaults = UserDefaults.standard
         if tableViewRow == 2 {
             let recommendedData = try? NSKeyedArchiver.archivedData(withRootObject: isFavorited, requiringSecureCoding: false)
-            defaults.set(recommendedData, forKey: "favoriteBoolForRecommended")
+            defaults.set(recommendedData, forKey: "favoriteBoolForRecommended_\(userId)")
             
             // Notify delegate about the favorite change
             favoriteDelegate?.favoriteChanged(isFavorite: isFavorited, row: 2, value: isFavorite)
@@ -156,7 +157,7 @@ extension ProductTableViewCell: UICollectionViewDataSource ,UICollectionViewDele
 
             // Notify delegate about the favorite change
             favoriteDelegate?.favoriteChanged(isFavorite: isFavorited, row: 3, value: isFavorite)
-            defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller")
+            defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller_\(userId)")
         }
         
         // save restaurant in DataBase (CoreData)

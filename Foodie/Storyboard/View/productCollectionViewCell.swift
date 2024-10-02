@@ -20,7 +20,6 @@ class productCollectionViewCell: UICollectionViewCell {
     var isFavourited = false {
         didSet{
             updateFavoriteButton()
-            print(isFavourited)
         }
     }
     

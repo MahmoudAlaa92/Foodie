@@ -20,6 +20,7 @@ enum DataBase: Error{
 class DataPersistentManager{
     
     static let shared = DataPersistentManager()
+    var userId = ""
     
     // Create favourite restaurant
     func createFavouriteRestaurant(with model: FavouriteRestaurant ,completion: @escaping (Result<Void ,Error>) -> Void){

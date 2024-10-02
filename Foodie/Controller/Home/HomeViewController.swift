@@ -82,13 +82,12 @@ class HomeViewController: UIViewController {
     
     var favoriteBoolForRecommended = [Bool]()
     var favoriteBoolForBestSeller = [Bool]()
-      
+    var userId = ""
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initializeFavoriteBooleans()
 
         // Table view
         tableView.delegate = self
@@ -135,7 +134,13 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
+        // User id
+        userId = DataPersistentManager.shared.userId
+        
+        // Initialize favorite booleans
+        initializeFavoriteBooleans(for: userId)
+        
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
@@ -146,57 +151,58 @@ class HomeViewController: UIViewController {
     }
  
     // Initialize favorite booleans
-    func initializeFavoriteBooleans() {
+    func initializeFavoriteBooleans(for userId: String) {
         let defaults = UserDefaults.standard
-        
-        if !defaults.bool(forKey: "hasLaunchedBefore") {
-            favoriteBoolForRecommended = Array(repeating: false, count: recommendedAndBest["Recomoneded"]?.names.count ?? 0)
-            favoriteBoolForBestSeller = Array(repeating: false, count: recommendedAndBest["BestSeller"]?.names.count ?? 0)
-            
-            saveFavoriteStatusToUserDefaults()
-            
-            defaults.set(true, forKey: "hasLaunchedBefore")
-            defaults.synchronize() // To ensure data is saved immediately
-            
-            print("App launched for the first time, initialized favorites")
-        } else {
-            print("App has launched before, fetching saved favorites")
-            fetchFavoriteStatusFromUserDefaults()
-        }
+        let hasLaunchedKey = "hasLaunchedBefore_\(userId)" // User-specific key
+
+        if !defaults.bool(forKey: hasLaunchedKey) {
+               favoriteBoolForRecommended = Array(repeating: false, count: recommendedAndBest["Recomoneded"]?.names.count ?? 0)
+               favoriteBoolForBestSeller = Array(repeating: false, count: recommendedAndBest["BestSeller"]?.names.count ?? 0)
+               
+               saveFavoriteStatusToUserDefaults(for: userId)
+               
+               defaults.set(true, forKey: hasLaunchedKey)
+               defaults.synchronize() // To ensure data is saved immediately
+               
+               print("App launched for the first time for user \(userId), initialized favorites")
+           } else {
+               print("App has launched before for user \(userId), fetching saved favorites")
+               fetchFavoriteStatusFromUserDefaults(for: userId)
+           }
     }
     
     // Save favorite status to user defaults
-    func saveFavoriteStatusToUserDefaults() {
+    func saveFavoriteStatusToUserDefaults(for userId: String) {
         let defaults = UserDefaults.standard
         
         // Save recommended favorites
         if let recommendedData = try? NSKeyedArchiver.archivedData(withRootObject: favoriteBoolForRecommended, requiringSecureCoding: false) {
-            defaults.set(recommendedData, forKey: "favoriteBoolForRecommended")
+            defaults.set(recommendedData, forKey: "favoriteBoolForRecommended_\(userId)") // User-specific key
         }
         
         // Save best seller favorites
         if let bestSellerData = try? NSKeyedArchiver.archivedData(withRootObject: favoriteBoolForBestSeller, requiringSecureCoding: false) {
-            defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller")
+            defaults.set(bestSellerData, forKey: "favoriteBoolForBestSeller_\(userId)") // User-specific key
         }
         
         defaults.synchronize() // Ensure data is saved immediately
-        print("Favorite status saved to UserDefaults!")
+        print("Favorite status saved to UserDefaults for user \(userId)!")
     }
     
     // fetch favorite status
-    func fetchFavoriteStatusFromUserDefaults() {
-        let defualts = UserDefaults.standard
-        if let recommendedData = defualts.data(forKey: "favoriteBoolForRecommended"),
-           let bestSellerData = defualts.data(forKey: "favoriteBoolForBestSeller"),
+    func fetchFavoriteStatusFromUserDefaults(for userId: String) {
+        let defaults = UserDefaults.standard
+        if let recommendedData = defaults.data(forKey: "favoriteBoolForRecommended_\(userId)"), // User-specific key
+           let bestSellerData = defaults.data(forKey: "favoriteBoolForBestSeller_\(userId)"),   // User-specific key
            let recommendedBool = (try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: recommendedData) as? [Bool]),
            let bestSellerBool = (try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: bestSellerData) as? [Bool]) {
             favoriteBoolForRecommended = recommendedBool
             favoriteBoolForBestSeller = bestSellerBool
-                print("Successfully fetched from UserDefaults!")
-        }else{
-            print("Error when fetch favorites")
+            print("Successfully fetched favorites from UserDefaults for user \(userId)!")
+        } else {
+            print("Error fetching favorites for user \(userId)")
         }
-
+        
     }
 }
 
@@ -257,7 +263,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             }
             cell.tableViewRow = indexPath.row
             cell.selectionStyle = .none
-            
+            cell.userId = userId
             return cell
         case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "newOfferCell", for: indexPath) as? NewOfferTableViewCell else{
@@ -317,7 +323,6 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
     }
   
 }
-
 // MARK: - Did selected Items
 
 extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewCellDelegate ,PopularFoodTableViewCellDelegate, SliderImagesTableViewCellDelegate ,isFavoriteChangedDelegate{

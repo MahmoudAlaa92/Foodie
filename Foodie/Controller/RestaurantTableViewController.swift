@@ -58,7 +58,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
             navigationController?.navigationBar.scrollEdgeAppearance = apperance
         }
         
-        // tableView
+        // Table view
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = restaurants.count > 0 ? true : false
         tableView.dataSource = dataSource
