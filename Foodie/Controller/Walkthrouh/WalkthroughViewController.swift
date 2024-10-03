@@ -26,9 +26,28 @@ class WalkthroughViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI()
+        
+        setupPageControl()
 
     }
+    
+    private func setupPageControl() {
+          
+          view.addSubview(pageController)
+          
+          // Disable autoresizing masks
+          pageController.translatesAutoresizingMaskIntoConstraints = false
+          
+          // Set constraints
+          NSLayoutConstraint.activate([
+              pageController.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+              pageController.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+              pageController.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+              pageController.heightAnchor.constraint(equalToConstant: 30) // Set height if necessary
+          ])
+      }
+    
     
     func creatQuickAction(){
          
@@ -43,6 +62,15 @@ class WalkthroughViewController: UIViewController  {
             UIApplication.shared.shortcutItems = [shortcutItem1 ,shortcutItem2 ,shortcutItem3]
         }
         
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomeView") as? UINavigationController {
+            print("Yes")
+            UIApplication.shared.keyWindow?.rootViewController = vc
+            self.dismiss(animated: true)
+            
+        }
     }
     
     // prepare Segue to walkthroughPageViewController
@@ -63,7 +91,6 @@ class WalkthroughViewController: UIViewController  {
                 walkthroughPageViewController?.forwardPage()
             case 2: 
                 UserDefaults.standard.set(true, forKey: "getStartedBtnPressed")
-                dismiss(animated: true)
                 creatQuickAction()
                 
             default:
@@ -73,18 +100,38 @@ class WalkthroughViewController: UIViewController  {
         updateUI()
     }
     
-    //updateUI
+    // Update UI
     func updateUI(){
         if let index = walkthroughPageViewController?.currentIndex{
+            
+            
             switch index{
-            case 0...1:
-                nextBtn.setTitle(String(localized: "NEXT"), for: .normal)
+            case 0:
+                pageController.setIndicatorImage(UIImage(named: "current"), forPage: index)
+                pageController.setIndicatorImage(UIImage(named: "dot"), forPage: 1)
+                pageController.setIndicatorImage(UIImage(named: "dot"), forPage: 2)
+            case 1:
+                pageController.setIndicatorImage(UIImage(named: "dot"), forPage: 0)
+                pageController.setIndicatorImage(UIImage(named: "current"), forPage: index)
+                pageController.setIndicatorImage(UIImage(named: "dot"), forPage: 2)
             case 2:
-                nextBtn.setTitle(String(localized: "Get Started"), for: .normal)
+                pageController.setIndicatorImage(UIImage(named: "dot"), forPage: 0)
+                pageController.setIndicatorImage(UIImage(named: "dot"), forPage: 1)
+                pageController.setIndicatorImage(UIImage(named: "current"), forPage: index)
             default:
-                break
+                fatalError("Error in pageController")
             }
+            
+//            switch index{
+//            case 0...1:
+//                nextBtn.setTitle(String(localized: "NEXT"), for: .normal)
+//            case 2:
+//                nextBtn.setTitle(String(localized: "Get Started"), for: .normal)
+//            default:
+//                break
+//            }
             pageController.currentPage = index
+            
         }
     }
     

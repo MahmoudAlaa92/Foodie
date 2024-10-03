@@ -67,6 +67,7 @@ class NewRestaurantController: UITableViewController {
         
         // Customize navigationController
         if let apperance = navigationController?.navigationBar.standardAppearance{
+            apperance.configureWithTransparentBackground()
             if  let customeFont = UIFont(name: "Nunito-Bold", size: 40){
                 apperance.titleTextAttributes = [ .foregroundColor: UIColor(named: "NavigationBarTitle")! ]
                 apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! , .font: customeFont]
@@ -88,8 +89,16 @@ class NewRestaurantController: UITableViewController {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        // Table View
+        tableView.backgroundColor = UIColor(named: "BackGound")
     }
     
+    // View will appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
     
         // Save Button
     @IBAction func saveNewRestaurant(_ sender: UIBarButtonItem) {

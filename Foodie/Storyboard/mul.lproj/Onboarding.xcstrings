@@ -13,18 +13,6 @@
         }
       }
     },
-    "eDg-qM-gJ3.configuration.title" : {
-      "comment" : "Class = \"UIButton\"; configuration.title = \"Next\"; ObjectID = \"eDg-qM-gJ3\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Next"
-          }
-        }
-      }
-    },
     "eDg-qM-gJ3.normalTitle" : {
       "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"eDg-qM-gJ3\";",
       "extractionState" : "extracted_with_value",

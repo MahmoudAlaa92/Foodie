@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TDc-jv-OE0">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,68 +26,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0c-4t-I3Z">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="599"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="681.66666666666663"/>
                                 <connections>
                                     <segue destination="S7y-x9-2Md" kind="embed" id="Xch-kE-jtL"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qf8-Hk-sQd">
-                                <rect key="frame" x="0.0" y="599" width="393" height="253"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="72s-zX-WSK">
-                                        <rect key="frame" x="121.66666666666669" y="57.333333333333371" width="150" height="138.33333333333334"/>
-                                        <subviews>
-                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hhA-av-apb">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="25.666666666666668"/>
-                                                <color key="pageIndicatorTintColor" systemColor="systemGray4Color"/>
-                                                <color key="currentPageIndicatorTintColor" systemColor="systemIndigoColor"/>
-                                            </pageControl>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDg-qM-gJ3">
-                                                <rect key="frame" x="0.0" y="45.666666666666629" width="150" height="36.333333333333343"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="FTn-7O-FrS"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemIndigoColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Next">
-                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="nextActionBtn:" destination="TDc-jv-OE0" eventType="touchUpInside" id="1tO-eX-xky"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxi-9U-OiQ">
-                                                <rect key="frame" x="0.0" y="102" width="150" height="36.333333333333343"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Skip">
-                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="skiptActionBtnWithSender:" destination="TDc-jv-OE0" eventType="touchUpInside" id="mUQ-mN-pID"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxi-9U-OiQ">
+                                <rect key="frame" x="318" y="59" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstItem="72s-zX-WSK" firstAttribute="centerX" secondItem="Qf8-Hk-sQd" secondAttribute="centerX" id="1nQ-Xy-IIi"/>
-                                    <constraint firstItem="72s-zX-WSK" firstAttribute="centerY" secondItem="Qf8-Hk-sQd" secondAttribute="centerY" id="bdZ-XL-Voa"/>
+                                    <constraint firstAttribute="height" constant="60" id="If4-Am-sXf"/>
+                                    <constraint firstAttribute="width" constant="60" id="s0p-ip-Exa"/>
                                 </constraints>
-                            </view>
+                                <color key="tintColor" name="NavigationBarTitle"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Skip">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="baseForegroundColor" name="NavigationBarTitle"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="skiptActionBtnWithSender:" destination="TDc-jv-OE0" eventType="touchUpInside" id="mUQ-mN-pID"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7cN-cO-CZG">
+                                <rect key="frame" x="10" y="733" width="373" height="75"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hhA-av-apb">
+                                        <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="75"/>
+                                        <color key="pageIndicatorTintColor" systemColor="systemGray4Color"/>
+                                        <color key="currentPageIndicatorTintColor" name="ButtonColor"/>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDg-qM-gJ3">
+                                        <rect key="frame" x="186.66666666666663" y="0.0" width="186.33333333333337" height="75"/>
+                                        <color key="tintColor" name="NavigationBarTitle"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="arrow.forward.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="50"/>
+                                            <color key="baseForegroundColor" name="NavigationBarTitle"/>
+                                            <color key="baseBackgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="nextActionBtn:" destination="TDc-jv-OE0" eventType="touchUpInside" id="1tO-eX-xky"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="VtY-Ai-Mse"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NMw-lI-tO6"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Qf8-Hk-sQd" firstAttribute="leading" secondItem="ZVA-jx-tnL" secondAttribute="leading" id="2gw-gW-G0y"/>
-                            <constraint firstItem="E0c-4t-I3Z" firstAttribute="top" secondItem="ZVA-jx-tnL" secondAttribute="top" id="4UJ-w3-NKu"/>
-                            <constraint firstItem="Qf8-Hk-sQd" firstAttribute="height" secondItem="NMw-lI-tO6" secondAttribute="height" multiplier="1:3" id="EZY-oK-7SY"/>
-                            <constraint firstAttribute="trailing" secondItem="Qf8-Hk-sQd" secondAttribute="trailing" id="OaX-HP-V38"/>
-                            <constraint firstItem="E0c-4t-I3Z" firstAttribute="leading" secondItem="ZVA-jx-tnL" secondAttribute="leading" id="To4-Ds-a87"/>
-                            <constraint firstAttribute="trailing" secondItem="E0c-4t-I3Z" secondAttribute="trailing" id="nlA-ff-JiL"/>
-                            <constraint firstItem="Qf8-Hk-sQd" firstAttribute="top" secondItem="E0c-4t-I3Z" secondAttribute="bottom" id="pGR-kL-hnl"/>
-                            <constraint firstAttribute="bottom" secondItem="Qf8-Hk-sQd" secondAttribute="bottom" id="umB-Z1-TbW"/>
+                            <constraint firstItem="E0c-4t-I3Z" firstAttribute="top" secondItem="ZVA-jx-tnL" secondAttribute="top" id="BGk-Df-Ra3"/>
+                            <constraint firstItem="E0c-4t-I3Z" firstAttribute="height" secondItem="ZVA-jx-tnL" secondAttribute="height" multiplier="0.8" id="Ce3-qN-hC9"/>
+                            <constraint firstItem="NMw-lI-tO6" firstAttribute="trailing" secondItem="7cN-cO-CZG" secondAttribute="trailing" constant="10" id="TQN-yJ-5zp"/>
+                            <constraint firstItem="E0c-4t-I3Z" firstAttribute="leading" secondItem="NMw-lI-tO6" secondAttribute="leading" id="UAG-Lq-PAe"/>
+                            <constraint firstItem="NMw-lI-tO6" firstAttribute="bottom" secondItem="7cN-cO-CZG" secondAttribute="bottom" constant="10" id="VzL-AN-vx3"/>
+                            <constraint firstItem="7cN-cO-CZG" firstAttribute="leading" secondItem="NMw-lI-tO6" secondAttribute="leading" constant="10" id="kCL-mZ-kcY"/>
+                            <constraint firstItem="NMw-lI-tO6" firstAttribute="trailing" secondItem="xxi-9U-OiQ" secondAttribute="trailing" constant="15" id="kTU-vq-W34"/>
+                            <constraint firstItem="E0c-4t-I3Z" firstAttribute="trailing" secondItem="NMw-lI-tO6" secondAttribute="trailing" id="qgh-Pl-28l"/>
+                            <constraint firstItem="xxi-9U-OiQ" firstAttribute="top" secondItem="NMw-lI-tO6" secondAttribute="top" id="tOX-Va-dzj"/>
                         </constraints>
                     </view>
                     <connections>
@@ -108,24 +107,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-6m-5Xy">
-                                <rect key="frame" x="40" y="108.99999999999997" width="313" height="331.33333333333326"/>
+                                <rect key="frame" x="40" y="69" width="313" height="510"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OzH-uu-fVM">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="229"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="OzH-uu-fVM" secondAttribute="height" multiplier="313:229" id="Bg8-G9-mjt"/>
-                                        </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tY2-ds-VtE">
-                                        <rect key="frame" x="115.66666666666666" y="279" width="81.666666666666657" height="52.333333333333314"/>
+                                        <rect key="frame" x="115.66666666666666" y="279" width="81.666666666666657" height="231"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApG-b1-BJk">
-                                                <rect key="frame" x="7.6666666666666856" y="0.0" width="66.666666666666671" height="22.333333333333332"/>
+                                                <rect key="frame" x="7.6666666666666856" y="0.0" width="66.666666666666671" height="201"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" name="NavigationBarTitle"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subheading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N99-S4-cgp">
-                                                <rect key="frame" x="0.0" y="32.333333333333314" width="81.666666666666671" height="20"/>
+                                                <rect key="frame" x="0.0" y="211" width="81.666666666666671" height="20"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
@@ -136,12 +133,12 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XGT-EU-ZF3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="RqQ-6m-5Xy" firstAttribute="top" secondItem="zRw-PC-ab3" secondAttribute="topMargin" constant="50" id="GA6-uc-e36"/>
-                            <constraint firstItem="RqQ-6m-5Xy" firstAttribute="leading" secondItem="zRw-PC-ab3" secondAttribute="leadingMargin" constant="24" id="MQP-aF-tWq"/>
-                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RqQ-6m-5Xy" secondAttribute="bottom" constant="10" id="Pae-LR-quO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RqQ-6m-5Xy" secondAttribute="trailing" constant="24" id="g34-u4-Enb"/>
+                            <constraint firstItem="RqQ-6m-5Xy" firstAttribute="top" secondItem="XGT-EU-ZF3" secondAttribute="top" constant="10" id="6v4-tl-P7q"/>
+                            <constraint firstItem="XGT-EU-ZF3" firstAttribute="trailing" secondItem="RqQ-6m-5Xy" secondAttribute="trailing" constant="40" id="iID-vf-pSg"/>
+                            <constraint firstItem="RqQ-6m-5Xy" firstAttribute="leading" secondItem="XGT-EU-ZF3" secondAttribute="leading" constant="40" id="kIe-3f-ieK"/>
+                            <constraint firstItem="XGT-EU-ZF3" firstAttribute="bottom" secondItem="RqQ-6m-5Xy" secondAttribute="bottom" constant="10" id="uXZ-Fc-lQw"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="393" height="623"/>
@@ -153,24 +150,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZ4-sQ-bzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2074.0458015267177" y="-218.3098591549296"/>
+            <point key="canvasLocation" x="2074.0458015267177" y="-218.66197183098592"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="arrow.forward.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="ButtonColor">
+            <color red="0.31764705882352939" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationBarTitle">
+            <color red="0.32156862745098042" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

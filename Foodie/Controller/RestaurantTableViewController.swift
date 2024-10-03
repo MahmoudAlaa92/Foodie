@@ -163,15 +163,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if UserDefaults.standard.bool(forKey: "getStartedBtnPressed"){
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        
-        if let walkthroughPage = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController{
-            present(walkthroughPage ,animated: true)
-        }
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always

@@ -38,6 +38,11 @@ class WelcomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.title = "Welcome IN"
+        
+        if UserDefaults.standard.bool(forKey: "getStartedBtnPressed"){
+            return
+        }
+        
     }
     
     // Customize navigation bar
@@ -59,6 +64,5 @@ class WelcomeViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         navigationController?.hidesBarsOnSwipe = false
     }
-
     
 }
