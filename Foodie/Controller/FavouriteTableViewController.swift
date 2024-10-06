@@ -21,10 +21,36 @@ class FavouriteTableViewController: UITableViewController {
 
         fetchFavouriteRestaurantData()
         tableView.dataSource = dataSource
+      
+        customizeNavigationBar()
+    }
+
+    // View will appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Wich list"
+        navigationController?.hidesBarsOnSwipe = true
+        
         NotificationCenter.default.addObserver(forName: Notification.Name("FavouriteRestaurant"), object: nil, queue: nil) { _ in
             self.fetchFavouriteRestaurantData()
         }
-      
+    }
+    
+    // Customize navigation bar
+    func customizeNavigationBar(){
+            
+        if let appearance = navigationController?.navigationBar.standardAppearance {
+            appearance.configureWithTransparentBackground()
+            
+            if let customFont = UIFont(name: "Nunito-Bold", size: 35.0) {
+                appearance.titleTextAttributes = [.foregroundColor:UIColor(named: "NavigationBarTitle")!]
+                appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
+            }
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
     }
 
     // fetch Favourite Restaurant
@@ -49,7 +75,7 @@ class FavouriteTableViewController: UITableViewController {
         }
     }
     
-    // delete Favourite Restaurant
+    // Delete favourite restaurant
     func deleteFavouriteRestaurant(name restaurant: RestaurantItem ,index indexPath: IndexPath)
     {
         DataPersistentManager.shared.deleteFavouriteRestaurant(with: restaurant) { result in
@@ -97,7 +123,7 @@ class FavouriteTableViewController: UITableViewController {
             return UISwipeActionsConfiguration()
         }
         
-        //delete
+        // delete
         let deleteAtcion = UIContextualAction(style: .destructive, title: String(localized: "Delete")) { action, sourceview, completionHandler in
             
             self.deleteFavouriteRestaurant(name: restaurant, index: indexPath)
@@ -107,7 +133,7 @@ class FavouriteTableViewController: UITableViewController {
         deleteAtcion.backgroundColor = UIColor.systemRed
         deleteAtcion.image = UIImage(systemName: "trash")
         
-        let swipConfiguration = UISwipeActionsConfiguration(actions: [deleteAtcion ])
+        let swipConfiguration = UISwipeActionsConfiguration(actions: [deleteAtcion])
         return swipConfiguration
     }
 

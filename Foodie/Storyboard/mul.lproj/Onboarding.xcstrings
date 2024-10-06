@@ -39,7 +39,7 @@
     },
     "xxi-9U-OiQ.configuration.title" : {
       "comment" : "Class = \"UIButton\"; configuration.title = \"Skip\"; ObjectID = \"xxi-9U-OiQ\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -56,13 +56,13 @@
       }
     },
     "xxi-9U-OiQ.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"xxi-9U-OiQ\";",
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Skip\"; ObjectID = \"xxi-9U-OiQ\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Button"
+            "value" : "Skip"
           }
         }
       }

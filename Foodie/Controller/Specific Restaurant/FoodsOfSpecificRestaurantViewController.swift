@@ -77,9 +77,10 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         
         // Customise navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "BackGround")
     }
     
-    // StatusBarStyle
+    // Status Bar Style
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

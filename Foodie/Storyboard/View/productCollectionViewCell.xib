@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="width" constant="40" id="isD-fO-teg"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="cart" catalog="system">
+                                <buttonConfiguration key="configuration" style="plain" image="cart">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="17"/>
                                     <color key="baseForegroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
@@ -52,7 +52,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="lgb-yW-Cvc" secondAttribute="trailing" constant="5" id="Cdi-ST-itX"/>
                             <constraint firstItem="lgb-yW-Cvc" firstAttribute="leading" secondItem="JIh-Bh-qGr" secondAttribute="trailing" id="PV7-10-0Tx"/>
@@ -63,6 +63,7 @@
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kpt-MK-upa">
                         <rect key="frame" x="12" y="0.0" width="344" height="175.66666666666666"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xt-Dw-QEo">
                         <rect key="frame" x="317.33333333333331" y="0.0" width="50.666666666666686" height="34.333333333333336"/>
@@ -77,6 +78,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="JIh-Bh-qGr" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.3" id="24J-fH-i3R"/>
                 <constraint firstAttribute="trailing" secondItem="otQ-50-gon" secondAttribute="trailing" id="EVh-Nd-co2"/>
@@ -102,7 +104,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="cart" width="32" height="32"/>
         <image name="heart" catalog="system" width="128" height="107"/>
     </resources>
 </document>

@@ -173,6 +173,7 @@ extension ProductTableViewCell: UICollectionViewDataSource ,UICollectionViewDele
                     case .success():
                         print("Restaurant Saved")
                         NotificationCenter.default.post(name: Notification.Name("FavouriteRestaurant"), object: nil)
+                        
                     case .failure(let error):
                         print(error.localizedDescription)
                     }

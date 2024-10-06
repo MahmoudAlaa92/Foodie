@@ -9,8 +9,8 @@ import UIKit
 
 class WalkthroughViewController: UIViewController  {
     
- 
-
+    
+    
     @IBOutlet weak var pageController: UIPageControl!
     
     @IBOutlet weak var nextBtn: UIButton!{
@@ -29,36 +29,36 @@ class WalkthroughViewController: UIViewController  {
         updateUI()
         
         setupPageControl()
-
+        
     }
     
     private func setupPageControl() {
-          
-          view.addSubview(pageController)
-          
-          // Disable autoresizing masks
-          pageController.translatesAutoresizingMaskIntoConstraints = false
-          
-          // Set constraints
-          NSLayoutConstraint.activate([
-              pageController.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-              pageController.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-              pageController.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
-              pageController.heightAnchor.constraint(equalToConstant: 30) // Set height if necessary
-          ])
-      }
+        
+        view.addSubview(pageController)
+        
+        // Disable autoresizing masks
+        pageController.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Set constraints
+        NSLayoutConstraint.activate([
+            pageController.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            pageController.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            pageController.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            pageController.heightAnchor.constraint(equalToConstant: 30) // Set height if necessary
+        ])
+    }
     
     
     func creatQuickAction(){
-         
+        
         // Add Quick Action
         if let bundleIdentifier = Bundle.main.bundleIdentifier{
             let shortcutItem1 = UIApplicationShortcutItem(type: "\(bundleIdentifier).OpenRestaurants", localizedTitle: "Restaurnts", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(systemImageName: "eyes"))
             let shortcutItem2 = UIApplicationShortcutItem(type: "\(bundleIdentifier).OpenFavourites", localizedTitle: "Show Favorites", localizedSubtitle
-           : nil, icon: UIApplicationShortcutIcon(systemImageName: "tag"), userInfo:
-           nil)
+                                                          : nil, icon: UIApplicationShortcutIcon(systemImageName: "tag"), userInfo:
+                                                            nil)
             let shortcutItem3 = UIApplicationShortcutItem(type: "\(bundleIdentifier).NewRestaurant", localizedTitle: "New Restaurant", localizedSubtitle
-           : nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
+                                                          : nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
             UIApplication.shared.shortcutItems = [shortcutItem1 ,shortcutItem2 ,shortcutItem3]
         }
         
@@ -66,10 +66,14 @@ class WalkthroughViewController: UIViewController  {
         
         
         if let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomeView") as? UINavigationController {
-            print("Yes")
-            UIApplication.shared.keyWindow?.rootViewController = vc
-            self.dismiss(animated: true)
             
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first{
+                
+                window.rootViewController = vc
+                window.makeKeyAndVisible()
+                self.dismiss(animated: true)
+            }
         }
     }
     
@@ -89,7 +93,7 @@ class WalkthroughViewController: UIViewController  {
             switch index{
             case 0...1:
                 walkthroughPageViewController?.forwardPage()
-            case 2: 
+            case 2:
                 UserDefaults.standard.set(true, forKey: "getStartedBtnPressed")
                 creatQuickAction()
                 
@@ -122,14 +126,14 @@ class WalkthroughViewController: UIViewController  {
                 fatalError("Error in pageController")
             }
             
-//            switch index{
-//            case 0...1:
-//                nextBtn.setTitle(String(localized: "NEXT"), for: .normal)
-//            case 2:
-//                nextBtn.setTitle(String(localized: "Get Started"), for: .normal)
-//            default:
-//                break
-//            }
+            //            switch index{
+            //            case 0...1:
+            //                nextBtn.setTitle(String(localized: "NEXT"), for: .normal)
+            //            case 2:
+            //                nextBtn.setTitle(String(localized: "Get Started"), for: .normal)
+            //            default:
+            //                break
+            //            }
             pageController.currentPage = index
             
         }
@@ -146,9 +150,9 @@ class WalkthroughViewController: UIViewController  {
 // MARK: - Walkthrough Page View Controller Delegate
 
 extension WalkthroughViewController: WalkthroughPageViewControllerDelegate{
-   
+    
     func didUpdatePageIndex(index: Int) {
-      updateUI()
+        updateUI()
     }
     
 }

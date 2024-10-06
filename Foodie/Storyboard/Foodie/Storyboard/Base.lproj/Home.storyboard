@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,26 +68,24 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="LE0-ak-h21">
                                         <rect key="frame" x="20" y="10" width="353" height="50"/>
                                         <subviews>
-                                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Sa4-ag-XWa">
-                                                <rect key="frame" x="0.0" y="0.0" width="284" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zs5-Gd-GbL">
+                                                <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Y11-Pb-9MU" id="Idc-dc-MjT"/>
-                                                </connections>
-                                            </searchBar>
+                                            </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSA-EZ-5iZ" userLabel="filterView">
-                                                <rect key="frame" x="287" y="0.0" width="66" height="50"/>
+                                                <rect key="frame" x="296" y="0.0" width="57" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-wY-H2X">
-                                                        <rect key="frame" x="16.666666666666686" y="16" width="33" height="18.666666666666664"/>
+                                                        <rect key="frame" x="12" y="16" width="33" height="18.666666666666664"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="33" id="lgM-iM-Cdc"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="fOG-wY-H2X" firstAttribute="centerY" secondItem="fSA-EZ-5iZ" secondAttribute="centerY" id="CpH-s4-lIr"/>
@@ -95,9 +93,6 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Sa4-ag-XWa" secondAttribute="trailing" constant="69" id="ij8-dE-kR3"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -110,8 +105,8 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kz7-aj-war">
                                 <rect key="frame" x="0.0" y="253" width="393" height="599"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" red="0.88235294117647056" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sliderImagesCell" rowHeight="100" id="wF8-Eb-Xa7" customClass="SliderImagesTableViewCell" customModule="Foodie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="100"/>
@@ -122,7 +117,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-NB-G4H">
                                                     <rect key="frame" x="16" y="0.0" width="361" height="100"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lxe-iu-DbI">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -155,7 +150,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="hdx-NB-G4H" secondAttribute="trailing" constant="16" id="Cey-gN-3Ca"/>
                                                 <constraint firstItem="hdx-NB-G4H" firstAttribute="leading" secondItem="KYl-g9-pSq" secondAttribute="leading" constant="16" id="h6r-Xt-K6r"/>
@@ -163,6 +158,7 @@
                                                 <constraint firstItem="hdx-NB-G4H" firstAttribute="top" secondItem="KYl-g9-pSq" secondAttribute="top" id="tFN-79-xuy"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="collectionView" destination="hdx-NB-G4H" id="J7C-oZ-gQV"/>
                                         </connections>
@@ -183,7 +179,7 @@
                                                                 <constraint firstAttribute="width" constant="70" id="uVc-JU-tVh"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="NavigationBarTitle"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See all" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lD-u4-vg8">
@@ -192,14 +188,15 @@
                                                                 <constraint firstAttribute="width" constant="50" id="HwI-cO-Pq2"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="NavigationBarTitle"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </stackView>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-VJ-Xvj">
                                                     <rect key="frame" x="16" y="42.333333333333343" width="361" height="257.66666666666663"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lw5-J9-k88">
                                                         <size key="itemSize" width="169" height="187"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -223,7 +220,7 @@
                                                                             <constraint firstAttribute="height" constant="15" id="lAz-aw-voz"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" name="NavigationBarTitle"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -246,7 +243,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="98C-2N-TA9" firstAttribute="leading" secondItem="AZr-Oc-vVV" secondAttribute="leadingMargin" id="FjQ-Y4-BgS"/>
                                                 <constraint firstItem="d9q-VJ-Xvj" firstAttribute="top" secondItem="98C-2N-TA9" secondAttribute="bottom" constant="5" id="Fuo-WZ-0DB"/>
@@ -257,6 +254,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="d9q-VJ-Xvj" secondAttribute="bottom" id="jBJ-L9-ioO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="collectionView" destination="d9q-VJ-Xvj" id="KYg-rM-V60"/>
                                             <outlet property="titleLabel" destination="fJb-g8-hKh" id="Bxo-un-bge"/>
@@ -267,12 +265,13 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O0W-Nb-FVm"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="kz7-aj-war" firstAttribute="top" secondItem="qxY-hh-Izf" secondAttribute="bottom" constant="10" id="1hS-PV-qrG"/>
                             <constraint firstItem="kz7-aj-war" firstAttribute="leading" secondItem="MTI-zR-L3c" secondAttribute="leading" id="8DU-ua-ZWr"/>
                             <constraint firstAttribute="bottom" secondItem="kz7-aj-war" secondAttribute="bottom" id="A1i-PT-WpS"/>
                             <constraint firstItem="EI1-1T-k08" firstAttribute="top" secondItem="O0W-Nb-FVm" secondAttribute="top" id="GVS-pv-jVD"/>
+                            <constraint firstItem="O0W-Nb-FVm" firstAttribute="trailing" secondItem="Zs5-Gd-GbL" secondAttribute="trailing" constant="80" id="O0W-rP-tDH"/>
                             <constraint firstItem="qxY-hh-Izf" firstAttribute="leading" secondItem="MTI-zR-L3c" secondAttribute="leading" id="SeY-eS-Uks"/>
                             <constraint firstItem="EI1-1T-k08" firstAttribute="leading" secondItem="MTI-zR-L3c" secondAttribute="leading" id="YhB-sq-jHp"/>
                             <constraint firstAttribute="trailing" secondItem="kz7-aj-war" secondAttribute="trailing" id="cUg-IM-dfB"/>
@@ -284,8 +283,9 @@
                     <navigationItem key="navigationItem" id="qxm-gk-2nY"/>
                     <connections>
                         <outlet property="filterView" destination="fSA-EZ-5iZ" id="4CG-UA-S8u"/>
+                        <outlet property="nameOfPerson" destination="sW0-EF-75Z" id="zzD-lt-g74"/>
                         <outlet property="pictureOfPerson" destination="Mj6-As-2Z0" id="2fV-x7-p87"/>
-                        <outlet property="searchBar" destination="Sa4-ag-XWa" id="44M-ze-GJT"/>
+                        <outlet property="searchTextField" destination="Zs5-Gd-GbL" id="NPc-hX-52V"/>
                         <outlet property="tableView" destination="kz7-aj-war" id="22L-ns-SRH"/>
                     </connections>
                 </viewController>
@@ -297,7 +297,7 @@
         <scene sceneID="SVN-nl-QgI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GQj-fV-XTQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="j5I-ZT-m6U"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="j5I-ZT-m6U"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CDw-hu-mFL">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -326,13 +326,10 @@
     <resources>
         <image name="Albaloo Polo" width="342" height="512"/>
         <image name="hi" width="547" height="513"/>
-        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="home" width="32" height="32"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="NavigationBarTitle">
+            <color red="0.32156862745098042" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

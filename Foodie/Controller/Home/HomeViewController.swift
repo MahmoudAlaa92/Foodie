@@ -20,17 +20,29 @@ class HomeViewController: UIViewController {
         didSet{
             pictureOfPerson.layer.cornerRadius = pictureOfPerson.frame.height / 2
             pictureOfPerson.clipsToBounds = true
+            
+            if let photoUrl = DataPersistentManager.shared.userImageURL {
+                loadImage(from: photoUrl) { image in
+                    self.pictureOfPerson.image = image
+                }
+            }
         }
     }
-    @IBOutlet weak var searchBar: UISearchBar!{
+    @IBOutlet weak var nameOfPerson: UILabel!{
         didSet{
-            searchBar.layer.cornerRadius = 14
-            searchBar.layer.masksToBounds = true
-            searchBar.placeholder = "Search for restaurant"
-            
+            if let userName = DataPersistentManager.shared.userName{ nameOfPerson.text = userName }
         }
     }
     
+    @IBOutlet weak var searchTextField: UITextField!{
+        didSet{
+            searchTextField.layer.cornerRadius = 15
+            searchTextField.layer.masksToBounds = true
+            searchTextField.placeholder = "Search About.."
+        }
+    }
+    
+
     @IBOutlet weak var filterView: UIView!{
         didSet{
             filterView.layer.cornerRadius = 14
@@ -77,7 +89,7 @@ class HomeViewController: UIViewController {
     var pupularFood = Product(
         title: "Popular Food",
         names: ["Grilled chicken" ,"Vegetables pizza", "Meat pizzza", "Rice cake"],
-    prices: ["75L.E","55L.E" ,"95L.E" ,"45L.E"],
+    prices: ["150 L.E","260L.E" ,"95 L.E" ,"300 L.E"],
         images: [UIImage(named: "Grilled chicken")!, UIImage(named: "Vegetables pizza")!, UIImage(named: "Meat pizzza")!, UIImage(named: "Rice cake")!] )
     
     var favoriteBoolForRecommended = [Bool]()
@@ -88,7 +100,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         // Table view
         tableView.delegate = self
         tableView.dataSource = self
@@ -135,8 +147,9 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // User id
+        // User info
         userId = DataPersistentManager.shared.userId
+        
         
         // Initialize favorite booleans
         initializeFavoriteBooleans(for: userId)
@@ -148,6 +161,21 @@ class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // Load an image from a URL
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void){
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url) ,let image = UIImage(data: data){
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            }else{
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
     }
  
     // Initialize favorite booleans

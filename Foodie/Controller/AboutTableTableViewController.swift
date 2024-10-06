@@ -12,11 +12,17 @@ import FirebaseAuth
 import FacebookLogin
 
 class AboutTableTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var profileImage: UIImageView!{
         didSet{
             profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
             profileImage.layer.masksToBounds = true
+            
+            if let imageUrl = DataPersistentManager.shared.userImageURL{
+                loadImage(from: imageUrl) { image in
+                    self.profileImage.image = image
+                }
+            }
         }
     }
     lazy var dataSource = configereDataSource()
@@ -32,8 +38,8 @@ class AboutTableTableViewController: UITableViewController {
         var image: String
     }
     
-    var sectionContent = [ 
-        [LinkItem(text: String(localized: "Twitter"), link: String(localized: "https://twitter.com/appcodamobile"), image: String(localized: "twitter")), LinkItem(text: String(localized: "Facebook"), link: String(localized: "https://facebook.com/appcodamobile"), image: String(localized: "facebook")), LinkItem(text: String(localized: "Instagram"), link: String(localized: "https://www.instagram.com/appcodadotcom"), image: String(localized: "instagram"))] ,
+    var sectionContent = [
+        [LinkItem(text: String(localized: "Twitter"), link: String(localized: "https://x.com/MoAlaa660/header_photo"), image: String(localized: "twitter")), LinkItem(text: String(localized: "Facebook"), link: String(localized: "https://www.facebook.com/mahmoudalaa10002/?locale=ar_AR"), image: String(localized: "facebook")), LinkItem(text: String(localized: "Instagram"), link: String(localized: "https://www.instagram.com/mahmoud_3laa_11/"), image: String(localized: "instagram"))] ,
         [LinkItem(text: String(localized: "Rate us on App Store"), link: String(localized: "https://www.apple.com/ios/app-store/"), image: String(localized: "store")), LinkItem(text: String(localized: "Tell us your feedback"), link: String(localized: "http://www.appcoda.com/contact"), image: String(localized: "chat")),LinkItem(text: "Log Out", link: "", image: "logout")]
     ]
     
@@ -48,7 +54,7 @@ class AboutTableTableViewController: UITableViewController {
         tableView.dataSource = dataSource
         updateSnapshot()
     }
-
+    
     
     // Customize navigation bar
     func customizeNavigationBar(){
@@ -68,20 +74,36 @@ class AboutTableTableViewController: UITableViewController {
         }
     }
     
+    // Load an image from a URL
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void){
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url),
+               let image = UIImage(data: data){
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            }else{
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     // Update Snapshot
     func updateSnapshot(){
         
         // Create a snapshot and populate the data
-         var snapshot = NSDiffableDataSourceSnapshot<Section ,LinkItem>()
-          snapshot.appendSections([.feedback ,.followus])
-          snapshot.appendItems(sectionContent[0], toSection: .feedback)
-          snapshot.appendItems(sectionContent[1], toSection: .followus)
+        var snapshot = NSDiffableDataSourceSnapshot<Section ,LinkItem>()
+        snapshot.appendSections([.feedback ,.followus])
+        snapshot.appendItems(sectionContent[0], toSection: .feedback)
+        snapshot.appendItems(sectionContent[1], toSection: .followus)
         
         dataSource.apply(snapshot ,animatingDifferences: true)
     }
     
     // MARK: - Table view data source
-
+    
     func configereDataSource() -> UITableViewDiffableDataSource<Section ,LinkItem>{
         
         let cellIdentifier = "aboutcell"
@@ -122,29 +144,35 @@ class AboutTableTableViewController: UITableViewController {
     
     // Logout
     func logout(){
-       do{
-           try Auth.auth().signOut()
-       }catch{
-           
-           let alertController = UIAlertController(
-               title: "LogOut Error",
-               message: "\(error.localizedDescription)",
-               preferredStyle: .alert)
-           
-           let okayAcrtin = UIAlertAction(title: "Ok", style: .cancel)
-           alertController.addAction(okayAcrtin)
-           
-           present(alertController ,animated: true)
-           return
-       }
-       
-    // present Welcome View
+        do{
+            try Auth.auth().signOut()
+        }catch{
+            
+            let alertController = UIAlertController(
+                title: "LogOut Error",
+                message: "\(error.localizedDescription)",
+                preferredStyle: .alert)
+            
+            let okayAcrtin = UIAlertAction(title: "Ok", style: .cancel)
+            alertController.addAction(okayAcrtin)
+            
+            present(alertController ,animated: true)
+            return
+        }
+        
+        // present Welcome View
         let welcomViewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeView")
-       UIApplication.shared.keyWindow?.rootViewController = welcomViewVC
        
-       self.dismiss(animated: true)
-   }
-   
+           if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first{
+            
+            window.rootViewController = welcomViewVC
+            window.makeKeyAndVisible()
+            self.dismiss(animated: true)
+        }
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showWebView"{

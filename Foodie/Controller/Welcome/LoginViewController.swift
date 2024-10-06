@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
         if let apperance = navigationController?.navigationBar.standardAppearance {
             apperance.configureWithTransparentBackground()
             
-            if let customFont = UIFont(name: "Nunito-Bold", size: 45.0){
+            if let customFont = UIFont(name: "Nunito-Bold", size: 24.0){
                 apperance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")!]
                 apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
@@ -146,6 +146,14 @@ class LoginViewController: UIViewController {
             
             guard let user = result?.user else{ return }
             
+            // Grab the user's display name and profile image URL
+            let displayName = user.displayName
+            let photoURL = user.photoURL
+            
+            DataPersistentManager.shared.userId = user.uid
+            DataPersistentManager.shared.userName = displayName ?? "Guest"
+            DataPersistentManager.shared.userImageURL = photoURL
+            
             // Email Verification
             //            guard let result = result ,result.user.isEmailVerified else{
             //                let alertController = UIAlertController(
@@ -169,12 +177,8 @@ class LoginViewController: UIViewController {
             // Dismiss the keyboard
             self.view.endEditing(true)
             
-            // present the main view
-            if let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
-                DataPersistentManager.shared.userId = user.uid
-                UIApplication.shared.keyWindow?.rootViewController = tabBarController
-                self.dismiss(animated: true)
-            }
+            // Present the main view
+            self.presentMainView()
         }
     }
     
@@ -214,17 +218,15 @@ class LoginViewController: UIViewController {
                         return
                     }
                     
-                    guard let userId = result?.user.uid else { return }
+                    guard let user = result?.user else { return }
                     
-                    DataPersistentManager.shared.userId = userId
+                    DataPersistentManager.shared.userId = user.uid
+                    DataPersistentManager.shared.userName = user.displayName ?? "Guest"
+                    DataPersistentManager.shared.userImageURL = user.photoURL
                     
                     // Present the main view
-                    if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
-                        self.dismiss(animated: true)
-                    }
+                    self.presentMainView()
                 }
-                
             }
         
     }
@@ -293,18 +295,30 @@ class LoginViewController: UIViewController {
                 
                 // Successfully signed in
                 if let authResult = authResult {
-                    let userId = authResult.user.uid
-                    DataPersistentManager.shared.userId = userId
+                    let user = authResult.user
+                    DataPersistentManager.shared.userId = user.uid
+                    DataPersistentManager.shared.userName = user.displayName ?? "Geust"
+                    DataPersistentManager.shared.userImageURL = user.photoURL
                     
-                    if let vc = storyboard?.instantiateViewController(withIdentifier: "MainView"){
-                        UIApplication.shared.keyWindow?.rootViewController = vc
-                        self.dismiss(animated: true)
-                    }
-                    
+                    // Present main veiw
+                    self.presentMainView()
                 }
             }
             
         }
         
     }
+    
+    // Present main view
+    func presentMainView (){
+        if let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"),
+           let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first{
+            
+            window.rootViewController = tabBarController
+            window.makeKeyAndVisible()
+            self.dismiss(animated: true)
+        }
+    }
+    
 }

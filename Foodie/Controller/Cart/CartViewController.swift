@@ -11,7 +11,12 @@ class CartViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextField!{
+        didSet{
+            textField.layer.cornerRadius = 10
+            textField.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var subTotal: UILabel!
     
     @IBOutlet weak var shiping: UILabel!
@@ -43,7 +48,25 @@ class CartViewController: UIViewController {
         let nib = UINib(nibName: "CartTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cartCell")
         
-        // Fetch cart items
+        
+        // Customize navigation bar
+        customizeNavigationBar()
+    }
+    
+    // View will appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Cart "
+        navigationController?.hidesBarsOnSwipe = true
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name("cartItems"), object: nil, queue: nil) { _ in
+            self.fetchCartItems()
+        }
+    }
+    
+    // Fetch cart items
+    func fetchCartItems(){
         DataPersistentManager.shared.fetchCartItem { [weak self] result in
             
             switch result {
@@ -59,7 +82,22 @@ class CartViewController: UIViewController {
                 print("Error when retrive data: \(error)")
             }
         }
-        
+    }
+    
+    // Customize navigation bar
+    func customizeNavigationBar(){
+            
+        if let appearance = navigationController?.navigationBar.standardAppearance {
+            appearance.configureWithTransparentBackground()
+            
+            if let customFont = UIFont(name: "Nunito-Bold", size: 35.0) {
+                appearance.titleTextAttributes = [.foregroundColor:UIColor(named: "NavigationBarTitle")!]
+                appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
+            }
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
     }
     
     @IBAction func addPromoCode(_ sender: UIButton) {

@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet var nameTextField: UITextField!{
         didSet{
             nameTextField.layer.cornerRadius = 10
@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
             passwordTextField.layer.cornerRadius = 10
             passwordTextField.layer.masksToBounds = true
             passwordTextField.isSecureTextEntry = true
-
+            
         }
     }
     @IBOutlet weak var eyePassword: UIButton!{
@@ -51,7 +51,7 @@ class SignUpViewController: UIViewController {
     }
     
     var isPasswordVisible: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController {
         if let apperance = navigationController?.navigationBar.standardAppearance {
             apperance.configureWithTransparentBackground()
             
-            if let customFont = UIFont(name: "Nunito-Bold", size: 35.0){
+            if let customFont = UIFont(name: "Nunito-Bold", size: 24){
                 apperance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")!]
                 apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
@@ -151,32 +151,34 @@ class SignUpViewController: UIViewController {
             }
         }
         
-      
         
-    // Dismiss keyboard
+        
+        // Dismiss keyboard
         self.view.endEditing(true)
         
         
-    // Send verification email
-      Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-          print("Failed to send verification email")
-      })
+        // Send verification email
+        Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+            print("Failed to send verification email")
+        })
         
         let alertController = UIAlertController(title: "Email Verification", message: "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up.", preferredStyle: .alert)
         
-      let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-                  // Dismiss the current view controller
-                  self.dismiss(animated: true, completion: nil)
-              })
+        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+            // Dismiss the current view controller
+            self.dismiss(animated: true, completion: nil)
+        })
         
-      alertController.addAction(okayAction)
-    self.present(alertController, animated: true)
-      
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true)
         
-        // Present the main view
         
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
-            UIApplication.shared.keyWindow?.rootViewController = vc
+        // Present main view
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView"),
+           let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first{
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
             self.dismiss(animated: true)
         }
     }

@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,13 +26,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOD-Lp-4DV">
                                 <rect key="frame" x="0.0" y="0.0" width="213" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="NavigationBarTitle"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6P-tO-AhU">
                                 <rect key="frame" x="0.0" y="30.333333333333336" width="213" height="20.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="NavigationBarTitle"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -44,7 +45,7 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
-                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="baseForegroundColor" name="NavigationBarTitle"/>
                         </buttonConfiguration>
                         <connections>
                             <action selector="deleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TIm-1i-BCl"/>
@@ -57,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="49" height="52.333333333333336"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="minus.square" catalog="system">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" name="NavigationBarTitle"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="minusButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jsa-oV-UPS"/>
@@ -73,7 +74,7 @@
                                 <rect key="frame" x="56.666666666666671" y="0.0" width="49" height="52.333333333333336"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" name="NavigationBarTitle"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="plusButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L2E-Y5-ZEQ"/>
@@ -98,6 +99,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <connections>
                 <outlet property="img" destination="RvN-r1-Oje" id="gWO-KI-E8c"/>
                 <outlet property="nameLabel" destination="HOD-Lp-4DV" id="Q8R-tA-zPd"/>
@@ -111,5 +113,8 @@
         <image name="minus.square" catalog="system" width="128" height="114"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="xmark.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="NavigationBarTitle">
+            <color red="0.32156862745098042" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -70,4 +70,5 @@ extension FoodsOfRestaurantTableViewCell: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegateOfSelectedItem?.didSelected(indexPath: indexPath)
     }
+    
 }

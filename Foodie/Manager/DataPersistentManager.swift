@@ -21,6 +21,29 @@ class DataPersistentManager{
     
     static let shared = DataPersistentManager()
     var userId = ""
+    private let userNameKey = "userName"
+    private let userImageURLKey = "userImageURL"
+    
+    var userName: String? {
+        get{
+            return UserDefaults.standard.string(forKey: userNameKey)
+        }
+        set{
+            UserDefaults.standard.setValue(newValue, forKey: userNameKey)
+        }
+    }
+    
+    var userImageURL: URL?{
+        get{
+            if let urlString = UserDefaults.standard.string(forKey: userImageURLKey){
+                return URL(string: urlString)
+            }
+            return nil
+        }
+        set{
+            UserDefaults.standard.setValue(newValue?.absoluteString, forKey: userImageURLKey)
+        }
+    }
     
     // Create favourite restaurant
     func createFavouriteRestaurant(with model: FavouriteRestaurant ,completion: @escaping (Result<Void ,Error>) -> Void){

@@ -33,9 +33,7 @@ class ProductViewController: UIViewController {
         
         if isFavorite{
             headerView.favouriteBtn.setImage( UIImage(systemName: "heart.fill"), for: .normal)
-            print("true")
         }else{
-            print("false")
             headerView.favouriteBtn.setImage( UIImage(systemName: "heart"), for: .normal)
         }
         
@@ -83,6 +81,9 @@ class ProductViewController: UIViewController {
                     alert.imageName = "bag"
                     alert.appear(sender: self)
                     print("Saved")
+                    
+                    NotificationCenter.default.post(name: Notification.Name("cartItems"), object: nil)
+                    
                 case .failure(let error):
                     print("Error when save item: \(error)")
                 }

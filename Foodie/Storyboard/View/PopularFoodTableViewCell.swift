@@ -21,6 +21,9 @@ class PopularFoodTableViewCell: UITableViewCell {
         didSet{
             collectionView.layer.cornerRadius = 15
             collectionView.layer.masksToBounds = true
+            
+//            collectionView.layer.borderWidth = 1.0
+//            collectionView.layer.borderColor = UIColor.gray.cgColor
         }
     }
     
@@ -62,6 +65,10 @@ extension PopularFoodTableViewCell: UICollectionViewDataSource, UICollectionView
         cell.nameLabel.text = name[indexPath.row]
         cell.priceLabel.text = price[indexPath.row]
         cell.imageOfLabel.image = photos[indexPath.row]
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.cornerRadius = 15
+        cell.layer.masksToBounds = true
         
         return cell
     }

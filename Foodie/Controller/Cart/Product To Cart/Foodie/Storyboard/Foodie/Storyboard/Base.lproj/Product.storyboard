@@ -19,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fh6-5M-fPJ">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="1166"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableHeaderView" contentMode="scaleAspectFill" id="sfX-b9-mEF" userLabel="headerView" customClass="HeaderOfProductToCartView" customModule="Foodie" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="294" height="450"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,13 +67,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pepperoni pizza" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoa-gG-2Ne">
                                                             <rect key="frame" x="0.0" y="0.0" width="131.33333333333334" height="34.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="NavigationBarTitle"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L.E65,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbn-Po-nlM">
                                                             <rect key="frame" x="0.0" y="34.333333333333336" width="74.333333333333329" height="30.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="NavigationBarTitle"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -123,6 +123,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="zzS-tx-O73" secondAttribute="bottom" id="zCq-rC-4oC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="foodName" destination="Qoa-gG-2Ne" id="ccB-4y-ZcG"/>
                                             <outlet property="foodePrice" destination="Nbn-Po-nlM" id="SaD-O3-6sT"/>
@@ -139,7 +140,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSk-AV-wFD">
                                                     <rect key="frame" x="16" y="7.9999999999999982" width="262" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="NavigationBarTitle"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bMp-0a-ewq" userLabel="StackViewOfSizes">
@@ -199,6 +200,7 @@
                                                 <constraint firstItem="bMp-0a-ewq" firstAttribute="top" secondItem="lSk-AV-wFD" secondAttribute="bottom" constant="5" id="usy-6i-Fzz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="largeLabel" destination="PwK-Z4-928" id="k6G-EM-Yjw"/>
                                             <outlet property="mediumLabel" destination="fM5-cq-ZdV" id="zws-1M-xj1"/>
@@ -225,7 +227,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEA-hL-qq0">
                                                     <rect key="frame" x="16" y="28" width="262" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="NavigationBarTitle"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -239,6 +241,7 @@
                                                 <constraint firstItem="qEA-hL-qq0" firstAttribute="leading" secondItem="SLi-vT-Cuz" secondAttribute="leading" constant="16" id="ura-rd-9j3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="descriptionOfFood" destination="qEA-hL-qq0" id="Y9A-OO-GcB"/>
                                         </connections>
@@ -270,6 +273,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="CGs-WU-G28" secondAttribute="trailing" constant="16" id="btw-kA-Z1E"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="addBtn" destination="CGs-WU-G28" id="pJA-1I-27H"/>
                                         </connections>
@@ -278,7 +282,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KRn-Y8-FII"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="KRn-Y8-FII" firstAttribute="trailing" secondItem="Fh6-5M-fPJ" secondAttribute="trailing" id="6ha-To-KMb"/>
                             <constraint firstItem="Fh6-5M-fPJ" firstAttribute="bottom" secondItem="KRn-Y8-FII" secondAttribute="bottom" id="Z1y-vr-8yE"/>
@@ -303,6 +307,9 @@
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <namedColor name="ButtonColor">
             <color red="0.31764705882352939" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationBarTitle">
+            <color red="0.32156862745098042" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

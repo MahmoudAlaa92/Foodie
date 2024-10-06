@@ -49,7 +49,7 @@ class ResetPasswordViewController: UIViewController {
         if let appearance = navigationController?.navigationBar.standardAppearance {
             appearance.configureWithTransparentBackground()
             
-            if let customFont = UIFont(name: "Nunito-Bold", size: 35){
+            if let customFont = UIFont(name: "Nunito-Bold", size: 24){
                 appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
                 appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
