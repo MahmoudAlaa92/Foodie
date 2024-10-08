@@ -19,6 +19,12 @@ class RestaurantDetailViewController: UIViewController {
     }
     @IBOutlet weak var headerView: HeaderRestaurantDetailView!
     
+    @IBOutlet weak var rateButton: UIButton!{
+        didSet{
+            rateButton.layer.cornerRadius = 15
+            rateButton.layer.masksToBounds = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

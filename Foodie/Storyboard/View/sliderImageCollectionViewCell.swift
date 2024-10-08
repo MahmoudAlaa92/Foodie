@@ -11,7 +11,7 @@ class sliderImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCell: UIImageView!{
         didSet{
-            imageCell.layer.cornerRadius = 17
+            imageCell.layer.cornerRadius = 25
             imageCell.layer.masksToBounds = true
             imageCell.clipsToBounds = true
             imageCell.contentMode = .scaleAspectFill

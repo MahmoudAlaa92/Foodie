@@ -20,7 +20,7 @@ class SliderImagesTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     // Collection view
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
-            collectionView.layer.cornerRadius = 17
+            collectionView.layer.cornerRadius = 25
             collectionView.layer.masksToBounds = true
         }
     }

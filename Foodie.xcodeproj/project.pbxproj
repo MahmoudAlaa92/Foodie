@@ -23,6 +23,7 @@
 		150DF6AD2CAB14E800A379D7 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150DF69A2CAB14E800A379D7 /* Rubik-BlackItalic.ttf */; };
 		150DF6B22CAB266500A379D7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 150DF6B12CAB266500A379D7 /* FirebaseAuth */; };
 		1513B25E2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */; };
+		1519C3812CB4928500C54D2A /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519C3802CB4928500C54D2A /* CustomTabBarController.swift */; };
 		15203FAB2C4E973A0071044F /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15203FA92C4E973A0071044F /* About.storyboard */; };
 		153771EF2C3DB367003C2A63 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153771EE2C3DB367003C2A63 /* ReviewViewController.swift */; };
 		153901142C326EF300000F48 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153901132C326EF300000F48 /* RestaurantDetailViewController.swift */; };
@@ -121,6 +122,7 @@
 		150DF6A12CAB14E800A379D7 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		150DF6A22CAB14E800A379D7 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		1513B25D2C9900E4006AB08A /* FoodsOfSpecificRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsOfSpecificRestaurantViewController.swift; sourceTree = "<group>"; };
+		1519C3802CB4928500C54D2A /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		15203FAA2C4E973A0071044F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Foodie/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		153771EE2C3DB367003C2A63 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		153901132C326EF300000F48 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1519C37F2CB4923600C54D2A /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				1519C3802CB4928500C54D2A /* CustomTabBarController.swift */,
+			);
+			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
 		154452D02C97266400C497BC /* Product To Cart */ = {
@@ -502,6 +512,7 @@
 		15D63E212C2C0702000FD524 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1519C37F2CB4923600C54D2A /* CustomTabBar */,
 				150DF68B2CAAF95E00A379D7 /* Welcome */,
 				15A97B222C745C5E0069B0A1 /* Home */,
 				15C4418E2C95BB080057C682 /* Specific Restaurant */,
@@ -699,6 +710,7 @@
 			files = (
 				154452E12C97373200C497BC /* AddToCartTableViewCell.swift in Sources */,
 				15D63E1E2C2C011B000FD524 /* Restaurant.swift in Sources */,
+				1519C3812CB4928500C54D2A /* CustomTabBarController.swift in Sources */,
 				15C90B2A2CA43804000E386A /* CartViewController.swift in Sources */,
 				15EF28CD2C932CC10003E269 /* NewOfferTableViewCell.swift in Sources */,
 				15EF28D42C936D1C0003E269 /* PopularFoodCollectionViewCell.swift in Sources */,

@@ -105,7 +105,7 @@
         <!--About-->
         <scene sceneID="6PJ-kn-bnP">
             <objects>
-                <navigationController id="RVE-na-iyf" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AboutNavController" id="RVE-na-iyf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" image="profile" id="SaK-FI-tEq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Bf-F9-ALK">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>

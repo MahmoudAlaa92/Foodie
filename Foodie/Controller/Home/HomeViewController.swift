@@ -308,7 +308,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularFoodCell", for: indexPath) as? PopularFoodTableViewCell else {
                 return UITableViewCell()
             }
-            
+ 
             cell.delegateOfPopularItem = self
             cell.titleLabel.text = "Popular Food"
             cell.name = pupularFood.names
@@ -327,7 +327,11 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
         
         switch indexPath.row {
         case 0:
-            return 150
+            if UIScreen.main.bounds.height < 900{
+                return UIScreen.main.bounds.height * 0.14
+            }else{
+                return UIScreen.main.bounds.height * 0.24
+            }
         case 1:
             return 130
         case 2...3:
@@ -336,6 +340,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             return 160
         case 5:
             return 300
+            
         default:
             fatalError("Error in height for row at in home view controller")
         }

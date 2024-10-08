@@ -198,7 +198,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6lk-jP-cUZ">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="1135"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="EAI-ka-dKw" userLabel="headerView" customClass="HeaderRestaurantDetailView" customModule="Foodie" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="450"/>
@@ -428,7 +428,7 @@
                         <constraints>
                             <constraint firstItem="6lk-jP-cUZ" firstAttribute="leading" secondItem="nEw-p5-bV4" secondAttribute="leading" id="0Cq-64-isv"/>
                             <constraint firstItem="6lk-jP-cUZ" firstAttribute="top" secondItem="nEw-p5-bV4" secondAttribute="top" id="RMm-U0-VaJ"/>
-                            <constraint firstAttribute="bottom" secondItem="6lk-jP-cUZ" secondAttribute="bottom" id="eQG-OP-Owy"/>
+                            <constraint firstAttribute="bottom" secondItem="6lk-jP-cUZ" secondAttribute="bottom" constant="65" id="eQG-OP-Owy"/>
                             <constraint firstItem="6lk-jP-cUZ" firstAttribute="trailing" secondItem="nEw-p5-bV4" secondAttribute="trailing" id="tSu-Ol-tjJ"/>
                         </constraints>
                     </view>
@@ -436,6 +436,7 @@
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
                         <outlet property="headerView" destination="EAI-ka-dKw" id="uqS-tB-aO8"/>
+                        <outlet property="rateButton" destination="uEf-Xj-qPa" id="JJG-RD-mJO"/>
                         <outlet property="tableView" destination="6lk-jP-cUZ" id="5Ux-rm-kkH"/>
                     </connections>
                 </viewController>
@@ -596,7 +597,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <sections>
-                            <tableViewSection id="nEZ-0F-fNt">
+                            <tableViewSection headerTitle="" id="nEZ-0F-fNt">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="sxA-O7-qhK">
                                         <rect key="frame" x="0.0" y="50" width="393" height="200"/>
@@ -826,7 +827,7 @@
         <!--Restaurants-->
         <scene sceneID="XFz-ah-N4l">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8X6-SM-dxG" customClass="NavigationController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RestaurantsNavController" automaticallyAdjustsScrollViewInsets="NO" id="8X6-SM-dxG" customClass="NavigationController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Restaurants" image="star.leadinghalf.filled" catalog="system" id="mrB-Od-MAO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jmk-TR-DXR">
@@ -860,10 +861,10 @@
             </objects>
             <point key="canvasLocation" x="2657.2519083969464" y="-751.4084507042254"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="S2C-6d-NL1">
             <objects>
-                <tabBarController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="XLP-uX-5eX" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="XLP-uX-5eX" customClass="CustomTabBarController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QMi-Ge-kOy">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1499,7 +1500,7 @@
         <!--Cart-->
         <scene sceneID="qJv-4Q-Wem">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="teC-Sq-JKX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CartNavController" automaticallyAdjustsScrollViewInsets="NO" id="teC-Sq-JKX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cart" image="cart" id="UhG-YT-hVU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LwD-PA-ADr">
@@ -1540,24 +1541,24 @@
     <resources>
         <image name="Facebook 1" width="36" height="36"/>
         <image name="Google" width="24" height="24"/>
-        <image name="angry" width="78" height="103"/>
+        <image name="angry" width="100" height="100"/>
         <image name="cafedeadend" width="426.66665649414062" height="426.66665649414062"/>
         <image name="cafeloisl" width="426.66665649414062" height="426.66665649414062"/>
         <image name="cart" width="32" height="32"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="cool" width="78" height="83"/>
+        <image name="cool" width="100" height="100"/>
         <image name="eye.fill" catalog="system" width="128" height="80"/>
-        <image name="happy" width="78" height="86"/>
+        <image name="happy" width="100" height="100"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="i" width="170" height="285"/>
         <image name="introPic" width="170" height="285"/>
-        <image name="love" width="78" height="82"/>
+        <image name="love" width="100" height="100"/>
         <image name="newphoto" width="1840" height="1380"/>
         <image name="o" width="128" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="sad" width="78" height="87"/>
+        <image name="sad" width="100" height="100"/>
         <image name="star.leadinghalf.filled" catalog="system" width="128" height="116"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Color">
