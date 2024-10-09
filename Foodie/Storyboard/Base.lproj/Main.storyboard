@@ -456,11 +456,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-5E-DJO">
+                                <rect key="frame" x="20" y="659" width="353" height="50"/>
+                                <color key="backgroundColor" name="NavigationBarTitle"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wVy-kB-xnX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Get Direction"/>
+                                <connections>
+                                    <action selector="getDirection:" destination="ch5-QO-Dad" eventType="touchUpInside" id="D35-fE-wcg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dc6-KD-r1p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uQH-8e-Fd8" firstAttribute="leading" secondItem="bSf-Sr-sfo" secondAttribute="leading" id="0mN-cL-umx"/>
+                            <constraint firstItem="gtd-5E-DJO" firstAttribute="leading" secondItem="bSf-Sr-sfo" secondAttribute="leading" constant="20" id="BNb-Gh-5ee"/>
+                            <constraint firstAttribute="trailing" secondItem="gtd-5E-DJO" secondAttribute="trailing" constant="20" id="CUV-oj-9rE"/>
+                            <constraint firstItem="dc6-KD-r1p" firstAttribute="bottom" secondItem="gtd-5E-DJO" secondAttribute="bottom" constant="60" id="TCT-bP-ZQ6"/>
                             <constraint firstItem="uQH-8e-Fd8" firstAttribute="top" secondItem="bSf-Sr-sfo" secondAttribute="top" id="cbK-2s-gh3"/>
                             <constraint firstAttribute="trailing" secondItem="uQH-8e-Fd8" secondAttribute="trailing" id="dxP-Re-RAC"/>
                             <constraint firstAttribute="bottom" secondItem="uQH-8e-Fd8" secondAttribute="bottom" id="hpi-qP-gT4"/>
@@ -468,6 +485,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="lgZ-sh-hNE"/>
                     <connections>
+                        <outlet property="directionButton" destination="gtd-5E-DJO" id="eGG-YN-n9f"/>
                         <outlet property="mapView" destination="uQH-8e-Fd8" id="Sn9-nm-cGV"/>
                     </connections>
                 </viewController>
@@ -894,10 +912,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iv1-x4-6PV" userLabel="CartView">
-                                <rect key="frame" x="0.0" y="513.33333333333337" width="393" height="255.66666666666663"/>
+                                <rect key="frame" x="0.0" y="483.33333333333331" width="393" height="255.66666666666669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="bqO-7R-UhA">
-                                        <rect key="frame" x="20" y="60" width="209.66666666666666" height="109"/>
+                                        <rect key="frame" x="20" y="60.000000000000057" width="209.66666666666666" height="109"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-NC-w8H">
                                                 <rect key="frame" x="0.0" y="0.0" width="68.333333333333329" height="109"/>
@@ -948,7 +966,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHD-zF-vbf">
-                                        <rect key="frame" x="20" y="179" width="353" height="50"/>
+                                        <rect key="frame" x="20" y="179.00000000000006" width="353" height="50"/>
                                         <color key="backgroundColor" red="0.32156862745098036" green="0.0078431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Of9-yk-qbf"/>
@@ -1001,7 +1019,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vfc-fD-cwh">
-                                <rect key="frame" x="0.0" y="102.99999999999997" width="393" height="410.33333333333326"/>
+                                <rect key="frame" x="0.0" y="102.99999999999997" width="393" height="380.33333333333326"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                         </subviews>
@@ -1015,7 +1033,7 @@
                             <constraint firstItem="iv1-x4-6PV" firstAttribute="trailing" secondItem="mEf-Lh-hRZ" secondAttribute="trailing" id="es1-QS-PJH"/>
                             <constraint firstItem="iv1-x4-6PV" firstAttribute="leading" secondItem="mEf-Lh-hRZ" secondAttribute="leading" id="nPQ-gb-XqA"/>
                             <constraint firstItem="iv1-x4-6PV" firstAttribute="height" secondItem="9bf-Pe-ZuT" secondAttribute="height" multiplier="0.3" id="tMu-7N-ccA"/>
-                            <constraint firstItem="iv1-x4-6PV" firstAttribute="bottom" secondItem="mEf-Lh-hRZ" secondAttribute="bottom" id="tXl-au-WKY"/>
+                            <constraint firstItem="iv1-x4-6PV" firstAttribute="bottom" secondItem="mEf-Lh-hRZ" secondAttribute="bottom" constant="-30" id="tXl-au-WKY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DT6-NX-7M3"/>

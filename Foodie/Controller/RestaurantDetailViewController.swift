@@ -21,7 +21,7 @@ class RestaurantDetailViewController: UIViewController {
     
     @IBOutlet weak var rateButton: UIButton!{
         didSet{
-            rateButton.layer.cornerRadius = 15
+            rateButton.layer.cornerRadius = 18
             rateButton.layer.masksToBounds = true
         }
     }
@@ -108,6 +108,7 @@ extension RestaurantDetailViewController: UITableViewDelegate ,UITableViewDataSo
         case "MapViewController":
             if let destinationVC = segue.destination as? MapViewController{
                 destinationVC.restaurant = self.restaurant
+                
             }
         case "showReview":
             if let destinationVC = segue.destination as? ReviewViewController{

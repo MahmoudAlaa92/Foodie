@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fh6-5M-fPJ">
-                                <rect key="frame" x="0.0" y="0.0" width="294" height="1166"/>
+                                <rect key="frame" x="0.0" y="0.0" width="294" height="1131"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableHeaderView" contentMode="scaleAspectFill" id="sfX-b9-mEF" userLabel="headerView" customClass="HeaderOfProductToCartView" customModule="Foodie" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="294" height="450"/>
@@ -285,7 +285,7 @@
                         <color key="backgroundColor" red="0.92941176469999998" green="0.84313725490000002" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="KRn-Y8-FII" firstAttribute="trailing" secondItem="Fh6-5M-fPJ" secondAttribute="trailing" id="6ha-To-KMb"/>
-                            <constraint firstItem="Fh6-5M-fPJ" firstAttribute="bottom" secondItem="KRn-Y8-FII" secondAttribute="bottom" id="Z1y-vr-8yE"/>
+                            <constraint firstItem="Fh6-5M-fPJ" firstAttribute="bottom" secondItem="KRn-Y8-FII" secondAttribute="bottom" constant="-35" id="Z1y-vr-8yE"/>
                             <constraint firstItem="Fh6-5M-fPJ" firstAttribute="top" secondItem="l5z-Ft-fM1" secondAttribute="top" id="llv-e2-ndX"/>
                             <constraint firstItem="Fh6-5M-fPJ" firstAttribute="leading" secondItem="KRn-Y8-FII" secondAttribute="leading" id="py7-or-8LG"/>
                         </constraints>
