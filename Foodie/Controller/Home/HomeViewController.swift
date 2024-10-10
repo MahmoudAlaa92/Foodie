@@ -16,6 +16,9 @@ class HomeViewController: UIViewController {
         UIImage(named: "slider4")
     ]
     
+    @IBOutlet weak var searchIcon: UIButton!
+        
+    
     @IBOutlet weak var pictureOfPerson: UIImageView!{
         didSet{
             pictureOfPerson.layer.cornerRadius = pictureOfPerson.frame.height / 2
@@ -82,6 +85,10 @@ class HomeViewController: UIViewController {
                              )
                ]
     
+    var allProducts: [FilterProduct] = []
+    var filteredProducts: [FilterProduct] = []
+    var checkFiltered = false
+    
     // New Offer
     var newOffer = [NewOffer(descripion: "Enjoy your favorite food at discounted prices of up to 50%", image: UIImage(named: "NewOffer1"))]
     
@@ -96,11 +103,16 @@ class HomeViewController: UIViewController {
     var favoriteBoolForBestSeller = [Bool]()
     var userId = ""
     
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        // Search text field
+        searchTextField.delegate = self
+        loadAllProduct()
+        
         // Table view
         tableView.delegate = self
         tableView.dataSource = self
@@ -111,7 +123,7 @@ class HomeViewController: UIViewController {
         let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "productCell")
         
-        //Registe the newOfferProduct nib file
+        //Register the newOfferProduct nib file
         let nib2 = UINib(nibName: "NewOfferTableViewCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "newOfferCell")
         
@@ -119,31 +131,12 @@ class HomeViewController: UIViewController {
         let nib3 = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
         tableView.register(nib3, forCellReuseIdentifier: "PopularFoodCell")
         
-        // uploud new
-//        let group = DispatchGroup()
-//        var imageUrls = [String]()
-//
-//        for (restaurantName, product) in recommendedAndBest {
-//            for (index, image) in product.images.enumerated() {
-//                group.enter()
-//                let imageName = "\(restaurantName)_\(product.names[index])"
-//
-//                // Upload image and get the download URL
-//                DataPersistentManager.shared.uploadImage(image: image, imageName: imageName) { url in
-//                    if let imageUrl = url {
-//                        imageUrls.append(imageUrl)  // Store the image URL
-//                    }
-//                    group.leave()
-//                }
-//            }
-//        }
-//        group.notify(queue: .main) { [self] in
-//            // Once all uploads are done, save the image URLs and restaurant data in Firestore
-//            DataPersistentManager.shared.saveToFirestore(restaurantData: recommendedAndBest, imageUrls: imageUrls, to: "recommendedAndBestSeller")
-//        }
+        //Register the filterProducts nib file
+        let nib4 = UINib(nibName: "FilterTableViewCell", bundle: nil)
+        tableView.register(nib4, forCellReuseIdentifier: "filterCell")
+        
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -239,110 +232,129 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        if checkFiltered{
+            return filteredProducts.count
+        }else{
+            return 6
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.separatorStyle = .none
         
-        switch indexPath.row{
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "sliderImagesCell", for: indexPath) as? SliderImagesTableViewCell else{
+        if checkFiltered{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else{
                 return UITableViewCell()
             }
-            cell.delegateSliderImage = self
-            
-            cell.setUpImages(images: imagesOfSliderCollection)
-            cell.selectionStyle = .none
+            cell.nameLabel.text = filteredProducts[indexPath.row].names
+            cell.imgView.image = filteredProducts[indexPath.row].images
             return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell else{
-                return UITableViewCell()
-            }
+        }else{
             
-            cell.categoriesDelegate = self
-            
-            cell.setUpCell(title: categoriesItems.title, photos: categoriesItems.iamges)
-            cell.names = categoriesItems.names
-            cell.selectionStyle = .none
-            return cell
-        case 2...3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else{
-                print("Error in product table view cell")
-                return UITableViewCell()
-            }
-            
-            cell.favoriteDelegate = self
-            cell.selectedDelegate = self
-            
-            if (indexPath.row == 2){ // Recommended
-                cell.titleLabel.text = recommendedAndBest["Recomoneded"]?.title
-                cell.photos = recommendedAndBest["Recomoneded"]!.images
-                cell.name = recommendedAndBest["Recomoneded"]!.names
-                cell.price = recommendedAndBest["Recomoneded"]!.prices
-                cell.isFavorited = favoriteBoolForRecommended
+            switch indexPath.row{
+            case 0:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "sliderImagesCell", for: indexPath) as? SliderImagesTableViewCell else{
+                    return UITableViewCell()
+                }
+                cell.delegateSliderImage = self
                 
-            }else{ // Best seller
-                cell.titleLabel.text = recommendedAndBest["BestSeller"]?.title
-                cell.photos = recommendedAndBest["BestSeller"]!.images
-                cell.name = recommendedAndBest["BestSeller"]!.names
-                cell.price = recommendedAndBest["BestSeller"]!.prices
-                cell.isFavorited = favoriteBoolForBestSeller
+                cell.setUpImages(images: imagesOfSliderCollection)
+                cell.selectionStyle = .none
+                return cell
+            case 1:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell else{
+                    return UITableViewCell()
+                }
+                
+                cell.categoriesDelegate = self
+                
+                cell.setUpCell(title: categoriesItems.title, photos: categoriesItems.iamges)
+                cell.names = categoriesItems.names
+                cell.selectionStyle = .none
+                return cell
+            case 2...3:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else{
+                    print("Error in product table view cell")
+                    return UITableViewCell()
+                }
+                
+                cell.favoriteDelegate = self
+                cell.selectedDelegate = self
+                
+                if (indexPath.row == 2){ // Recommended
+                    cell.titleLabel.text = recommendedAndBest["Recomoneded"]?.title
+                    cell.photos = recommendedAndBest["Recomoneded"]!.images
+                    cell.name = recommendedAndBest["Recomoneded"]!.names
+                    cell.price = recommendedAndBest["Recomoneded"]!.prices
+                    cell.isFavorited = favoriteBoolForRecommended
+                    
+                }else{ // Best seller
+                    cell.titleLabel.text = recommendedAndBest["BestSeller"]?.title
+                    cell.photos = recommendedAndBest["BestSeller"]!.images
+                    cell.name = recommendedAndBest["BestSeller"]!.names
+                    cell.price = recommendedAndBest["BestSeller"]!.prices
+                    cell.isFavorited = favoriteBoolForBestSeller
+                }
+                cell.tableViewRow = indexPath.row
+                cell.selectionStyle = .none
+                cell.userId = userId
+                return cell
+            case 4:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "newOfferCell", for: indexPath) as? NewOfferTableViewCell else{
+                    print("Error in Offer table view cell")
+                    return UITableViewCell()
+                }
+                
+                cell.titleOfCell.text = "New Offer"
+                cell.descriptionLabel.text = newOffer[0].descripion
+                cell.backgroundImage.image = UIImage(named: "Discount 50%")
+                cell.selectionStyle = .none
+                return cell
+            case 5:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularFoodCell", for: indexPath) as? PopularFoodTableViewCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.delegateOfPopularItem = self
+                cell.titleLabel.text = "Popular Food"
+                cell.name = pupularFood.names
+                cell.price = pupularFood.prices
+                cell.photos = pupularFood.images
+                cell.selectionStyle = .none
+                
+                return cell
+            default:
+                fatalError("Error in when specific number of row in HomeViewContoller")
             }
-            cell.tableViewRow = indexPath.row
-            cell.selectionStyle = .none
-            cell.userId = userId
-            return cell
-        case 4:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "newOfferCell", for: indexPath) as? NewOfferTableViewCell else{
-                print("Error in Offer table view cell")
-                return UITableViewCell()
-            }
-            
-            cell.titleOfCell.text = "New Offer"
-            cell.descriptionLabel.text = newOffer[0].descripion
-            cell.backgroundImage.image = UIImage(named: "Discount 50%")
-            cell.selectionStyle = .none
-            return cell
-        case 5:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularFoodCell", for: indexPath) as? PopularFoodTableViewCell else {
-                return UITableViewCell()
-            }
- 
-            cell.delegateOfPopularItem = self
-            cell.titleLabel.text = "Popular Food"
-            cell.name = pupularFood.names
-            cell.price = pupularFood.prices
-            cell.photos = pupularFood.images
-            cell.selectionStyle = .none
-            
-            return cell
-        default:
-            fatalError("Error in when specific number of row in HomeViewContoller")
         }
     }
     
    // Hight table view
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        switch indexPath.row {
-        case 0:
-            if UIScreen.main.bounds.height < 900{
-                return UIScreen.main.bounds.height * 0.14
-            }else{
-                return UIScreen.main.bounds.height * 0.24
-            }
-        case 1:
-            return 130
-        case 2...3:
-            return 200
-        case 4:
-            return 160
-        case 5:
-            return 300
+        if checkFiltered {
+            return 150
+        }else{
             
-        default:
-            fatalError("Error in height for row at in home view controller")
+            switch indexPath.row {
+            case 0:
+                if UIScreen.main.bounds.height < 900{
+                    return UIScreen.main.bounds.height * 0.14
+                }else{
+                    return UIScreen.main.bounds.height * 0.24
+                }
+            case 1:
+                return 130
+            case 2...3:
+                return 200
+            case 4:
+                return 160
+            case 5:
+                return 300
+                
+            default:
+                fatalError("Error in height for row at in home view controller")
+            }
         }
     }
     
@@ -353,6 +365,17 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             destinationVC.selectedItem = "Discount 50%"
             self.show(destinationVC, sender: self)
         }
+        // Selected filter item in table view
+        else if checkFiltered{
+            
+            let storyBoard = UIStoryboard(name: "Product", bundle: nil)
+            guard let destinationVC = storyBoard.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else { return }
+            
+            destinationVC.nameOfFoodImage = filteredProducts[indexPath.row].names
+            destinationVC.priceOfFood = filteredProducts[indexPath.row].prices
+            self.show(destinationVC, sender: self)
+        }
+        
     }
   
 }
@@ -432,4 +455,93 @@ extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewC
     }
 }
 
+// MARK: - UI Text Field Delgate
 
+extension HomeViewController: UITextFieldDelegate{
+    
+    // Load allProducts
+    func loadAllProduct(){
+        
+        for (_ ,product) in recommendedAndBest{
+            
+            for index in 0..<product.names.count {
+                let filterProduct = FilterProduct(
+                    names: product.names[index],
+                    prices: product.prices[index],
+                    images: product.images[index])
+                
+                allProducts.append(filterProduct)
+            }
+        }
+    }
+    
+    @IBAction func searchPressed(_ sender: UIButton) {
+        searchTextField.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return searchTextField.endEditing(true)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text == "" {
+            textField.placeholder = "Type anything"
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else{ return false }
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        if updatedText.count > 0{
+            filterProducts(for: updatedText)
+            checkFiltered = true
+        }else{
+            filteredProducts = allProducts
+            checkFiltered = false
+        }
+        
+        self.tableView.reloadData()
+        return true
+    }
+    
+    // Filter products
+    func filterProducts(for query: String){
+        
+        filteredProducts = allProducts.filter { product in
+            return product.names.localizedStandardContains(query) ||
+                   product.prices.localizedStandardContains(query)
+        }
+    }
+    
+}
+
+
+// Uploud new product
+//        let group = DispatchGroup()
+//        var imageUrls = [String]()
+//
+//        for (restaurantName, product) in recommendedAndBest {
+//            for (index, image) in product.images.enumerated() {
+//                group.enter()
+//                let imageName = "\(restaurantName)_\(product.names[index])"
+//
+//                // Upload image and get the download URL
+//                DataPersistentManager.shared.uploadImage(image: image, imageName: imageName) { url in
+//                    if let imageUrl = url {
+//                        imageUrls.append(imageUrl)  // Store the image URL
+//                    }
+//                    group.leave()
+//                }
+//            }
+//        }
+//        group.notify(queue: .main) { [self] in
+//            // Once all uploads are done, save the image URLs and restaurant data in Firestore
+//            DataPersistentManager.shared.saveToFirestore(restaurantData: recommendedAndBest, imageUrls: imageUrls, to: "recommendedAndBestSeller")
+//        }

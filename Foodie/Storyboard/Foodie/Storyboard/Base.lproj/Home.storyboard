@@ -77,20 +77,23 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSA-EZ-5iZ" userLabel="filterView">
                                                 <rect key="frame" x="296" y="0.0" width="57" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-wY-H2X">
-                                                        <rect key="frame" x="12" y="16" width="33" height="18.666666666666664"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="tintColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="33" id="lgM-iM-Cdc"/>
-                                                        </constraints>
-                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPe-lm-Sz7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="57" height="50"/>
+                                                        <color key="tintColor" name="NavigationBarTitle"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="searchPressed:" destination="Y11-Pb-9MU" eventType="touchUpInside" id="d1J-OB-DHA"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="fOG-wY-H2X" firstAttribute="centerY" secondItem="fSA-EZ-5iZ" secondAttribute="centerY" id="CpH-s4-lIr"/>
-                                                    <constraint firstItem="fOG-wY-H2X" firstAttribute="centerX" secondItem="fSA-EZ-5iZ" secondAttribute="centerX" id="FXR-MN-rpd"/>
+                                                    <constraint firstItem="cPe-lm-Sz7" firstAttribute="top" secondItem="fSA-EZ-5iZ" secondAttribute="top" id="JcX-Au-tuk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cPe-lm-Sz7" secondAttribute="trailing" id="Jzz-ck-Mkn"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cPe-lm-Sz7" secondAttribute="bottom" id="UHb-dD-gtM"/>
+                                                    <constraint firstItem="cPe-lm-Sz7" firstAttribute="leading" secondItem="fSA-EZ-5iZ" secondAttribute="leading" id="XMW-Fv-vYE"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

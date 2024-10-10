@@ -28,15 +28,22 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         }
     }
     
+    var allProduct: [FilterProduct] = []
+    var filteredProduct: [FilterProduct] = []
+    var checkedFiltered = false
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Search bar
+        
+        // Table view
         tableView.delegate = self
         tableView.dataSource = self
         
         //Selected item
-        print(selectedItem)
         nameOfRestaurant.text = selectedItem
         imageOfRestaurant.image = UIImage(named: selectedItem) 
         
@@ -46,30 +53,6 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
 
         // Retrieve data from firebase
         retrieveItemsOfRestaurant()
-        
-        
-                // Uploud new items
-//                let group = DispatchGroup()
-//                var imageUrls = [String]()
-//        
-//                for (restaurantName, product) in itemsOfRestaurant {
-//                    for (index, image) in product.images.enumerated() {
-//                        group.enter()
-//                        let imageName = "\(restaurantName)_\(product.names[index])"
-//        
-//                        // Upload image and get the download URL
-//                        DataPersistentManager.shared.uploadImage(image: image, imageName: imageName) { url in
-//                            if let imageUrl = url {
-//                                imageUrls.append(imageUrl)  // Store the image URL
-//                            }
-//                            group.leave()
-//                        }
-//                    }
-//                }
-//                group.notify(queue: .main) { [self] in
-//                    // Once all uploads are done, save the image URLs and restaurant data in Firestore
-//                    DataPersistentManager.shared.saveToFirestore(restaurantData: itemsOfRestaurant, imageUrls: imageUrls, to: "restaurants")
-//                }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -133,6 +116,16 @@ extension FoodsOfSpecificRestaurantViewController: UITableViewDelegate ,UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyBoard = UIStoryboard(name: "Product", bundle: nil)
+        guard let destinationVC = storyBoard.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else{ return }
+        
+        destinationVC.nameOfFoodImage = (itemsOfRestaurant[selectedItem]?.names[indexPath.row])!
+        destinationVC.priceOfFood = (itemsOfRestaurant[selectedItem]?.prices[indexPath.row])!
+        self.show(destinationVC, sender: self)
+        
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return UIScreen.main.bounds.height - ((UIScreen.main.bounds.height * 0.138) * 2) - (navigationController?.navigationBar.frame.height ?? 50)
@@ -151,3 +144,29 @@ extension FoodsOfSpecificRestaurantViewController: FoodsOfRestaurantTableViewCel
         self.show(destinationVC, sender: self)
     }
 }
+
+
+
+
+// Uploud new items
+//                let group = DispatchGroup()
+//                var imageUrls = [String]()
+//
+//                for (restaurantName, product) in itemsOfRestaurant {
+//                    for (index, image) in product.images.enumerated() {
+//                        group.enter()
+//                        let imageName = "\(restaurantName)_\(product.names[index])"
+//
+//                        // Upload image and get the download URL
+//                        DataPersistentManager.shared.uploadImage(image: image, imageName: imageName) { url in
+//                            if let imageUrl = url {
+//                                imageUrls.append(imageUrl)  // Store the image URL
+//                            }
+//                            group.leave()
+//                        }
+//                    }
+//                }
+//                group.notify(queue: .main) { [self] in
+//                    // Once all uploads are done, save the image URLs and restaurant data in Firestore
+//                    DataPersistentManager.shared.saveToFirestore(restaurantData: itemsOfRestaurant, imageUrls: imageUrls, to: "restaurants")
+//                }

@@ -175,7 +175,7 @@ extension DataPersistentManager{
     // Uploud image to firebase
     
     func uploadImage(image: UIImage, imageName: String, completion: @escaping (String?) -> Void) {
-        let storageRef = Storage.storage().reference().child("Product_images/\(imageName).png")
+        let storageRef = Storage.storage().reference().child("restaurant_images/\(imageName).png")
         
         if let imageData = image.pngData() {
             storageRef.putData(imageData, metadata: nil) { (metadata, error) in
