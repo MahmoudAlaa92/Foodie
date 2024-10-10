@@ -15,7 +15,7 @@ class ProductViewController: UIViewController {
     var isFavorite =  false
     var heartImage = UIImage()
     var priceOfFood = "L.E65,000"
-    var descriptionOfFoodImage = "Highlights Button detailed trench coat has v-neck cuttingPocket detailed, two front patch pockets at the bottom Made with polyester blended material"
+    var descriptionOfFoodImage = "Enjoy an eclectic mix of international cuisines, blending traditional flavors with modern twists, suitable for any type of dining experience."
   
     @IBOutlet weak var headerView: HeaderOfProductToCartView!
     @IBOutlet weak var tableView: UITableView!
@@ -41,7 +41,20 @@ class ProductViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Customize navBar
-        navigationController?.navigationBar.tintColor = UIColor(red: 82, green: 2, blue: 56)
+        self.customizeNavigaitonBar()
+    }
+    
+    // Customize navigation bar appearance
+    func customizeNavigaitonBar(){
+        
+        navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
+        if let appearance = navigationController?.navigationBar.standardAppearance{
+            appearance.configureWithTransparentBackground()
+            
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
     }
 
     @IBAction func plusBtn(_ sender: UIButton) {

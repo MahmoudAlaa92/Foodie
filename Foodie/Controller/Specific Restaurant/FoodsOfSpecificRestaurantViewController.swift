@@ -28,10 +28,6 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         }
     }
     
-    var allProduct: [FilterProduct] = []
-    var filteredProduct: [FilterProduct] = []
-    var checkedFiltered = false
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -54,13 +50,25 @@ class FoodsOfSpecificRestaurantViewController: UIViewController {
         // Retrieve data from firebase
         retrieveItemsOfRestaurant()
         
+        customizeNavigationBar()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Customise navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
-        navigationController?.navigationBar.backgroundColor = UIColor(named: "BackGround")
+    }
+    
+    // Customize navigation bar
+    func customizeNavigationBar(){
+            
+        if let appearance = navigationController?.navigationBar.standardAppearance {
+            appearance.configureWithTransparentBackground()
+            
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
     }
     
     // Status Bar Style

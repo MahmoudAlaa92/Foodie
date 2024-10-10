@@ -47,12 +47,15 @@ class RestaurantDetailViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.hidesBarsOnSwipe = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
+
     }
     
     // StatusBarStyle

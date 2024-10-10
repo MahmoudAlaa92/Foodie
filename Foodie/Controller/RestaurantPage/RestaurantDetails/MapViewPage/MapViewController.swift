@@ -46,6 +46,11 @@ class MapViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = UIColor(named: "NavigationBarTitle")
+    }
+    
     // MARK: - Direction Button Action
     @IBAction func getDirection(_ sender: UIButton) {
         

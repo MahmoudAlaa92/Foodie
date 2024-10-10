@@ -517,10 +517,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ro8-7a-WPA">
-                                <rect key="frame" x="73.666666666666671" y="150.66666666666663" width="245.66666666666663" height="551"/>
+                                <rect key="frame" x="62.666666666666657" y="121" width="267.66666666666674" height="610"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jv-7l-L9a">
-                                        <rect key="frame" x="0.0" y="0.0" width="245.66666666666666" height="96"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="267.66666666666669" height="114"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="love" title="Awesome">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -531,7 +531,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O84-KM-CKV">
-                                        <rect key="frame" x="0.0" y="106.00000000000003" width="209" height="117"/>
+                                        <rect key="frame" x="0.0" y="124" width="231" height="114"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="angry" title="Terrible">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -542,7 +542,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8am-1g-0IX">
-                                        <rect key="frame" x="0.0" y="233" width="170" height="97"/>
+                                        <rect key="frame" x="0.0" y="248" width="192" height="114"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="cool" title="Cool">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -553,7 +553,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfs-z8-Mr8">
-                                        <rect key="frame" x="0.0" y="340" width="159.33333333333334" height="101"/>
+                                        <rect key="frame" x="0.0" y="372" width="181.33333333333334" height="114"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="sad" title="Sad">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -564,7 +564,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZg-cy-ktV">
-                                        <rect key="frame" x="0.0" y="451" width="178.66666666666666" height="100"/>
+                                        <rect key="frame" x="0.0" y="496" width="200.66666666666666" height="114"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="happy" title="Okay">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -624,10 +624,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Mhp-5I-faG">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photoGalary" translatesAutoresizingMaskIntoConstraints="NO" id="Mhp-5I-faG">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                    <color key="backgroundColor" name="BackGound"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.88235294119999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -846,7 +846,7 @@
         <scene sceneID="XFz-ah-N4l">
             <objects>
                 <navigationController storyboardIdentifier="RestaurantsNavController" automaticallyAdjustsScrollViewInsets="NO" id="8X6-SM-dxG" customClass="NavigationController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Restaurants" image="star.leadinghalf.filled" catalog="system" id="mrB-Od-MAO"/>
+                    <tabBarItem key="tabBarItem" title="Restaurants" image="Restaurant" id="mrB-Od-MAO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jmk-TR-DXR">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1113,7 +1113,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bRS-cs-4yo"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="BackGound"/>
                         <constraints>
                             <constraint firstItem="9c7-7t-hV5" firstAttribute="centerX" secondItem="bRS-cs-4yo" secondAttribute="centerX" id="1bQ-Gj-R7q"/>
                             <constraint firstItem="LpF-zj-1jj" firstAttribute="leading" secondItem="bRS-cs-4yo" secondAttribute="leading" constant="10" id="Agr-j3-091"/>
@@ -1136,7 +1136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WF-YB-PpB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4263.3587786259541" y="-165.49295774647888"/>
+            <point key="canvasLocation" x="-3683" y="312"/>
         </scene>
         <!--SIGN UP-->
         <scene sceneID="eMB-Dv-SoV">
@@ -1175,7 +1175,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-hv-MMg">
-                                <rect key="frame" x="15" y="618.66666666666663" width="247" height="30"/>
+                                <rect key="frame" x="15" y="613.66666666666663" width="247" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGH-ks-i6J">
                                         <rect key="frame" x="0.0" y="0.0" width="46.666666666666664" height="30"/>
@@ -1200,7 +1200,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apG-9U-Ged">
-                                <rect key="frame" x="15" y="680.66666666666663" width="363" height="50"/>
+                                <rect key="frame" x="15" y="675.66666666666663" width="363" height="50"/>
                                 <color key="backgroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MUi-b6-oXO"/>
@@ -1239,7 +1239,7 @@
                             <constraint firstItem="ZlW-fU-MXg" firstAttribute="centerX" secondItem="ova-9l-scL" secondAttribute="centerX" id="MWD-4L-nt8"/>
                             <constraint firstItem="SBM-hv-MMg" firstAttribute="leading" secondItem="Nvy-hk-y7L" secondAttribute="leading" constant="15" id="OL0-vc-JKx"/>
                             <constraint firstItem="KMT-MW-Zxk" firstAttribute="top" secondItem="hst-Rn-41j" secondAttribute="bottom" constant="16" id="ROI-VG-MMk"/>
-                            <constraint firstItem="SBM-hv-MMg" firstAttribute="top" secondItem="huA-gf-MCy" secondAttribute="bottom" constant="8" id="ZwO-rW-AhS"/>
+                            <constraint firstItem="SBM-hv-MMg" firstAttribute="top" secondItem="huA-gf-MCy" secondAttribute="bottom" constant="3" id="ZwO-rW-AhS"/>
                             <constraint firstItem="apG-9U-Ged" firstAttribute="leading" secondItem="Nvy-hk-y7L" secondAttribute="leading" constant="15" id="gVW-QC-vcV"/>
                             <constraint firstItem="Nvy-hk-y7L" firstAttribute="trailing" secondItem="huA-gf-MCy" secondAttribute="trailing" constant="10" id="haU-Di-Lh7"/>
                             <constraint firstItem="huA-gf-MCy" firstAttribute="top" secondItem="KMT-MW-Zxk" secondAttribute="bottom" constant="16" id="hk0-vY-jbG"/>
@@ -1264,7 +1264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3H-Ic-XEW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3114" y="-649"/>
+            <point key="canvasLocation" x="-2692" y="46"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Rhe-bE-8E4">
@@ -1307,7 +1307,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjH-7C-UYp">
-                                <rect key="frame" x="15" y="518.66666666666663" width="363" height="30"/>
+                                <rect key="frame" x="15" y="508.66666666666674" width="363" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dNX-gk-wkd"/>
                                 </constraints>
@@ -1319,7 +1319,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uPl-O9-FIO">
-                                <rect key="frame" x="15" y="553.66666666666663" width="161" height="35"/>
+                                <rect key="frame" x="15" y="538.66666666666663" width="161" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvt-bN-VLB">
                                         <rect key="frame" x="0.0" y="0.33333333333337123" width="49.666666666666664" height="34.333333333333336"/>
@@ -1342,7 +1342,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zx-Ro-ZHR">
-                                <rect key="frame" x="15" y="620.66666666666663" width="363" height="50"/>
+                                <rect key="frame" x="15" y="605.66666666666663" width="363" height="50"/>
                                 <color key="backgroundColor" red="0.32156862749999998" green="0.0078431372550000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lBB-WU-A3d"/>
@@ -1356,7 +1356,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IGa-wC-zmJ">
-                                <rect key="frame" x="126.66666666666669" y="738.66666666666663" width="140" height="40"/>
+                                <rect key="frame" x="126.66666666666669" y="723.66666666666663" width="140" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5m-3K-fP1" userLabel="Google">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
@@ -1380,7 +1380,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or login use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTK-Pf-Jpe">
-                                <rect key="frame" x="10" y="702.66666666666663" width="373" height="20"/>
+                                <rect key="frame" x="10" y="687.66666666666663" width="373" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="iPO-mp-5g4"/>
                                 </constraints>
@@ -1394,7 +1394,7 @@
                         <constraints>
                             <constraint firstItem="sUg-Hp-9Zu" firstAttribute="trailing" secondItem="rTK-Pf-Jpe" secondAttribute="trailing" constant="10" id="6O1-ju-Xjj"/>
                             <constraint firstItem="CA8-GV-T0v" firstAttribute="leading" secondItem="sUg-Hp-9Zu" secondAttribute="leading" constant="15" id="6vr-Yo-KrW"/>
-                            <constraint firstItem="QjH-7C-UYp" firstAttribute="top" secondItem="zZJ-3B-Kiu" secondAttribute="bottom" constant="10" id="7Mm-hc-zzJ"/>
+                            <constraint firstItem="QjH-7C-UYp" firstAttribute="top" secondItem="zZJ-3B-Kiu" secondAttribute="bottom" id="7Mm-hc-zzJ"/>
                             <constraint firstItem="sUg-Hp-9Zu" firstAttribute="trailing" secondItem="6zx-Ro-ZHR" secondAttribute="trailing" constant="15" id="8HT-2V-Lmb"/>
                             <constraint firstItem="zZJ-3B-Kiu" firstAttribute="leading" secondItem="sUg-Hp-9Zu" secondAttribute="leading" constant="15" id="CLz-bj-fT2"/>
                             <constraint firstItem="sUg-Hp-9Zu" firstAttribute="trailing" secondItem="QjH-7C-UYp" secondAttribute="trailing" constant="15" id="D05-KZ-6yS"/>
@@ -1408,7 +1408,7 @@
                             <constraint firstItem="sUg-Hp-9Zu" firstAttribute="trailing" secondItem="wbg-xH-Sng" secondAttribute="trailing" constant="20" id="Urx-MD-aL9"/>
                             <constraint firstItem="IGa-wC-zmJ" firstAttribute="top" secondItem="rTK-Pf-Jpe" secondAttribute="bottom" constant="16" id="bKB-A0-xSa"/>
                             <constraint firstItem="6zx-Ro-ZHR" firstAttribute="leading" secondItem="sUg-Hp-9Zu" secondAttribute="leading" constant="15" id="bfo-NW-7cf"/>
-                            <constraint firstItem="uPl-O9-FIO" firstAttribute="top" secondItem="QjH-7C-UYp" secondAttribute="bottom" constant="5" id="clb-Qo-a5r"/>
+                            <constraint firstItem="uPl-O9-FIO" firstAttribute="top" secondItem="QjH-7C-UYp" secondAttribute="bottom" id="clb-Qo-a5r"/>
                             <constraint firstItem="V9s-rq-Fdc" firstAttribute="width" secondItem="gIz-lG-UII" secondAttribute="width" multiplier="0.36" id="eLl-HR-Zzg"/>
                             <constraint firstItem="V9s-rq-Fdc" firstAttribute="top" secondItem="sUg-Hp-9Zu" secondAttribute="top" id="eWN-my-gch"/>
                             <constraint firstItem="uPl-O9-FIO" firstAttribute="leading" secondItem="sUg-Hp-9Zu" secondAttribute="leading" constant="15" id="hUq-S9-Ymz"/>
@@ -1431,7 +1431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4I-hb-cqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3355" y="372"/>
+            <point key="canvasLocation" x="-2692" y="767"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="WAH-Zo-kKI">
@@ -1503,7 +1503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TV5-KD-wpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2468" y="372"/>
+            <point key="canvasLocation" x="-1845" y="767"/>
         </scene>
         <!--Home-->
         <scene sceneID="hle-qg-q9i">
@@ -1550,7 +1550,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofg-g3-3jK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5190.0763358778622" y="-165.49295774647888"/>
+            <point key="canvasLocation" x="-4576" y="312"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1559,10 +1559,11 @@
     <resources>
         <image name="Facebook 1" width="36" height="36"/>
         <image name="Google" width="24" height="24"/>
+        <image name="Restaurant" width="30" height="30"/>
         <image name="angry" width="100" height="100"/>
         <image name="cafedeadend" width="426.66665649414062" height="426.66665649414062"/>
         <image name="cafeloisl" width="426.66665649414062" height="426.66665649414062"/>
-        <image name="cart" width="32" height="32"/>
+        <image name="cart" width="30" height="30"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="cool" width="100" height="100"/>
         <image name="eye.fill" catalog="system" width="128" height="80"/>
@@ -1573,12 +1574,14 @@
         <image name="i" width="170" height="285"/>
         <image name="introPic" width="170" height="285"/>
         <image name="love" width="100" height="100"/>
-        <image name="newphoto" width="1840" height="1380"/>
         <image name="o" width="128" height="128"/>
+        <image name="photoGalary" width="512" height="512"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="sad" width="100" height="100"/>
-        <image name="star.leadinghalf.filled" catalog="system" width="128" height="116"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="BackGound">
+            <color red="0.93725490196078431" green="0.88235294117647056" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Color">
             <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1592,13 +1595,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

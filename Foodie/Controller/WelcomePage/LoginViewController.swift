@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
         if let apperance = navigationController?.navigationBar.standardAppearance {
             apperance.configureWithTransparentBackground()
             
-            if let customFont = UIFont(name: "Nunito-Bold", size: 24.0){
+            if let customFont = UIFont(name: "Nunito-Bold", size: 35.0){
                 apperance.titleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")!]
                 apperance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "NavigationBarTitle")! ,.font: customFont]
             }
@@ -184,7 +184,6 @@ class LoginViewController: UIViewController {
     
     // Facebook login
     @IBAction func facebookLogin(_ sender: UIButton) {
-        
         let fbLoginManager = LoginManager()
         fbLoginManager.logIn(
             permissions: ["public_profile", "email"],
@@ -194,31 +193,55 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                guard let accessToken = AccessToken.current else{
+                guard let accessToken = AccessToken.current else {
                     print("Failed to get access token")
                     return
                 }
                 
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
                 
-                // Perform login to by calling Firebase APIs
-                Auth.auth().signIn(with: credential) { result, error in
+                // Perform Firebase login
+                Auth.auth().signIn(with: credential) { authResult, error in
                     if let error = error {
-                        print("Error when login:\(error.localizedDescription)")
-                        
-                        let alert = UIAlertController(
-                            title: "Login Error",
-                            message: error.localizedDescription,
-                            preferredStyle: .alert)
-                        
-                        let okayAction = UIAlertAction(title: "OK", style: .cancel)
-                        
-                        alert.addAction(okayAction)
-                        self.present(alert ,animated: true)
+                        if let errCode = AuthErrorCode(rawValue: error._code) {
+                            if errCode == .accountExistsWithDifferentCredential {
+                                // Handle the account exists with different credential error
+                                guard let nsError = error as NSError? else { return }
+                                guard let email = nsError.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String else {
+                                    print("No email found for this error.")
+                                    return
+                                }
+                                
+                                // Show an alert to guide the user
+                                let alert = UIAlertController(
+                                    title: "Account Exists",
+                                    message: "An account already exists with this email address (\(email)). Please sign in with the correct provider (Google, email, etc.) and link your Facebook account from there.",
+                                    preferredStyle: .alert
+                                )
+                                
+                                let okAction = UIAlertAction(title: "OK", style: .default)
+                                alert.addAction(okAction)
+                                self.present(alert, animated: true)
+                            }
+                        } else {
+                            // Handle other errors
+                            print("Error when login: \(error.localizedDescription)")
+                            
+                            let alert = UIAlertController(
+                                title: "Login Error",
+                                message: error.localizedDescription,
+                                preferredStyle: .alert
+                            )
+                            
+                            let okAction = UIAlertAction(title: "OK", style: .cancel)
+                            alert.addAction(okAction)
+                            self.present(alert, animated: true)
+                        }
                         return
                     }
                     
-                    guard let user = result?.user else { return }
+                    // Login successful
+                    guard let user = authResult?.user else { return }
                     
                     DataPersistentManager.shared.userId = user.uid
                     DataPersistentManager.shared.userName = user.displayName ?? "Guest"
@@ -228,9 +251,9 @@ class LoginViewController: UIViewController {
                     self.presentMainView()
                 }
             }
-        
     }
-    
+
+
     // Google login
     @IBAction func googleLogin(_ sender: UIButton) {
         

@@ -112,7 +112,7 @@ class CustomTabBarController: UITabBarController {
         
         
         let home = generateViewControllers(image: UIImage(named: "home")!, vc: homeVC)
-        let restaurants = generateViewControllers(image: UIImage(systemName: "star")!, vc: restaurantVC)
+        let restaurants = generateViewControllers(image: UIImage(named: "Restaurant")!, vc: restaurantVC)
         let favorite = generateViewControllers(image: UIImage(named: "wich list")!, vc: favoriteVC)
         let cart = generateViewControllers(image: UIImage(named: "cart")!, vc: cartVC)
         let profile = generateViewControllers(image: UIImage(named: "profile")!, vc: profileVC)

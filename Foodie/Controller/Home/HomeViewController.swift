@@ -247,7 +247,9 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
                 return UITableViewCell()
             }
             cell.nameLabel.text = filteredProducts[indexPath.row].names
+            cell.priceLabel.text = filteredProducts[indexPath.row].prices
             cell.imgView.image = filteredProducts[indexPath.row].images
+            
             return cell
         }else{
             
@@ -521,7 +523,6 @@ extension HomeViewController: UITextFieldDelegate{
     }
     
 }
-
 
 // Uploud new product
 //        let group = DispatchGroup()

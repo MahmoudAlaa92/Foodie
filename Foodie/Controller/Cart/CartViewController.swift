@@ -178,7 +178,7 @@ extension CartViewController: CartTableViewCellDelegate{
             case .success(()):
                 print("Succesfully deleted")
                 self.cartItems.remove(at: indexPath.row)
-                self.tableView.reloadData()
+                self.fetchCartItems()
             case .failure(let error):
                 print("Error when delete cart item from DB: \(error.localizedDescription)")
             }

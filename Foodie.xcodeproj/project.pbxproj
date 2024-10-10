@@ -229,7 +229,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		150DF68B2CAAF95E00A379D7 /* Welcome */ = {
+		150DF68B2CAAF95E00A379D7 /* WelcomePage */ = {
 			isa = PBXGroup;
 			children = (
 				150DF68E2CAAFA3900A379D7 /* WelcomeViewController.swift */,
@@ -237,7 +237,7 @@
 				150DF6952CAAFAA400A379D7 /* SignUpViewController.swift */,
 				150DF6972CAAFADC00A379D7 /* ResetPasswordViewController.swift */,
 			);
-			path = Welcome;
+			path = WelcomePage;
 			sourceTree = "<group>";
 		};
 		150DF6B02CAB266500A379D7 /* Frameworks */ = {
@@ -314,13 +314,14 @@
 		15462E0E2C29413900D998CD /* Foodie */ = {
 			isa = PBXGroup;
 			children = (
+				15462E0F2C29413900D998CD /* AppDelegate.swift */,
+				15462E112C29413900D998CD /* SceneDelegate.swift */,
 				15C3BC1B2C669AB600EEEEF9 /* Manager */,
 				15BB40A42C3703CF009C4E9E /* Extensions */,
 				159E9F2A2C357CAC0070B51F /* Resources */,
-				15462E0F2C29413900D998CD /* AppDelegate.swift */,
-				15462E112C29413900D998CD /* SceneDelegate.swift */,
 				15D63E222C2C072E000FD524 /* Storyboard */,
 				15D63E1F2C2C06F2000FD524 /* Model */,
+				15D63E202C2C06FB000FD524 /* View */,
 				15D63E212C2C0702000FD524 /* Controller */,
 				15462E182C29413B00D998CD /* Assets.xcassets */,
 				15462E1D2C29413B00D998CD /* Info.plist */,
@@ -337,6 +338,88 @@
 				154452D02C97266400C497BC /* Product To Cart */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		1579757C2CB86F9A002AA48A /* RestaurantPage */ = {
+			isa = PBXGroup;
+			children = (
+				15462E232C29453C00D998CD /* RestaurantTableViewController.swift */,
+				1542E65A2C42C8FA00E12C95 /* NewRestaurantController.swift */,
+				153771EE2C3DB367003C2A63 /* ReviewViewController.swift */,
+				1579757D2CB86FBB002AA48A /* RestaurantDetails */,
+			);
+			path = RestaurantPage;
+			sourceTree = "<group>";
+		};
+		1579757D2CB86FBB002AA48A /* RestaurantDetails */ = {
+			isa = PBXGroup;
+			children = (
+				153901132C326EF300000F48 /* RestaurantDetailViewController.swift */,
+				1579757E2CB86FE8002AA48A /* MapViewPage */,
+			);
+			path = RestaurantDetails;
+			sourceTree = "<group>";
+		};
+		1579757E2CB86FE8002AA48A /* MapViewPage */ = {
+			isa = PBXGroup;
+			children = (
+				15DD41222C39BACA00754947 /* MapViewController.swift */,
+			);
+			path = MapViewPage;
+			sourceTree = "<group>";
+		};
+		1579757F2CB87083002AA48A /* FavoritePage */ = {
+			isa = PBXGroup;
+			children = (
+				156C03E32C6542670031FE3D /* FavouriteTableViewController.swift */,
+			);
+			path = FavoritePage;
+			sourceTree = "<group>";
+		};
+		157975802CB87097002AA48A /* AboutPage */ = {
+			isa = PBXGroup;
+			children = (
+				153A94392C5E43DB00A29774 /* AboutTableTableViewController.swift */,
+				154FC8432C6037DF006FB46C /* WebViewController.swift */,
+			);
+			path = AboutPage;
+			sourceTree = "<group>";
+		};
+		157975812CB87169002AA48A /* RestaurantPage */ = {
+			isa = PBXGroup;
+			children = (
+				15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */,
+				1542E6582C42B98300E12C95 /* RoundedTextField.swift */,
+				157975832CB871B4002AA48A /* RestaurantDetailsPage */,
+			);
+			path = RestaurantPage;
+			sourceTree = "<group>";
+		};
+		157975822CB87193002AA48A /* FavoritePage */ = {
+			isa = PBXGroup;
+			children = (
+				15C3BC162C66976E00EEEEF9 /* FavouriteTableViewCell.swift */,
+			);
+			path = FavoritePage;
+			sourceTree = "<group>";
+		};
+		157975832CB871B4002AA48A /* RestaurantDetailsPage */ = {
+			isa = PBXGroup;
+			children = (
+				15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */,
+				15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */,
+				15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */,
+				15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */,
+			);
+			path = RestaurantDetailsPage;
+			sourceTree = "<group>";
+		};
+		157975842CB8728D002AA48A /* NavigationConroller */ = {
+			isa = PBXGroup;
+			children = (
+				15BB40A72C371DC6009C4E9E /* NavigationController.swift */,
+			);
+			path = NavigationConroller;
 			sourceTree = "<group>";
 		};
 		159E9F2A2C357CAC0070B51F /* Resources */ = {
@@ -459,7 +542,6 @@
 			children = (
 				15AB26D12C90B5580043AAEA /* SliderImages */,
 				15AB26CE2C90939A0043AAEA /* CategoriesCell */,
-				15B07D992C93252F0020F905 /* ProductCell */,
 				15EF28CA2C932C8C0003E269 /* NewOffer */,
 				15EF28D12C936CAC0003E269 /* PopularFood */,
 				152B48282CB7412700D25C99 /* FilterView */,
@@ -512,16 +594,12 @@
 			isa = PBXGroup;
 			children = (
 				15E22E5D2CA4CA51006FBB70 /* AlertView */,
-				15462E252C295C2A00D998CD /* RestaurantTableViewCell.swift */,
-				15BB409E2C36C301009C4E9E /* HeaderRestaurantDetailView.swift */,
-				15BB40A02C36C4E3009C4E9E /* RestaurantDescriptionTableViewCell.swift */,
-				15BB40A22C36C54D009C4E9E /* RestaurantDetailTwoTableViewCell.swift */,
-				15DD41202C397B5000754947 /* RestaurantDetailMapCell.swift */,
-				1542E6582C42B98300E12C95 /* RoundedTextField.swift */,
-				15C3BC162C66976E00EEEEF9 /* FavouriteTableViewCell.swift */,
-				154452D62C97297500C497BC /* Product */,
+				15B07D992C93252F0020F905 /* ProductCell */,
 				15ACEBBC2C76EE95000FF23E /* ElementsOfHomeTableViewCell */,
+				157975812CB87169002AA48A /* RestaurantPage */,
+				157975822CB87193002AA48A /* FavoritePage */,
 				15C90B2D2CA44958000E386A /* Cart */,
+				154452D62C97297500C497BC /* Product */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,21 +607,16 @@
 		15D63E212C2C0702000FD524 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1519C37F2CB4923600C54D2A /* CustomTabBar */,
-				150DF68B2CAAF95E00A379D7 /* Welcome */,
-				15A97B222C745C5E0069B0A1 /* Home */,
-				15C4418E2C95BB080057C682 /* Specific Restaurant */,
-				154B6BEF2CA19243001DB7F3 /* Cart */,
-				15462E232C29453C00D998CD /* RestaurantTableViewController.swift */,
-				153901132C326EF300000F48 /* RestaurantDetailViewController.swift */,
-				15BB40A72C371DC6009C4E9E /* NavigationController.swift */,
-				15DD41222C39BACA00754947 /* MapViewController.swift */,
-				153771EE2C3DB367003C2A63 /* ReviewViewController.swift */,
-				1542E65A2C42C8FA00E12C95 /* NewRestaurantController.swift */,
+				157975842CB8728D002AA48A /* NavigationConroller */,
 				15A97B232C745C770069B0A1 /* Walkthrouh */,
-				153A94392C5E43DB00A29774 /* AboutTableTableViewController.swift */,
-				154FC8432C6037DF006FB46C /* WebViewController.swift */,
-				156C03E32C6542670031FE3D /* FavouriteTableViewController.swift */,
+				150DF68B2CAAF95E00A379D7 /* WelcomePage */,
+				1519C37F2CB4923600C54D2A /* CustomTabBar */,
+				15A97B222C745C5E0069B0A1 /* Home */,
+				1579757C2CB86F9A002AA48A /* RestaurantPage */,
+				1579757F2CB87083002AA48A /* FavoritePage */,
+				154B6BEF2CA19243001DB7F3 /* Cart */,
+				157975802CB87097002AA48A /* AboutPage */,
+				15C4418E2C95BB080057C682 /* Specific Restaurant */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -555,10 +628,9 @@
 				1546AD1E2C62B50400F4EE32 /* Onboarding.storyboard */,
 				15462E152C29413900D998CD /* Main.storyboard */,
 				15FA57F12C769E0600815185 /* Home.storyboard */,
-				15BBC2552C9F784A00D3528D /* SpecificRestaurant.storyboard */,
 				15203FA92C4E973A0071044F /* About.storyboard */,
+				15BBC2552C9F784A00D3528D /* SpecificRestaurant.storyboard */,
 				156C03E02C6541E50031FE3D /* Favourites.storyboard */,
-				15D63E202C2C06FB000FD524 /* View */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
