@@ -29,7 +29,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // searchController
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search Restaurants..."
@@ -37,8 +36,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         searchController.searchBar.tintColor = UIColor(named: "NavigationBarTitle")
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        
-        container = try? ModelContainer(for: Restaurant.self)
         
         // Customize navigationController
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -65,6 +62,8 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         tableView.separatorStyle = .none
         tableView.tableHeaderView = searchController.searchBar
         
+        // Swift Data
+        container = try? ModelContainer(for: Restaurant.self)
         fetchRestaurantData()
         
         // Call notification
@@ -88,6 +87,7 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         content.body = "I recommend you to check out \(suggestedRestaurant.name). The restaurant is one of your favorites. It is located at \(suggestedRestaurant.location). Would you like to give it a try?"
         content.sound = UNNotificationSound.default
         content.userInfo = ["phone" :suggestedRestaurant.phone]
+        content.badge = 1
         
         let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         let tempFileURL = tempDirURL.appendingPathComponent("seggestedRestaurant.jpg")
@@ -115,11 +115,10 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         UNUserNotificationCenter.current().setNotificationCategories([category])
         content.categoryIdentifier = categoryIdentifer
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: "foodie.restaurantSuggestion", content: content, trigger: trigger)
         
-        
-        UNUserNotificationCenter.current().add(request ,withCompletionHandler: nil)
+            UNUserNotificationCenter.current().add(request ,withCompletionHandler: nil)
     }
     
     
@@ -130,7 +129,23 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         let descriptor = FetchDescriptor<Restaurant>()
         
         restaurants = (try? container?.mainContext.fetch(descriptor)) ?? []
+        
+        print("Fetched \(restaurants.count) restaurants")
+        if container == nil {
+            print("Failed to initialize ModelContainer")
+        }
+        
         updateSnapshot()
+    }
+    
+    // update Snapshot
+    func updateSnapshot(animationChange: Bool = false){
+        var snapshot = NSDiffableDataSourceSnapshot<Section ,Restaurant>()
+        snapshot.appendSections([.all])
+        snapshot.appendItems(restaurants, toSection: .all)
+        dataSource.apply(snapshot ,animatingDifferences: true)
+        
+        tableView.backgroundView?.isHidden = (restaurants.count > 0) ? false : true
     }
     
     // search controller Update
@@ -147,16 +162,6 @@ class RestaurantTableViewController: UITableViewController ,RestaurantDataStore 
         
         restaurants = (try? container?.mainContext.fetch(descriptor)) ?? []
         updateSnapshot()
-    }
-    
-    // update Snapshot
-    func updateSnapshot(animationChange: Bool = false){
-        var snapshot = NSDiffableDataSourceSnapshot<Section ,Restaurant>()
-        snapshot.appendSections([.all])
-        snapshot.appendItems(restaurants, toSection: .all)
-        dataSource.apply(snapshot ,animatingDifferences: true)
-        
-        tableView.backgroundView?.isHidden = (restaurants.count > 0) ? false : true
     }
     
     // viewWillAppear

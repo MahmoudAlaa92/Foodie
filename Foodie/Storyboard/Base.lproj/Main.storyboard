@@ -1041,10 +1041,13 @@
                         <outlet property="addButton" destination="WVk-sz-anr" id="Zkc-yG-vdX"/>
                         <outlet property="checkoutButton" destination="fHD-zF-vbf" id="4Vk-vg-wdS"/>
                         <outlet property="shiping" destination="Z3P-Ir-3Su" id="IST-eO-8sG"/>
+                        <outlet property="shipingTitle" destination="Act-EE-dqC" id="fNt-jU-9vX"/>
                         <outlet property="subTotal" destination="5uM-aP-Upn" id="vgb-Dq-6mi"/>
+                        <outlet property="subTotalTitle" destination="1Ox-9L-7WP" id="lzX-bL-WIU"/>
                         <outlet property="tableView" destination="Vfc-fD-cwh" id="YgI-jF-eL8"/>
                         <outlet property="textField" destination="Hgr-6R-yCP" id="QuY-XH-WCI"/>
                         <outlet property="total" destination="tsj-EL-YBu" id="0hT-3k-Sxt"/>
+                        <outlet property="totalTitle" destination="0CR-tQ-nzU" id="feN-mj-6Bl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJH-KD-1cC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1277,7 +1280,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="i" translatesAutoresizingMaskIntoConstraints="NO" id="V9s-rq-Fdc">
                                 <rect key="frame" x="125.66666666666667" y="102.99999999999999" width="141.66666666666663" height="255.66666666666663"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="mahmoudalaa@gmail.com" borderStyle="roundedRect" placeholder="EMAIL \ PHONE NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CA8-GV-T0v">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL \ PHONE NUMBER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CA8-GV-T0v">
                                 <rect key="frame" x="15" y="398.66666666666669" width="363" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xbo-Wg-P2n"/>
@@ -1285,7 +1288,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZJ-3B-Kiu">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZJ-3B-Kiu">
                                 <rect key="frame" x="15" y="458.66666666666669" width="363" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7ak-fh-Cnp"/>
@@ -1563,7 +1566,7 @@
         <image name="angry" width="100" height="100"/>
         <image name="cafedeadend" width="426.66665649414062" height="426.66665649414062"/>
         <image name="cafeloisl" width="426.66665649414062" height="426.66665649414062"/>
-        <image name="cart" width="30" height="30"/>
+        <image name="cart" width="20" height="20"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="cool" width="100" height="100"/>
         <image name="eye.fill" catalog="system" width="128" height="80"/>
@@ -1595,13 +1598,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

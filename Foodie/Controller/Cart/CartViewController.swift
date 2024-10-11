@@ -11,16 +11,43 @@ class CartViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var subTotalTitle: UILabel!{
+        didSet{
+            subTotalTitle.text = "Sub Total:"
+        }
+    }
+    @IBOutlet weak var shipingTitle: UILabel!{
+        didSet{
+            shipingTitle.text = "Shiping:"
+        }
+    }
+    @IBOutlet weak var totalTitle: UILabel!{
+        didSet{
+            totalTitle.text = "Total:"
+        }
+    }
     @IBOutlet weak var textField: UITextField!{
         didSet{
             textField.layer.cornerRadius = 10
             textField.layer.masksToBounds = true
         }
     }
-    @IBOutlet weak var subTotal: UILabel!
+    @IBOutlet weak var subTotal: UILabel!{
+        didSet{
+            subTotal.text = ""
+        }
+    }
     
-    @IBOutlet weak var shiping: UILabel!
-    @IBOutlet weak var total: UILabel!
+    @IBOutlet weak var shiping: UILabel!{
+        didSet{
+            shiping.text = ""
+        }
+    }
+    @IBOutlet weak var total: UILabel!{
+        didSet{
+            total.text = ""
+        }
+    }
     
     @IBOutlet weak var checkoutButton: UIButton!{
         didSet{

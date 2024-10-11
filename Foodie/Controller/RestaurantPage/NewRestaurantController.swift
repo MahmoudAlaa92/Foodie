@@ -102,24 +102,38 @@ class NewRestaurantController: UITableViewController {
     
         // Save Button
     @IBAction func saveNewRestaurant(_ sender: UIBarButtonItem) {
-        if let restaurant = restaurant {
+        guard let restaurant = restaurant else {
+                return
+            }
+
+            // Update restaurant properties with the user inputs
             restaurant.name = nameTextField.text ?? ""
             restaurant.type = typeTextField.text ?? ""
             restaurant.location = addressTextField.text ?? ""
             restaurant.phone = phoneTextField.text ?? ""
             restaurant.summary = descriptionTextView.text
             restaurant.isFavorite = false
+            
+            // Assign the selected image to the restaurant
             if let image = photoImageView.image {
                 restaurant.image = image
-        }
+            }
+
+            // Insert the restaurant into the SwiftData context
             container?.mainContext.insert(restaurant)
-            print("Saving data to database...")
-            
-        }
-        
-        dismiss(animated: true){
-            self.dataStore?.fetchRestaurantData()
-        }
+
+            // Try to save the context to persist the data
+            do {
+                try container?.mainContext.save()
+                print("Restaurant saved successfully to the database.")
+            } catch {
+                print("Failed to save restaurant: \(error.localizedDescription)")
+            }
+
+            // Dismiss the current view and reload the data
+            dismiss(animated: true) {
+                self.dataStore?.fetchRestaurantData()
+            }
     }
     
     // Check Text Fields Validate
