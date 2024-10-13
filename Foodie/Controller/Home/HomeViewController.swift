@@ -7,6 +7,56 @@
 
 import UIKit
 
+protocol TableViewProvider: UITableViewDelegate, UITableViewDataSource {
+    func registerCell(at tableView: UITableView)
+}
+
+class ProductTableViewProvider: NSObject, TableViewProvider {
+    let title: String
+    let products: Product
+    
+    
+    init(products: Product, title: String) {
+        self.products = products
+        self.title = title
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        0
+    }
+    
+    func registerCell(at tableView: UITableView) {
+        let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "productCell")
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else{
+            print("Error in product table view cell")
+            return UITableViewCell()
+        }
+        
+        cell.titleLabel.text = title
+        cell.photos = products.images
+        cell.name = products.names
+        cell.price = products.prices
+//        cell.isFavorited = favoriteBoolForRecommended
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        200
+    }
+}
+
+//class NewOffersTableViewProvider: TableViewProvider {
+//    func registerCell(at tableView: UITableView) {
+//        let nib2 = UINib(nibName: "NewOfferTableViewCell", bundle: nil)
+//        tableView.register(nib2, forCellReuseIdentifier: "newOfferCell")
+//    }
+//}
+
 class HomeViewController: UIViewController {
     
     var imagesOfSliderCollection = [
@@ -74,14 +124,108 @@ class HomeViewController: UIViewController {
                             ])
     
     var recommendedAndBest: [String: Product] = [
-    "Recomoneded" : Product(title: "Recomoneded",
-                names: ["Creamy Shrimp Pasta Salad" ,"Shrimp Noodle Salad" ,"Abdoogh Khiar" ,"Albaloo Polo","Chicken Sliders","Cranberry Oatmeal Cookies","French Onion Soup","Happy Meal® Double Cheeseburger","Instant Pot Poached Chicken","Italian Sausage Pasta","Kantooker Twist","Lemon Chicken And Rice Soup","Lemon Ricotta Pasta","Mediterranean Green Lentil Soup","Mighty Meal","Molten Lava Cake","Mushroom Barley Soup","Persian Style Shrimp and Rice","Ricotta Gnocchi"],
-                prices: ["L.E 150" ,"L.E 270" ,"L.E 280" ,"L.E 300" ,"L.E 450" ,"L.E 190" ,"L.E 170","L.E 180" ,"L.E 180" ,"L.E 350" ,"L.E 320" ,"L.E 220" ,"L.E 350" ,"L.E 160","L.E 200" ,"L.E 340" ,"L.E 230" ,"L.E 220" ,"L.E 230" ],
-                images: [UIImage(named:"Creamy Shrimp Pasta Salad")! ,UIImage(named:"Shrimp Noodle Salad")! ,UIImage(named:"Abdoogh Khiar")! ,UIImage(named:"Albaloo Polo")!,UIImage(named:"Chicken Sliders")!,UIImage(named:"Cranberry Oatmeal Cookies")!,UIImage(named:"French Onion Soup")!,UIImage(named:"Happy Meal® Double Cheeseburger")!,UIImage(named:"Instant Pot Poached Chicken")!,UIImage(named:"Italian Sausage Pasta")!,UIImage(named:"Kantooker Twist")!,UIImage(named:"Lemon Chicken And Rice Soup")!,UIImage(named:"Lemon Ricotta Pasta")!,UIImage(named:"Mediterranean Green Lentil Soup")!,UIImage(named:"Mighty Meal")!,UIImage(named:"Molten Lava Cake")!,UIImage(named:"Mushroom Barley Soup")!,UIImage(named:"Persian Style Shrimp and Rice")!,UIImage(named:"Ricotta Gnocchi")!]),
-    "BestSeller" :   Product(title: "BestSeller",
-                              names: ["Chocolate Walnut Skillet Brownie" ,"Bamya" ,"Banana Peanut Butter Coco Puff Milkshake" ,"Classic Eggplant Lasagna","Creamy Oatmeal Recipe Middle","Easy Greek Chicken","Easy Spicy Shrimp Marinara","Eggplant Caponata","Italian Bruschetta","Italian Skillet Chicken","Middle Eastern Chicken And Rice","Olive Oil Bread Dip","Persian Dolmeh","Salmon Burgers","Sour Cherry Galette","Waffle"],
-                              prices: ["L.E 250" ,"L.E 190" ,"L.E 210" ,"L.E 300" ,"L.E 420" ,"L.E 350" ,"L.E 310","L.E 250" ,"L.E 330" ,"L.E 250" ,"L.E 230" ,"L.E 200" ,"L.E 150" ,"L.E 170","L.E 230","L.E 260"],
-                              images: [UIImage(named:"Chocolate Walnut Skillet Brownie")! ,UIImage(named:"Bamya")! ,UIImage(named:"Banana Peanut Butter Coco Puff Milkshake")! ,UIImage(named:"Classic Eggplant Lasagna")!,UIImage(named:"Creamy Oatmeal Recipe Middle")!,UIImage(named:"Easy Greek Chicken")!,UIImage(named:"Easy Spicy Shrimp Marinara")!,UIImage(named:"Eggplant Caponata")!,UIImage(named:"Italian Bruschetta")!,UIImage(named:"Italian Skillet Chicken")!,UIImage(named:"Middle Eastern Chicken And Rice")!,UIImage(named:"Olive Oil Bread Dip")!,UIImage(named:"Persian Dolmeh")!,UIImage(named:"Salmon Burgers")!,UIImage(named:"Sour Cherry Galette")!,UIImage(named:"Waffle")!]
+        "Recomoneded" : Product(
+            title: "Recomoneded",
+            names: [
+                "Creamy Shrimp Pasta Salad" ,
+                "Shrimp Noodle Salad" ,
+                "Abdoogh Khiar" ,
+                "Albaloo Polo",
+                "Chicken Sliders",
+                "Cranberry Oatmeal Cookies",
+                "French Onion Soup",
+                "Happy Meal® Double Cheeseburger",
+                "Instant Pot Poached Chicken",
+                "Italian Sausage Pasta",
+                "Kantooker Twist",
+                "Lemon Chicken And Rice Soup",
+                "Lemon Ricotta Pasta",
+                "Mediterranean Green Lentil Soup",
+                "Mighty Meal",
+                "Molten Lava Cake",
+                "Mushroom Barley Soup",
+                "Persian Style Shrimp and Rice",
+                "Ricotta Gnocchi"
+            ],
+            prices: ["L.E 150" ,"L.E 270" ,"L.E 280" ,"L.E 300" ,"L.E 450" ,"L.E 190" ,"L.E 170","L.E 180" ,"L.E 180" ,"L.E 350" ,"L.E 320" ,"L.E 220" ,"L.E 350" ,"L.E 160","L.E 200" ,"L.E 340" ,"L.E 230" ,"L.E 220" ,"L.E 230" ],
+            images: [
+                UIImage(named:"Creamy Shrimp Pasta Salad")! ,
+                UIImage(named:"Shrimp Noodle Salad")! ,
+                UIImage(named:"Abdoogh Khiar")! ,
+                UIImage(named:"Albaloo Polo")!,
+                UIImage(named:"Chicken Sliders")!,
+                UIImage(named:"Cranberry Oatmeal Cookies")!,
+                UIImage(named:"French Onion Soup")!,
+                UIImage(named:"Happy Meal® Double Cheeseburger")!,
+                UIImage(named:"Instant Pot Poached Chicken")!,
+                UIImage(named:"Italian Sausage Pasta")!,
+                UIImage(named:"Kantooker Twist")!,
+                UIImage(named:"Lemon Chicken And Rice Soup")!,
+                UIImage(named:"Lemon Ricotta Pasta")!,
+                UIImage(named:"Mediterranean Green Lentil Soup")!,
+                UIImage(named:"Mighty Meal")!,
+                UIImage(named:"Molten Lava Cake")!,
+                UIImage(named:"Mushroom Barley Soup")!,
+                UIImage(named:"Persian Style Shrimp and Rice")!,
+                UIImage(named:"Ricotta Gnocchi")!
+            ]
+        ),
+        "BestSeller" :   Product(
+            title: "BestSeller",
+            names: [
+                "Chocolate Walnut Skillet Brownie" ,
+                "Bamya" ,
+                "Banana Peanut Butter Coco Puff Milkshake" ,
+                "Classic Eggplant Lasagna",
+                "Creamy Oatmeal Recipe Middle",
+                "Easy Greek Chicken",
+                "Easy Spicy Shrimp Marinara",
+                "Eggplant Caponata",
+                "Italian Bruschetta",
+                "Italian Skillet Chicken",
+                "Middle Eastern Chicken And Rice",
+                "Olive Oil Bread Dip",
+                "Persian Dolmeh",
+                "Salmon Burgers",
+                "Sour Cherry Galette",
+                "Waffle"
+            ],
+            prices: [
+                "L.E 250" ,
+                "L.E 190" ,
+                "L.E 210" ,
+                "L.E 300" ,
+                "L.E 420" ,
+                "L.E 350" ,
+                "L.E 310",
+                "L.E 250" ,
+                "L.E 330" ,
+                "L.E 250" ,
+                "L.E 230" ,
+                "L.E 200" ,
+                "L.E 150" ,
+                "L.E 170",
+                "L.E 230",
+                "L.E 260"
+            ],
+            images: [
+                UIImage(named:"Chocolate Walnut Skillet Brownie")! ,
+                UIImage(named:"Bamya")! ,
+                UIImage(named:"Banana Peanut Butter Coco Puff Milkshake")! ,
+                UIImage(named:"Classic Eggplant Lasagna")!,
+                UIImage(named:"Creamy Oatmeal Recipe Middle")!,
+                UIImage(named:"Easy Greek Chicken")!,
+                UIImage(named:"Easy Spicy Shrimp Marinara")!,
+                UIImage(named:"Eggplant Caponata")!,
+                UIImage(named:"Italian Bruschetta")!,
+                UIImage(named:"Italian Skillet Chicken")!,
+                UIImage(named:"Middle Eastern Chicken And Rice")!,
+                UIImage(named:"Olive Oil Bread Dip")!,
+                UIImage(named:"Persian Dolmeh")!,
+                UIImage(named:"Salmon Burgers")!,
+                UIImage(named:"Sour Cherry Galette")!,
+                UIImage(named:"Waffle")!
+            ]
                              )
                ]
     
@@ -105,7 +249,13 @@ class HomeViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-
+    lazy var sections: [TableViewProvider] = [
+        ProductTableViewProvider(products: recommendedAndBest["Recomoneded"]!, title: "Recomoneded"),
+        ProductTableViewProvider(products: recommendedAndBest["BestSeller"]!, title: "Best Seller"),
+        ProductTableViewProvider(products: recommendedAndBest["Recomoneded"]!, title: "Recomoneded"),
+        ProductTableViewProvider(products: recommendedAndBest["BestSeller"]!, title: "Best Seller")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -119,21 +269,7 @@ class HomeViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         
-        // Register the product nib file
-        let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "productCell")
-        
-        //Register the newOfferProduct nib file
-        let nib2 = UINib(nibName: "NewOfferTableViewCell", bundle: nil)
-        tableView.register(nib2, forCellReuseIdentifier: "newOfferCell")
-        
-        // Register the Popular Food nib file
-        let nib3 = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
-        tableView.register(nib3, forCellReuseIdentifier: "PopularFoodCell")
-        
-        //Register the filterProducts nib file
-        let nib4 = UINib(nibName: "FilterTableViewCell", bundle: nil)
-        tableView.register(nib4, forCellReuseIdentifier: "filterCell")
+        sections.forEach { $0.registerCell(at: tableView) }
         
     }
 
@@ -235,7 +371,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
         if checkFiltered{
             return filteredProducts.count
         }else{
-            return 6
+            return sections.count
         }
     }
     
@@ -252,82 +388,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             
             return cell
         }else{
-            
-            switch indexPath.row{
-            case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "sliderImagesCell", for: indexPath) as? SliderImagesTableViewCell else{
-                    return UITableViewCell()
-                }
-                cell.delegateSliderImage = self
-                
-                cell.setUpImages(images: imagesOfSliderCollection)
-                cell.selectionStyle = .none
-                return cell
-            case 1:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell else{
-                    return UITableViewCell()
-                }
-                
-                cell.categoriesDelegate = self
-                
-                cell.setUpCell(title: categoriesItems.title, photos: categoriesItems.iamges)
-                cell.names = categoriesItems.names
-                cell.selectionStyle = .none
-                return cell
-            case 2...3:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else{
-                    print("Error in product table view cell")
-                    return UITableViewCell()
-                }
-                
-                cell.favoriteDelegate = self
-                cell.selectedDelegate = self
-                
-                if (indexPath.row == 2){ // Recommended
-                    cell.titleLabel.text = recommendedAndBest["Recomoneded"]?.title
-                    cell.photos = recommendedAndBest["Recomoneded"]!.images
-                    cell.name = recommendedAndBest["Recomoneded"]!.names
-                    cell.price = recommendedAndBest["Recomoneded"]!.prices
-                    cell.isFavorited = favoriteBoolForRecommended
-                    
-                }else{ // Best seller
-                    cell.titleLabel.text = recommendedAndBest["BestSeller"]?.title
-                    cell.photos = recommendedAndBest["BestSeller"]!.images
-                    cell.name = recommendedAndBest["BestSeller"]!.names
-                    cell.price = recommendedAndBest["BestSeller"]!.prices
-                    cell.isFavorited = favoriteBoolForBestSeller
-                }
-                cell.tableViewRow = indexPath.row
-                cell.selectionStyle = .none
-                cell.userId = userId
-                return cell
-            case 4:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "newOfferCell", for: indexPath) as? NewOfferTableViewCell else{
-                    print("Error in Offer table view cell")
-                    return UITableViewCell()
-                }
-                
-                cell.titleOfCell.text = "New Offer"
-                cell.descriptionLabel.text = newOffer[0].descripion
-                cell.backgroundImage.image = UIImage(named: "Discount 50%")
-                cell.selectionStyle = .none
-                return cell
-            case 5:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularFoodCell", for: indexPath) as? PopularFoodTableViewCell else {
-                    return UITableViewCell()
-                }
-                
-                cell.delegateOfPopularItem = self
-                cell.titleLabel.text = "Popular Food"
-                cell.name = pupularFood.names
-                cell.price = pupularFood.prices
-                cell.photos = pupularFood.images
-                cell.selectionStyle = .none
-                
-                return cell
-            default:
-                fatalError("Error in when specific number of row in HomeViewContoller")
-            }
+            return sections[indexPath.row].tableView(tableView, cellForRowAt: indexPath)
         }
     }
     
@@ -337,26 +398,8 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
         if checkFiltered {
             return 150
         }else{
-            
-            switch indexPath.row {
-            case 0:
-                if UIScreen.main.bounds.height < 900{
-                    return UIScreen.main.bounds.height * 0.14
-                }else{
-                    return UIScreen.main.bounds.height * 0.24
-                }
-            case 1:
-                return 130
-            case 2...3:
-                return 200
-            case 4:
-                return 160
-            case 5:
-                return 300
-                
-            default:
-                fatalError("Error in height for row at in home view controller")
-            }
+            return sections[indexPath.row].tableView?(tableView, heightForRowAt: indexPath) ?? tableView.estimatedRowHeight
+
         }
     }
     

@@ -71,9 +71,9 @@ extension ProductTableViewCell: UICollectionViewDataSource ,UICollectionViewDele
         cell.productImage.image = photos[indexPath.row]
         cell.nameLabel.text = name[indexPath.row]
         cell.priceLabel.text = price[indexPath.row]
-        cell.isFavourited = isFavorited[indexPath.row]
-        cell.cellRow = tableViewRow
-        cell.row = indexPath.row
+//        cell.isFavourited = isFavorited[indexPath.row]
+//        cell.cellRow = tableViewRow
+//        cell.row = indexPath.row
         
         return cell
     }
