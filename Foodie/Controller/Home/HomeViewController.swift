@@ -8,9 +8,10 @@
 import UIKit
 
 protocol TableViewCellConfigurator {
-    func configureCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
-    func heightForRow() -> CGFloat
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
 }
+//protocol SelectItemIn
 protocol RegisterCellInTableView{
     func registerCell(for tableView: UITableView)
 }
@@ -25,7 +26,7 @@ class SliderCellConfigurator: TableViewCellConfigurator {
         self.delegate = delegate
     }
 
-    func configureCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "sliderImagesCell", for: indexPath) as? SliderImagesTableViewCell else {
             return UITableViewCell()
         }
@@ -35,7 +36,7 @@ class SliderCellConfigurator: TableViewCellConfigurator {
         return cell
     }
 
-    func heightForRow() -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.height < 900 ? UIScreen.main.bounds.height * 0.14 : UIScreen.main.bounds.height * 0.24
     }
 }
@@ -49,7 +50,7 @@ class CategoriesCellConfigurator: TableViewCellConfigurator {
         self.delegate = delegate
     }
 
-    func configureCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell else {
             return UITableViewCell()
         }
@@ -60,7 +61,7 @@ class CategoriesCellConfigurator: TableViewCellConfigurator {
         return cell
     }
 
-    func heightForRow() -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
 }
@@ -82,7 +83,7 @@ class ProductCellConfigurator: TableViewCellConfigurator, RegisterCellInTableVie
         self.favoriteDelegate = favoriteDelegate
     }
 
-    func configureCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
@@ -100,7 +101,7 @@ class ProductCellConfigurator: TableViewCellConfigurator, RegisterCellInTableVie
         return cell
     }
 
-    func heightForRow() -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
     
@@ -108,10 +109,108 @@ class ProductCellConfigurator: TableViewCellConfigurator, RegisterCellInTableVie
         let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "productCell")
     }
-  
 }
 
+// MARK: - New Offer Table View Cell
+class NewOfferCellConfigurator: TableViewCellConfigurator, RegisterCellInTableView{
+    
+    private var newOffer: [NewOffer]?
+    
+    init(newOffer: [NewOffer]? = nil) {
+        self.newOffer = newOffer
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "newOfferCell", for: indexPath) as? NewOfferTableViewCell else{
+            return UITableViewCell()
+        }
+        cell.titleOfCell.text = "New Offer"
+        cell.descriptionLabel.text = newOffer?[0].descripion
+        cell.backgroundImage.image = UIImage(named: "Discount 50%")
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
+    
+    func registerCell(for tableView: UITableView) {
+        let nib = UINib(nibName: "NewOfferTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "newOfferCell")
+    }
+}
+// MARK: - Popular Food Cell
+class PopularFoodCellConfigurator: TableViewCellConfigurator, RegisterCellInTableView{
+    
+    var popularFood: Product
+    var delegate: PopularFoodTableViewCellDelegate?
+    
+    init(popularFood: Product, delegate: PopularFoodTableViewCellDelegate?){
+        self.popularFood = popularFood
+        self.delegate = delegate
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularFoodCell", for: indexPath) as?  PopularFoodTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.delegateOfPopularItem = delegate
+        cell.titleLabel.text = "Popular Food"
+        cell.name = popularFood.names
+        cell.price = popularFood.prices
+        cell.photos = popularFood.images
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        300
+    }
+    
+    func registerCell(for tableView: UITableView) {
+        
+        let nib = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "PopularFoodCell")
+    }
+}
 
+// Mark Filter Of Search Cell
+//class FilterOfSearch: TableViewCellConfigurator, RegisterCellInTableView{
+//    
+//    private var filteredProducts: [FilterProduct] = []
+//    
+//    init(filterProducts: [FilterProduct]){
+//        self.filteredProducts = filterProducts
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else{
+//                     return UITableViewCell()
+//                 }
+//                 print("filteredProducts = \(filteredProducts.count)")
+//                 cell.nameLabel.text = filteredProducts[indexPath.row].names
+//                 cell.priceLabel.text = filteredProducts[indexPath.row].prices
+//                 cell.imgView.image = filteredProducts[indexPath.row].images
+//                 
+//                 return cell
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        150
+//    }
+//    
+//    func registerCell(for tableView: UITableView) {
+//        let nib = UINib(nibName: "FilterTableViewCell", bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: "filterCell")
+//    }
+//    
+//}
+
+// MARK: - Home View Controller
 class HomeViewController: UIViewController {
 
     var cellConfigurators: [TableViewCellConfigurator] = []
@@ -211,7 +310,6 @@ class HomeViewController: UIViewController {
     var favoriteBoolForBestSeller = [Bool]()
     var userId = ""
     
-    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -225,19 +323,6 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        
-        
-        // Register the product nib file
-//        let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
-//        tableView.register(nib, forCellReuseIdentifier: "productCell")
-        
-        //Register the newOfferProduct nib file
-        let nib2 = UINib(nibName: "NewOfferTableViewCell", bundle: nil)
-        tableView.register(nib2, forCellReuseIdentifier: "newOfferCell")
-        
-        // Register the Popular Food nib file
-        let nib3 = UINib(nibName: "PopularFoodTableViewCell", bundle: nil)
-        tableView.register(nib3, forCellReuseIdentifier: "PopularFoodCell")
         
         //Register the filterProducts nib file
         let nib4 = UINib(nibName: "FilterTableViewCell", bundle: nil)
@@ -268,29 +353,39 @@ class HomeViewController: UIViewController {
     }
     // setup Cell Configurators
     func setupCellConfigurators() {
-           // Slider cell
-           let sliderConfigurator = SliderCellConfigurator(images: imagesOfSliderCollection, delegate: self)
-           cellConfigurators.append(sliderConfigurator)
-           
-           // Categories cell
-           let categoriesConfigurator = CategoriesCellConfigurator(categories: categoriesItems, delegate: self)
-           cellConfigurators.append(categoriesConfigurator)
-           
-           // Recommended product cell
-           if let recommendedProduct = recommendedAndBest["Recomoneded"] {
-               let recommendedConfigurator = ProductCellConfigurator(product: recommendedProduct, favoriteBool: favoriteBoolForRecommended, userId: userId, row: 2, delegate: self, favoriteDelegate: self)
-               recommendedConfigurator.registerCell(for: tableView)
-               cellConfigurators.append(recommendedConfigurator)
-               
-           }
-           
-           // Best seller product cell
-           if let bestSellerProduct = recommendedAndBest["BestSeller"] {
-               let bestSellerConfigurator = ProductCellConfigurator(product: bestSellerProduct, favoriteBool: favoriteBoolForBestSeller, userId: userId, row: 3, delegate: self, favoriteDelegate: self)
-               bestSellerConfigurator.registerCell(for: tableView)
-               cellConfigurators.append(bestSellerConfigurator)
-           }
         
+            // Slider cell
+            let sliderConfigurator = SliderCellConfigurator(images: imagesOfSliderCollection, delegate: self)
+            cellConfigurators.append(sliderConfigurator)
+            
+            // Categories cell
+            let categoriesConfigurator = CategoriesCellConfigurator(categories: categoriesItems, delegate: self)
+            cellConfigurators.append(categoriesConfigurator)
+            
+            // Recommended product cell
+            if let recommendedProduct = recommendedAndBest["Recomoneded"] {
+                let recommendedConfigurator = ProductCellConfigurator(product: recommendedProduct, favoriteBool: favoriteBoolForRecommended, userId: userId, row: 2, delegate: self, favoriteDelegate: self)
+                recommendedConfigurator.registerCell(for: tableView)
+                cellConfigurators.append(recommendedConfigurator)
+                
+            }
+            
+            // Best seller product cell
+            if let bestSellerProduct = recommendedAndBest["BestSeller"] {
+                let bestSellerConfigurator = ProductCellConfigurator(product: bestSellerProduct, favoriteBool: favoriteBoolForBestSeller, userId: userId, row: 3, delegate: self, favoriteDelegate: self)
+                bestSellerConfigurator.registerCell(for: tableView)
+                cellConfigurators.append(bestSellerConfigurator)
+            }
+            
+            // New offer cell
+            let newOfferCellConfigurator = NewOfferCellConfigurator(newOffer: newOffer)
+            newOfferCellConfigurator.registerCell(for: tableView)
+            cellConfigurators.append(newOfferCellConfigurator)
+            
+            // Popular Cell
+            let popularFoodCellConfigurator = PopularFoodCellConfigurator(popularFood: pupularFood, delegate: self)
+            popularFoodCellConfigurator.registerCell(for: tableView)
+            cellConfigurators.append(popularFoodCellConfigurator)
        }
     
     // Load an image from a URL
@@ -356,7 +451,6 @@ class HomeViewController: UIViewController {
            let bestSellerBool = (try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: bestSellerData) as? [Bool]) {
             favoriteBoolForRecommended = recommendedBool
             favoriteBoolForBestSeller = bestSellerBool
-//            print("recommendedBool.count\(recommendedBool.count)")
             print("Successfully fetched favorites from UserDefaults for user \(userId)!")
         } else {
             print("Error fetching favorites for user \(userId)")
@@ -379,7 +473,6 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.separatorStyle = .none
-        
         if checkFiltered{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else{
                 return UITableViewCell()
@@ -390,17 +483,16 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
             
             return cell
         }else{
-            return cellConfigurators[indexPath.row].configureCell(tableView: tableView, indexPath: indexPath)
+            return cellConfigurators[indexPath.row].tableView(tableView, cellForRowAt: indexPath)
         }
     }
     
-   // Hight table view
+    // Hight table view
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if checkFiltered {
             return 150
         }else{
-            return cellConfigurators[indexPath.row].heightForRow()
+            return cellConfigurators[indexPath.row].tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
@@ -426,7 +518,7 @@ extension HomeViewController: UITableViewDelegate ,UITableViewDataSource{
   
 }
 // MARK: - Did selected Items
-extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewCellDelegate , SliderImagesTableViewCellDelegate ,isFavoriteChangedDelegate{
+extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewCellDelegate ,PopularFoodTableViewCellDelegate, SliderImagesTableViewCellDelegate ,isFavoriteChangedDelegate{
     
     func favoriteChanged(isFavorite: [Bool], row: Int, value: Bool) {
         if row == 2{
@@ -443,15 +535,6 @@ extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewC
         }
     }
     
-    // Selected item in slider images
-    func didSelectedSliderImage(indexPath: IndexPath) {
-        guard let destinationVC = storyboard?.instantiateViewController(identifier: "FoodsOfSpecificRestaurantViewController") as? FoodsOfSpecificRestaurantViewController else { return }
-        
-        destinationVC.selectedItem = "Discount 10%"
-        self.show(destinationVC, sender: self)
-    }
-    
-    // Select categorie item
     func didSelectedItem(at indexPath: IndexPath){
         
         guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "FoodsOfSpecificRestaurantViewController") as? FoodsOfSpecificRestaurantViewController else{ return }
@@ -460,7 +543,6 @@ extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewC
         self.show(destinationVC, sender: self)
     }
     
-    // Select recommended or best seller
     func didselectedItem(at indexPath: IndexPath, for tableViewRow: Int) {
         
         guard let destinationVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else{
@@ -488,7 +570,26 @@ extension HomeViewController: CategoriesTableViewCellDelegate, ProductTableViewC
         self.show(destinationVC, sender: self)
     }
     
-
+    // Selected Popular Item
+    func didSelectedPopularItem(indexPath: IndexPath) {
+        
+        guard let destinationVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController else{
+            return
+        }
+        
+        destinationVC.nameOfFoodImage = pupularFood.names[indexPath.row]
+        destinationVC.priceOfFood = pupularFood.prices[indexPath.row]
+        
+        self.show(destinationVC, sender: self)
+    }
+    
+    // Selected item in slider images
+    func didSelectedSliderImage(indexPath: IndexPath) {
+        guard let destinationVC = storyboard?.instantiateViewController(identifier: "FoodsOfSpecificRestaurantViewController") as? FoodsOfSpecificRestaurantViewController else { return }
+        
+        destinationVC.selectedItem = "Discount 10%"
+        self.show(destinationVC, sender: self)
+    }
 }
 
 // MARK: - UI Text Field Delgate
@@ -542,7 +643,6 @@ extension HomeViewController: UITextFieldDelegate{
             filteredProducts = allProducts
             checkFiltered = false
         }
-        
         self.tableView.reloadData()
         return true
     }
