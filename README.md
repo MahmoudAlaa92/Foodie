@@ -1,6 +1,6 @@
 ## Foodie - Restaurant iOS App 🍽️📱
 
-#Overview
+# Overview
 - Foodie is a dynamic restaurant app built from scratch using Swift and UIKit, designed to enhance your dining experience. With a focus on usability and performance, this app allows users to discover restaurants, view details, and access important information seamlessly.
 
 # Features
