@@ -17,7 +17,7 @@ Architecture Patterns
 - **Delegate Pattern**: Establishes a clear communication pathway between view controllers, allowing for seamless event handling while keeping components decoupled.
 - **Notification Center**: Facilitates broadcasting messages across the app, managing user interactions and notifications efficiently.
 
-#Design
+# Design
 For a preview of the app's design, visit the Figma Design Link:
 https://www.figma.com/design/Onz8uVhkUUhrVGao8UpnpN/Untitled?node-id=0-1&t=JTFGWXO9GcojUN21-1
 
