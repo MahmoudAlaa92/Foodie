@@ -47,7 +47,4 @@ https://www.linkedin.com/feed/update/urn:li:activity:7250605462889394176/
   <img src="https://github.com/user-attachments/assets/381d50c3-dc3d-4fd0-af93-d392378cd24e" width="49%" />
 </div>
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/381d50c3-dc3d-4fd0-af93-d392378cd24e" width="49%" />
-</div>
 
